@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>MasterlyWriters | Contact Us</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+        
+        {% block styles %}
+            {{ bootstrap.load_css() }}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/css/intlTelInput.css">
+            <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Work+Sans:300,400,700" rel="stylesheet">
+            <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }} ">
+
+            
+
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}  ">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }} ">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }} ">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }} ">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }} ">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }} ">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }} ">
+            
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+            
+            
+            
+            <link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }} ">
+          
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}  ">
+
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }} ">
+
+            <!-- fontawesome icons -->
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+            <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}">
+
+            <!-- custom css -->
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profile_css/style.css') }} ">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/order.css') }} ">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/landing_page_css/base.css') }} ">
+
+
+            <!-- MPYA -->
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            
+            <!------ Include the above in your HEAD tag ---------->
+
+            <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+            <style type="text/css">
+                .input100 {
+                    border: none !important;
+                    
+                }
+                .focus-input100 {
+                  margin-left: -15px;
+
+                }
+
+                input {
+  outline: none;
+  border: none;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+textarea {
+  outline: none;
+  border: none;
+}
+
+textarea:focus, input:focus {
+  border-color: transparent !important;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; }
+input:focus::-moz-placeholder { color:transparent; }
+input:focus:-ms-input-placeholder { color:transparent; }
+
+textarea:focus::-webkit-input-placeholder { color:transparent; }
+textarea:focus:-moz-placeholder { color:transparent; }
+textarea:focus::-moz-placeholder { color:transparent; }
+textarea:focus:-ms-input-placeholder { color:transparent; }
+
+input::-webkit-input-placeholder {color: #999999;}
+input:-moz-placeholder {color: #999999;}
+input::-moz-placeholder {color: #999999;}
+input:-ms-input-placeholder {color: #999999;}
+
+textarea::-webkit-input-placeholder {color: #999999;}
+textarea:-moz-placeholder {color: #999999;}
+textarea::-moz-placeholder {color: #999999;}
+textarea:-ms-input-placeholder {color: #999999;}
+
+label {
+  display: block;
+  margin: 0;
+}
+
+/*---------------------------------------------*/
+button {
+  outline: none !important;
+  border: none;
+  background: transparent;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+iframe {
+  border: none !important;
+}
+
+.body_content {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ Utility ]*/
+.txt1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #999999;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ login ]*/
+
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container-login100 {
+    width: 100%;  
+    position: relative;
+    height: auto;
+    min-height: 100% !important;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #fff;
+}
+
+
+.wrap-login100 {
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border: .02em solid #eee;
+}
+
+/*==================================================================
+[ Title form ]*/
+.login100-form-title {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  padding: 70px 15px 74px 15px;
+}
+
+.login100-form-title-1 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.login100-form-title::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(54,84,99,0.7);
+}
+
+
+/*==================================================================
+[ Form ]*/
+
+.login100-form {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 43px 88px 93px 43px;
+}
+
+
+/*------------------------------------------------------------------
+[ Input ]*/
+
+.wrap-input100 {
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid #b2b2b2;
+}
+
+.label-input100 {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #808080;
+    line-height: 1.2;
+    text-align: right;
+    position: absolute;
+    top: 14px;
+    left: -155px;
+    max-width: 150px;
+}
+
+/*---------------------------------------------*/
+.input100 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: #555555;
+  line-height: 1.2;
+
+  display: block;
+  width: 100%;
+  background: white;
+  padding: 0 5px;
+}
+
+.focus-input100 {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.focus-input100::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+
+  -webkit-transition: all 0.6s;
+  -o-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  transition: all 0.6s;
+
+  background: #57b846;
+}
+
+
+/*---------------------------------------------*/
+input.input100 {
+  height: 45px;
+}
+
+
+.input100:focus + .focus-input100::before {
+  width: 100%;
+}
+
+.has-val.input100 + .focus-input100::before {
+  width: 100%;
+}
+
+/*==================================================================
+[ Restyle Checkbox ]*/
+
+.input-checkbox100 {
+  display: none;
+}
+
+.label-checkbox100 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: #999999;
+  line-height: 1.4;
+
+  display: block;
+  position: relative;
+  padding-left: 26px;
+  cursor: pointer;
+}
+
+.label-checkbox100::before {
+  content: "\f00c";
+  font-family: FontAwesome;
+  font-size: 13px;
+  color: transparent;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.input-checkbox100:checked + .label-checkbox100::before {
+  color: #57b846;
+}
+
+/*------------------------------------------------------------------
+[ Button ]*/
+.container-login100-form-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.login100-form-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  min-width: 160px;
+  height: 50px;
+  background-color: #57b846;
+  border-radius: 5px;
+
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.login100-form-btn:hover {
+  background-color: #333333;
+}
+
+
+
+
+
+/*------------------------------------------------------------------
+[ Alert validate ]*/
+
+.validate-input {
+  position: relative;
+}
+
+.alert-validate::before {
+  content: attr(data-validate);
+  position: absolute;
+  max-width: 70%;
+  background-color: #fff;
+  border: 1px solid #c80000;
+  border-radius: 2px;
+  padding: 4px 25px 4px 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 2px;
+  pointer-events: none;
+
+  font-family: 'Open Sans', sans-serif;
+  color: #c80000;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: left;
+
+  visibility: hidden;
+  opacity: 0;
+
+  -webkit-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+
+.alert-validate::after {
+  content: "\f06a";
+  font-family: FontAwesome;
+  display: block;
+  position: absolute;
+  color: #c80000;
+  font-size: 15px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 8px;
+}
+
+.alert-validate:hover:before {
+  visibility: visible;
+  opacity: 1;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    font-style: italic;
+}
+
+#msg_body {
+    margin-bottom: 10px;
+    background: #f1f1f1;
+    padding: 20px;
+}
+
+              .flash_msgs {
+                  padding: 20px;
+                  font-size: 17px;
+                  color: #fff;
+                  background: rgba(37, 152, 12, .5) !important;
+                  width: 100%;
+                  text-align: center !important;
+                  border-radius: 3px;
+                  padding-bottom: -10px !important;
+              }
+
+              ul.flash_list {
+                  list-style: none;
+              }
+
+
+
+
+
+                .dismiss_btn {
+                    position: relative;
+                    color: red;
+                    font-size: 20px;
+                    float: right;
+                    top: -30px;
+                }
+
+
+
+
+
+                /*------------------------------------------------------------------
+                [ Responsive ]*/
+
+                @media (max-width: 992px) {
+                    .alert-validate::before {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+
+                    .flash_msgs {
+                        margin-top: 60px !important;
+                    }
+                    
+                    .input100 {
+                        left: -155px;
+                        width: 95%;
+                    }
+
+                    .login100-form {
+                        padding: 0px;
+                        margin: 0 auto !important;
+                        width: 100%;
+                    }
+                    .container {
+                        width: 100%;
+                        margin: 0 auto !important;
+                        padding: 0 !important;
+                    }
+                    .contact_flex {
+                        width: 100%;
+                        margin: 0 auto !important;
+                        padding: 0 !important;
+                    }
+                    .contact_form {
+                        width: 100%;
+                        margin-top: 50px !important;
+                    }
+
+                    .contact_summary {
+                        width: 100% !important;
+                    }
+                }
+
+                @media (max-width: 600px) {
+                    .login100-form {
+                        padding: 0px;
+                        margin: 0 auto !important;
+                        width: 100%;
+                    }
+
+                    .flash_msgs {
+                        margin-top: 60px !important;
+                    }
+                    
+                    .contact_summary {
+                        width: 100% !important;
+                    }
+                    .container {
+                        width: 100%;
+                        margin: 0 auto !important;
+                        padding: 0 !important;
+                    }
+                    .contact_flex {
+                        width: 100%;
+                        margin: 0 auto !important;
+                        padding: 0 !important;
+                    }
+                    .contact_form {
+                        width: 100%;
+                        margin-top: 50px !important;
+                    }
+                    .mb-4 {
+                        margin: 0 auto !important;
+                        width: 100% !important;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .login100-form {
+                      padding: 43px 15px 57px 15px;
+                    }
+                    .contact_flex {
+                        width: 100%;
+                        margin: 0 auto !important;
+                    }
+                    .contact_form {
+                        width: 100%;
+                        margin-top: 50px !important;
+                    }
+                    .contact_summary {
+                        width: 100% !important;
+                    }
+
+                    .flash_msgs {
+                        margin-top: 60px !important;
+                    }
+                    
+                    .mb-4 {
+                        margin: 0 auto !important;
+                        width: 100% !important;
+                    }
+                }
+
+
+            </style>
+        {% endblock %}
+
+        
+
+
+
+        
+        
+    </head>
+    <body>
+
+        <div id="loader"></div>
+
+
+        <div style="display:none;" id="myDiv" class="animate-bottom">
+          
+            <div class="site-wrap">
+
+                <div class="site-mobile-menu">
+                    <div class="site-mobile-menu-header">
+                        <div class="site-mobile-menu-close mt-3">
+                            <span class="icon-close2 js-menu-toggle"></span>
+                        </div>
+                    </div>
+                    <div class="site-mobile-menu-body"></div>
+                </div> <!-- .site-mobile-menu -->
+              
+          
+                <div class="site-navbar-wrap" >
+                  
+                    <div class="container" >
+                        <div class="flex-container">
+                            <div class="contacts">
+                                <i class="far fa-envelope"></i> &Tab; &Tab; support@masterlywriters.com
+                            </div>
+                            <div class="contacts_right">
+                                {% if current_user.is_authenticated %}
+                                    <a href="{{ url_for('users.profile') }}">
+                                        <button class="manage_orders_btn">
+                                            Manage Orders
+                                        </button>
+                                    </a>
+                                {% else %}
+                                    <a href="{{ url_for('users.session_new') }}">
+                                        <button class="manage_orders_btn">
+                                            Login / Register
+                                        </button>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <hr class="style1">
+
+                        <div class="site-navbar" >
+                          <div class="py-1">
+                            <div class="row align-items-center">
+
+                              <div class="col-2 logo_div">
+                                  <h2 class="mb-0 site-logo">
+                                      <a href="{{ url_for('home.home') }}">
+                                          Masterly<strong class="font-weight-bold">Writers</strong>
+                                      </a>
+                                  </h2>
+                              </div>
+
+                              <div class="col-10">
+                                <nav class="site-navigation text-right" role="navigation">
+                                  <div class="container">
+                                      <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3">
+                                          <a href="#" class="site-menu-toggle js-menu-toggle text-black">
+                                              <span class="icon-menu h3"></span>
+                                          </a>
+                                      </div>
+
+                                      <ul class="site-menu js-clone-nav d-none d-lg-block" >
+                                          <li><a href="{{ url_for('home.pricing') }}">Pricing</a></li>
+                                          <li class="has-children">
+                                              <a href="{{ url_for('home.services') }}">Services</a>
+                                              <ul class="dropdown arrow-top">
+                                                  <li><a href="{{ url_for('home.services') }}">Writing Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Dissertation & Thesis</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Editing Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Assignments</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Admission Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Resume Services</a></li>
+                                              </ul>
+                                          </li>
+                                          <li><a href="{{ url_for('home.contact') }}">Contact Us</a></li>
+                                          <li><a href="{{ url_for('home.how_it_works') }}">How it Works</a></li>
+
+                                          {% if current_user.is_authenticated %}
+                                              <li class="has-children">
+                                                  <a href="{{ url_for('users.profile') }}"><i class="fas fa-user-circle" style="font-size: 20px;"></i></a>
+                                                  <ul class="dropdown arrow-top" style="font-size: 13px;">
+                                                      <li><a href="{{ url_for('users.profile') }}"><i class="far fa-user"></i> View Profile</a></li>
+                                                      <li><a href="{{ url_for('users.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li> 
+                                                  </ul>
+                                              </li>
+                                          {% endif %}
+
+                                          <li><a href="{{ url_for('users.place_order') }}">
+                                              <button class="post_button button1"><span class="icon-plus mr-3"></span>
+                                              <span>Order Now</span></button>                                    
+                                          </a></li>
+
+                                      </ul>
+                                  </div>
+                              </nav>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+        
+                <div class="separator"></div>
+
+                <div class="unit-5 overlay" style="background-image: url('../static/images/hero_1.jpg');" >
+                    <div class="container text-center">
+                        <h2 >Contact Us</h2>
+                        <p class="mb-0 unit-6" style="text-align: center; color: #fff;"><a href="{{ url_for('home.home') }}">Home</a> <span class="sep"> > </span> <span>Contact us</span></p>
+                    </div>
+                </div>
+    
+
+                
+                <div class="site-section bg-light" style="margin-top: -70px;">
+                    <div class="container" >
+                        
+                        <div class="contact_flex" >
+                            {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                    <div class="flash_msgs">
+                                        <ul class="flash_list">
+                                            {% for message in messages %}
+                                                <li>
+                                                    <i class="far fa-thumbs-up"></i> <span id="msg">{{ message }}</span> 
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+                                        
+                            
+
+                            <div class="contact_form" >
+
+                                <form class="login100-form" name="contact_form" role="form" method="POST" action="{{ url_for('home.contact') }}">
+
+                                    {{ contact_form.csrf_token }}
+
+                                    <div class="wrap-input100">
+                                        {{ contact_form.name(placeholder="Full Name", id="fullname", class="input100") }}
+                                        <span class="focus-input100"></span>                                  
+                                    </div>
+                                    {% if contact_form.name.errors %}
+                                        {% for error in contact_form.name.errors %}
+                                            <span class="error">*{{ error }}</span>
+                                        {% endfor %}
+                                    {% endif %}
+
+
+                                    <div class="wrap-input100" style="margin-top: 40px;">
+                                        {{ contact_form.email(id="reg_email", placeholder="Email Address", class="input100") }}
+                                        <span class="focus-input100"></span>
+                                    </div>                
+                                    {% if contact_form.email.errors %}
+                                        {% for error in contact_form.email.errors %}
+                                            <span class="error">*{{ error }}</span>
+                                        {% endfor %}
+                                    {% endif %}
+
+                                    <div class="wrap-input100" style="margin-top: 40px;">
+                                        {{ contact_form.phone(class="input100", id="phone") }}
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    {% if contact_form.phone.errors %}
+                                        {% for error in contact_form.phone.errors %}
+                                            <span class="error">*{{ error }}</span>
+                                        {% endfor %}
+                                    {% endif %}
+
+                                    <div class="wrap-input100" style="margin-top: 40px;">
+                                        {{ contact_form.msg_body(placeholder="Your message...", rows="8", class="input100", id="msg_body") }}
+                                        <span class="focus-input100" style="padding: 20px;"></span>
+                                    </div>'
+                                    {% if contact_form.msg_body.errors %}
+                                        {% for error in contact_form.msg_body.errors %}
+                                            <span class="error">*{{ error }}</span>
+                                        {% endfor %}
+                                    {% endif %}
+
+                                    <button type="submit" class="contact_form_btn"><span>Send </span></button>
+
+                                </form>
+
+
+
+                                
+                            </div>
+
+
+
+                            <div class="contact_summary">
+                                <div class="p-4 mb-3 bg-white">
+                                    <h3 class="h5 text-black mb-3">Contact Info</h3>
+                                    <p class="mb-0 font-weight-bold">Address</p>
+                                    <p class="mb-4" style="color: gray;">203 Fake St. Mountain View, San Francisco, California, USA</p>
+
+                                    <p class="mb-0 font-weight-bold">Phone</p>
+                                    <p class="mb-4" style="color: gray;">+1 232 3235 324</p>
+
+                                    <p class="mb-0 font-weight-bold" style="color: gray;">Email Address</p>
+                                    <p class="mb-4" style="color: gray;">youremail@domain.com</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+    
+
+
+                <footer class="page-footer font-small blue-grey lighten-5">
+
+                    <div style="background: #ddd;">
+                        <div class="container">
+
+                          <!-- Grid row-->
+                          <div class="row py-4 d-flex align-items-center">
+
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                              <h6 class="mb-0">Get connected with us on social networks!</h6>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                              <!-- Facebook -->
+                              <a class="fb-ic">
+                                <i class="fab fa-facebook-f white-text mr-4"> </i>
+                              </a>
+                              <!-- Twitter -->
+                              <a class="tw-ic">
+                                <i class="fab fa-twitter white-text mr-4"> </i>
+                              </a>
+                              <!-- Google +-->
+                              <a class="gplus-ic">
+                                <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                              </a>
+                              <!--Linkedin -->
+                              <a class="li-ic">
+                                <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                              </a>
+                              <!--Instagram-->
+                              <a class="ins-ic">
+                                <i class="fab fa-instagram white-text"> </i>
+                              </a>
+
+                            </div>
+                            <!-- Grid column -->
+
+                          </div>
+                          <!-- Grid row-->
+
+                        </div>
+                    </div>
+
+                    <!-- Footer Links -->
+                    <div class="container text-center text-md-left mt-5" >
+
+                      <!-- Grid row -->
+                      <div class="row mt-3 dark-grey-text">
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+                          <!-- Content -->
+                          <h6 class="text-uppercase font-weight-bold">About </h6>
+                          <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                          <p class="footer_text">MasterlyWriters was founded to offer high-quality and affordable essays to students of all levels including high school, college, university, and post graduate. </p>
+                          <p class="footer_text">We only select writers who are truly masters in writing to ensure our clients get the best value.</p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                            <!-- Links -->
+                            <h6 class="text-uppercase font-weight-bold">Quick Menu</h6>
+                            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p class="footer_text">
+                              <a class="dark-grey-text" href="#!">Pricing</a>
+                            </p>
+                            <p class="footer_text">
+                              <a class="dark-grey-text" href="#!">FAQ</a>
+                            </p>
+                            <p class="footer_text">
+                              <a class="dark-grey-text" href="#!">How it works</a>
+                            </p>
+                            <p class="footer_text">
+                              <a class="dark-grey-text" href="#!">Contact Us</a>
+                            </p>
+                            <p class="footer_text">
+                              <a class="dark-grey-text" href="#!">Testimonials</a>
+                            </p>
+                            <p class="footer_text">
+                              <a class="dark-grey-text" href="#!">Privacy policy</a>
+                            </p>
+                            <p class="footer_text">
+                              <a class="dark-grey-text" href="#!">Terms of use</a>
+                            </p>
+                            <p class="footer_text">
+                              <a class="dark-grey-text" href="#!">For writers</a>
+                            </p>
+
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                            <!-- Links -->
+                            <h6 class="text-uppercase font-weight-bold">Categories</h6>
+                            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p class="footer_text">
+                                <a class="dark-grey-text" href="#!">Custom Writing</a>
+                            </p>
+                            <p class="footer_text">
+                                <a class="dark-grey-text" href="#!">Editing</a>
+                            </p>
+                            <p class="footer_text">
+                                <a class="dark-grey-text" href="#!">Proofreading</a>
+                            </p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                          <!-- Links -->
+                          <h6 class="text-uppercase font-weight-bold">Payment Methods</h6>
+                          <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p class="footer_text">
+                                <a class="dark-grey-text" href="#!">Mastercard</a>
+                            </p>
+                            <p class="footer_text">
+                                <a class="dark-grey-text" href="#!">Payoneer</a>
+                            </p>
+                            <p class="footer_text">
+                                <a class="dark-grey-text" href="#!">PayPal</a>
+                            </p>
+                            <p class="footer_text">
+                                <a class="dark-grey-text" href="#!">Visa</a>
+                            </p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                      </div>
+                      <!-- Grid row -->
+
+                    </div>
+                    <!-- Footer Links -->
+
+                    <!-- Copyright -->
+                    <div class="footer-copyright text-center text-black-50 py-3" style="background: green; color: #fff !important;">© 2020 Copyright:
+                      <a class="dark-grey-text" href="https://masterlywriters.com/" style="color: #fff !important;"> MasterlyWriters</a>
+                    </div>
+                    <!-- Copyright -->
+
+                </footer>
+                <!-- Footer -->
+
+
+        </div>
+
+        {% block scripts %}
+            {{ bootstrap.load_js() }}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/intlTelInput.min.js"></script>
+
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        
+            <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+            <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }} "></script>
+            <script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }} "></script>
+            <script src="{{ url_for('static', filename='js/jquery-ui.js') }} "></script>
+            <script src="{{ url_for('static', filename='js/popper.min.js') }} "></script>
+            <script src="{{ url_for('static', filename='js/bootstrap.min.js') }} "></script>
+            <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }} "></script>
+            <script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }} "></script>
+            <script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }} "></script>
+            <script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }} "></script>
+            <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }} "></script>
+            <script src="{{ url_for('static', filename='js/aos.js') }} "></script>
+
+            
+            <script src="{{ url_for('static', filename='js/mediaelement-and-player.min.js') }} "></script>
+
+            <script src="{{ url_for('static', filename='js/index_main.js') }} "></script>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+            <script type="text/javascript">
+
+            
+                $(document).ready(function() {
+                    var myVar;
+                    myVar = setTimeout(showPage, 2000);
+                });
+
+                function showPage() {
+                    document.getElementById("loader").style.display = "none";
+                    document.getElementById("myDiv").style.display = "block";
+
+                    var msg = document.getElementById("msg").innerHTML;
+                    
+                    if (msg != "") {
+                        //alert(msg);
+                        setTimeout(function () {
+                            $('.flash_msgs').fadeOut();
+                        }, 10000);
+                    }
+                }
+
+             
+            </script>
+
+            <script>
+                var wtf_phone_field = document.getElementById('phone');
+                wtf_phone_field.style.position = 'absolute';
+                wtf_phone_field.style.lineHeight = "50px";
+                wtf_phone_field.style.top = '-9999px';
+                wtf_phone_field.style.left = '-9999px';
+                wtf_phone_field.parentElement.insertAdjacentHTML('beforeend', '<div ><input type="tel" id="_phone"></div>');
+                var fancy_phone_field = document.getElementById('_phone');
+                fancy_phone_field.style.lineHeight = "45px";
+                fancy_phone_field.style.width = "100%";
+                var fancy_phone_iti = window.intlTelInput(fancy_phone_field, {
+                    separateDialCode: true,
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/utils.js",
+                });
+                fancy_phone_iti.setNumber(wtf_phone_field.value);
+
+                fancy_phone_field.addEventListener('blur', function() {
+                    wtf_phone_field.value = fancy_phone_iti.getNumber();
+                });
+            </script>
+        {% endblock %}
+
+  
+        
+        
+
+
+        
+
+    </body>
+
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>MasterlyWriters | Checkout</title>
+
+	<style type="text/css">
+		.paypal_btn {
+			display: inline-block;
+			font-family: inherit;
+			font-size: 14px;
+			font-weight: bold;
+			color: #fff;
+			text-align: center;
+			padding: 10px 14px;
+			margin: 0;
+			background: #ff6600;
+			border: 0;
+			cursor: pointer;
+			outline: none;
+			}
+			.paypal_btn:hover {
+				background: #e05c04; 
+			}
+	</style>
+	        
+	</head>
+	    <body style="text-align: center;">
+
+		<div class="container" style="width: 30%; margin: 0 auto; background: #ddd; padding: 100px;">
+			{% if current_user.is_authenticated %}
+				
+				{% for order in orders %}
+			  	
+				  	<!-- Paypal buy now button -->
+				    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+
+						<input type="hidden" name="cmd" value="_xclick">
+						<input type="hidden" name="custom" value="{{ user_id }}">
+						<input type="hidden" name="business" value="sb-1bgky863392@business.example.com">
+						<input type="hidden" name="item_name" value="Assignment Order">
+						<input type="hidden" name="item_number" value="SE-001">
+						<input type="hidden" name="no_shipping" value="1">
+						<input type="hidden" name="return" value="https://masterlywriters.herokuapp.com/paypal_success">
+						<input type="hidden" name="cancel_return" value="https://masterlywriters.herokuapp.com/paypal_cancel">
+						<input type="hidden" name="notify_url" value="https://masterlywriters.herokuapp.com/paypal_ipn">
+						<input type="hidden" name="no_note" value="1">
+						<input type="hidden" name="currency_code" value="USD">
+						<input type="hidden" name="tax" value="0">
+						<input type="hidden" name="lc" value="US">
+						<input type="hidden" name="bn" value="PP-DonationsBF">
+						<input type="hidden" name="amount" value="{{ order.grand_total }}">
+						<input type="hidden" name="hosted_button_id" value="5DWA2CG7H3BUE">
+
+						<input type="submit" value="Checkout" name="submit" title="PayPal - The safer, easier way to pay online!" class="paypal_btn">
+						<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+
+					</form>
+
+					
+
+				{% endfor %}
+
+
+			{% else %}
+				<p>
+					login required.
+				</p>
+			{% endif %}	
+		</div>
+
+    </body>
+</html>

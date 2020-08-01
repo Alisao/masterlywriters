@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+          <meta http-equiv="x-ua-compatible" content="ie=edge">
+          <title>MasterlyWriters | Admin</title>
+          <!-- Favicon-->
+          <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+
+
+          {% block styles %}
+
+              {{ dropzone.load_css() }}
+              {{ dropzone.style('border: 1px dashed #4CAF50; text-align: center;') }}
+
+              {{ JSGlue.include() }}
+
+              <!-- Font Awesome -->
+              <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+              <!-- google fonts  -->
+              <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,600italic,600,700italic' rel='stylesheet' type='text/css'> 
+              <!-- Bootstrap core CSS -->
+              <link href="{{ url_for('static', filename='css/admin_css/bootstrap.min.css') }} " rel="stylesheet">
+              <!-- Material Design Bootstrap -->
+              <link href="{{ url_for('static', filename='css/admin_css/mdb.min.css') }} " rel="stylesheet">
+              <!-- Your custom styles (optional) -->
+              <link href="{{ url_for('static', filename='css/admin_css/style.min.css') }} " rel="stylesheet">
+
+              <!-- custom CSS -->
+              <link href="{{ url_for('static', filename='css/admin.css') }}" rel="stylesheet">
+              
+               
+              <style>
+
+                  * {
+                      box-sizing: border-box;
+                  }
+                  body {
+                      font-family: 'Maven Pro', sans-serif;
+                  }
+
+                  /* Style the tab */
+                  .tab {
+                    float: left;
+                    width: 100%;
+                  }
+
+                  /* Style the buttons inside the tab */
+                  .tab button {
+                    display: block;
+                    background-color: inherit;
+                    color: black;
+                    padding: 22px 16px;
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    text-align: left;
+                    cursor: pointer;
+                    transition: 0.3s;
+                    font-size: 17px;
+                  }
+
+                  /* Change background color of buttons on hover */
+                  .tab a:hover {
+                    background-color: #ddd;
+                  }
+
+                  /* Create an active/current "tab button" class */
+                  .tab a.active {
+                      background-color: #4E9FE6 !important;
+                  }
+
+                  .center {
+                      text-align: center;
+                  }
+
+                  .zero_content {
+                      margin: 0 auto !important;
+                      padding: 20px;
+                  }
+
+                  .blue {
+                      font-size: 17px !important;
+                      color: gray !important;
+                  }
+
+                  /* Style the tab content */
+                  .tabcontent {
+                      float: left;
+                      padding: 0px 12px;
+                      border-left: none;
+                  }
+
+                  .bold {
+                      font-weight: 900 !important;
+                      font-style: bold-italic;
+                      color: rgba(239, 89, 33, .8);
+                  }
+
+                  td, th {
+                      vertical-align: middle !important;
+                  }
+
+                  .unread {
+                      font-weight: 900 !important;
+                      color: #000 !important;
+                  }
+
+                  .read {
+                      color: gray !important;
+                  }
+
+                  .flex-container {
+                      flex-direction: row;
+                      display: flex;
+                      flex-wrap: wrap;
+                  }
+
+                  .flex-container > div {
+                      text-align: center;
+                  }
+
+                  .order_details {
+                      border: 1px solid #ccc;
+                      border-radius: 3px;
+                      padding: 5px;
+                      font-size: 11px;
+                      margin-bottom: 4px;
+                  }
+
+                  .dropdown-toggle {
+                      padding: 10px;
+                      text-transform: none;
+                  }
+
+                  .order_header {
+                      width: 80%;
+                      text-align: left !important;
+                      padding: 10px;
+                  }
+
+
+
+
+                  .order_header span {
+                      text-transform: uppercase !important;
+                      color: #4CAF50 !important;; /* Green */
+                      font-size: 15px;
+                      font-weight: 700;
+                  }
+
+
+                  .order_id {
+                      width: 20%;
+                      text-align: right !important;
+                      padding: 10px;
+                      font-size: 16px;
+                      font-style: italic;
+                      color: #4CAF50;
+                      font-weight: 700;
+                      padding-right: 18px;
+                  }
+
+                  .form_input {
+                      width: 100%;
+                      border: none;
+                  }
+
+                  #dashboard {
+                      background: darkgray;
+                      color: #fff;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                  }
+
+                  .cancelled {
+                      color: red;
+                  }
+
+                  .item_title {
+                      width: 30%;
+                      float: left;
+                      text-align: left !important;
+                      border-bottom: 1px solid #ccc;
+                      padding: 10px;
+                      font-size: 14px !important;
+                  }
+
+                  .item_desc {
+                      width: 70%;
+                      text-align: left !important;
+                      border-bottom: 1px solid #ccc;
+                      padding: 10px;
+                      font-size: 14px !important;
+                  }
+
+                  .h3 {
+                      font-size: 20px;
+                      padding: 10px;
+                      color: #4E9FE6 !important;
+                  }
+
+                  .confirm {
+                      text-align: center !important;
+                  }
+
+                  #pages {
+                      width: 25px;
+                      border: none;
+                  }
+
+                  #w_count {
+                      min-width: 155px;
+                      border: none;
+                  }
+
+                  #take_msg {
+                      text-align: left !important;
+                  }
+
+                  ul.flashes {
+                      list-style-type: none;
+                      text-align: left !important;
+                  }
+
+                  .files_section {
+                      border: 1px solid #eee;
+                      border-radius: 3px;
+                      margin: 10px 0;
+                  }
+
+                  .table-bordered td, .table-bordered th {
+                      padding: 10px !important;
+                      text-align: left;
+                  }
+
+                  .table-bordered th {
+                      background: #e1e1e1;
+                      color: gray;
+                  }
+
+                  .d_zone_div {
+                      text-align: center !important;
+                      margin: 0 auto;
+                      background: yellow;
+                      width: 90%;
+                  }
+
+              </style>
+        {% endblock %}
+    </head>
+
+<body class="grey lighten-3">
+
+    <!--Main Navigation-->
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <div class="container-fluid">
+
+                <!-- Brand -->
+                <a class="navbar-brand waves-effect" href="#" target="_blank">
+                    <strong class="blue-text">MasterlyWriters | Administrator Section</strong>
+                </a>
+
+                <!-- Collapse -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+              <!-- Links -->
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                  <!-- Left -->
+                  <ul class="navbar-nav mr-auto">
+                      <li class="nav-item active">
+                          <a class="nav-link waves-effect" href="#">Go to client website
+                            <span class="sr-only">(current)</span>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link waves-effect" href="#" target="_blank">About
+                          M</a>
+                      </li>
+                  </ul>
+
+                <!-- Right -->
+                <ul class="navbar-nav nav-flex-icons">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link waves-effect" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link waves-effect" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                </ul>
+
+              </div>
+
+            </div>
+        </nav>
+        <!-- Navbar -->
+
+
+
+
+        <!-- Order Details Modal Large Info-->
+        <div class="modal fade" id="centralModalLGInfoDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-notify modal-info" role="document">
+                  <!--Content-->
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <p class="heading lead">Order Details</p>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="white-text">&times;</span>
+                        </button>
+                    </div>
+
+                    <!--Body-->
+                    <div class="modal-body">
+                      <div class="text-center">
+
+                          <div class="container">
+                              <p>
+
+                                  <div class="flex-container">
+                                      <div class="order_header">
+                                          <span>{{ order_info.topic }}</span>
+                                      </div>
+                                      <div class="order_id">
+                                          Order ID: #{{ session['order_ID'] }}
+                                      </div> 
+                                  </div>
+                                  
+                              </p>
+                              <hr class="style12">
+
+
+
+
+                         
+        
+                            <div class="tab-wrap">
+                            
+                              <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
+                              <label for="tab1"><i class="fas fa-info-circle"></i> Order Details</label>
+
+                              <input type="radio" id="tab2" name="tabGroup1" class="tab">
+                              <label for="tab2"><i class="far fa-envelope"></i> Messages</label>
+
+                              <input type="radio" id="tab3" name="tabGroup1" class="tab">
+                              <label for="tab3"><i class="fas fa-paperclip"></i> Files / Attachments</label>
+
+                              <div class="tab__content">
+                                  <div class="flex-container">
+                                      <div class="item_title">Discipline</div>
+                                      <div class="item_desc">{{ order_info.discipline }}</div>
+                                      <div class="item_title">Paper type</div>
+                                      <div class="item_desc">{{ order_info.paper_type }}</div>
+                                      <div class="item_title">Academic Level</div>
+                                      <div class="item_desc">{{ order_form.ac_level(id="ac_level", class="form_input") }}</div>
+                                      <div class="item_title">Deadline</div>
+                                      <div class="item_desc">{{ order_form.d_date(placeholder="Deadline ...", id="d_date", class="form_input") }}</div>
+                                      <div class="item_title">Pages / Words</div>
+                                      <div class="item_desc">{{ order_form.pages(placeholder="Pages ...", id="pages") }}{{ order_form.w_count(placeholder="Word Count ...", id="w_count") }}</div>
+                                      <div class="item_title">Spacing</div>
+                                      <div class="item_desc">{{ order_form.spacing(placeholder="Spacing ...", id="spacing", class="form_input") }}</div>
+                                      <div class="item_title">Paper Format</div>
+                                      <div class="item_desc">{{ order_form.p_format(id="p_format", class="form_input") }}</div>
+                                      <div class="item_title">No. of Sources</div>
+                                      <div class="item_desc">{{ order_form.sources(id="sources", class="form_input") }}</div>
+                                      <div class="item_title">Order Status</div>
+                                      <div class="item_desc">{{ order_form.order_status(id="order_status", class="form_input") }}</div>
+                                      <div class="item_title">Instructions</div>
+                                      <div class="item_desc">
+                                          <span class="order_instructions">{{ order_info.instructions }}</span>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="tab__content">
+                                <h3>Messages</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Morbi mattis ullamcorper velit. Pellentesque posuere. Etiam ut purus mattis mauris sodales aliquam. Praesent nec nisl a purus blandit viverra.</p>
+                              </div>
+
+                              <div class="tab__content">
+
+                                  <div class="table-responsive files_section">
+                                      <h5>Client's Files</h5>
+                                      <table class="table table-hover table-bordered" role="table">
+                                          <thead role="rowgroup">
+                                            <tr role="row" style="font-size: 13px;">
+                                              <th role="columnheader">File ID</th>
+                                              <th role="columnheader">File name</th>
+                                            </tr>
+                                          </thead>
+                                          {% for file in order_files %}                                        
+                                              <tbody role="rowgroup">
+                                                  <tr role="row" style="font-size: 13px;">
+                                                      <td role="cell" class="f_id">
+                                                          #{{ file.id }}
+                                                      </td>
+                                                      
+                                                      <td role="cell">
+                                                          <a href="../../static/file_uploads/{{ file.file_name }}">{{ file.file_name }}</a>
+                                                      </td>
+                                                      
+                                                  </tr>
+                                              </tbody>
+                                        {% endfor %}
+                                      </table>
+                                  </div>
+
+                                  <div class="table-responsive files_section">
+                                      <h5>Writer's Files</h5>
+
+
+
+                                      <div class="d_zone_div">
+                                          {{ dropzone.create('/upload_files') }}
+                                      </div>
+
+
+
+
+                                      <table class="table" role="table" >
+                                          <thead role="rowgroup">
+                                            <tr role="row" style="font-size: 13px;">
+                                              <th role="columnheader">File ID</th>
+                                              <th role="columnheader">File name</th>
+                                            </tr>
+                                          </thead>                                      
+                                          <tbody role="rowgroup">
+                                              <tr role="row" style="font-size: 13px;">
+                                                  <td role="cell" class="f_id">
+                                                      #manu
+                                                  </td>
+                                                  
+                                                  <td role="cell">
+                                                      <a href="#">Writer Files</a>
+                                                  </td>
+                                                  
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </div>
+                                  
+                              </div>
+
+                            </div>
+
+                            
+                          </div>
+
+
+
+
+
+                          <!--Footer-->
+                          <div class="modal-footer">
+                              <a role="button" class="btn btn-info" id="modal_footer_action">
+                                  <i class="fas fa-sign-out-alt"></i> Opt Out
+                              </a>
+                              <a role="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">
+                                  Cancel
+                              </a>
+                          </div>
+
+                      </div>
+
+                    </div>
+
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+              <!-- Order Details Modal Large Info-->
+
+
+
+              <!-- Side Modal Top Right Success (orderTakenModal) -->
+              <div class="modal fade right" id="orderTakenModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-side modal-top-right modal-notify modal-success" role="document">
+                  <!--Content-->
+                  <div class="modal-content">
+                    <!--Header-->
+                    <div class="modal-header">
+                      <p class="heading lead">Changes Saved</p>
+
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                      </button>
+                    </div>
+
+                    <!--Body-->
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+                            <p id="take_msg">
+                                {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                        <ul class="flashes">
+                                            {% for message in messages %}
+                                                <li> {{ message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                {% endwith %}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!--Footer-->
+                    <div class="modal-footer justify-content-center">
+                      <a role="button" class="btn btn-success">Get it now
+                        <i class="far fa-gem ml-1"></i>
+                      </a>
+                      <a role="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">No,
+                        thanks</a>
+                    </div>
+                  </div>
+                  <!--/.Content-->
+                </div>
+              </div>
+              <!-- Side Modal Top Right Success (orderTakenModal) -->
+
+
+
+
+
+
+              <!--Modal: Confirm Opt Out-->
+              <div class="modal fade" id="confirmOptOutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Opt Out</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body confirm">
+                        Are you sure you want to opt out of this order?
+                        
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <form action="{{ url_for('admin.writer_optout') }}" method="GET">
+                          <input type="hidden" name="opt_out_id" id="opt_out_id">
+                          <button type="submit" class="btn btn-danger">
+                              <i class="fas fa-undo-alt"></i> Opt out
+                          </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--Modal: Confirm Opt Out Demo-->
+
+
+
+
+
+
+
+
+      <!-- Sidebar -->
+      <div class="sidebar-fixed position-fixed">
+
+        <a class="logo-wrapper waves-effect">
+            Admin
+        </a>
+
+        <div class="list-group list-group-flush">
+
+
+
+
+          <a href="#" class="list-group-item waves-effect" id="dashboard">
+            <i class="fas fa-chart-pie mr-3"></i>Dashboard
+          </a> <br>
+
+          <div class="main_tab">
+              <a href="#" class="list-group-item list-group-item-action waves-effect tablinks dashboard_options" onclick="loadContent(event, 'Orders')" id="defaultOpen" role="button">
+                  <i class="fas fa-sort-amount-up mr-3"></i>Orders
+              </a>
+
+              <a href="#" class="list-group-item list-group-item-action waves-effect tablinks dashboard_options" onclick="loadContent(event, 'Messages')" role="button">
+                  <i class="far fa-envelope mr-3"></i>Messages
+              </a>
+
+              <a href="#" class="list-group-item list-group-item-action waves-effect tablinks dashboard_options">
+                  <i class="fas fa-mail-bulk mr-3"></i>Emails
+              </a>
+              <a href="#" class="list-group-item list-group-item-action waves-effect tablinks dashboard_options">
+                <i class="fas fa-money-bill-alt mr-3"></i>Orders</a>
+          </div>
+        </div>
+
+      </div>
+      <!-- Sidebar -->
+
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="pt-5 mx-lg-5">
+    <div class="container-fluid mt-5">
+
+      <!-- Heading -->
+      <div class="card mb-4 wow fadeIn">
+
+        <!--Card content-->
+        <div class="card-body d-sm-flex justify-content-between">
+
+          <h4 class="mb-2 mb-sm-0 pt-1">
+            <a href="#" target="_blank">Admin Page</a>
+            <span> > </span>
+            <span>Dashboard</span>
+          </h4>
+
+          <form class="d-flex justify-content-center">
+            <!-- Default input -->
+            <input type="search" placeholder="Type your query" aria-label="Search" class="form-control">
+            <button class="btn btn-primary btn-sm my-0 p" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+      <!-- Heading -->
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-9 mb-4">
+
+          <!-- .Card -->
+          <div class="card">
+
+
+              <div id="Orders" class="tabcontent">
+                  <div class="card-header text-center">
+                      Client Orders
+                  </div>
+
+                  <div class="card-body">
+
+                    {% if orders_count == 0 %}
+                        <div class="center">
+                            <div class="zero_content">
+                                <img src="{{ url_for('static', filename='images/0_orders.png') }}" /> <br /><br />
+                            </div>
+                        </div>
+                    {% else %}
+
+                        <table class="table table-hover">
+                              <thead class="blue lighten-4">
+                                  <tr>
+                                      <th>#</th>
+                                      <th>Order details</th>
+                                      <th>Price</th>
+                                      <th>Deadline</th>
+                                      <th>Status</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              {% for order in orders %}
+                                  <tbody>
+                                      <tr>
+                                          <th scope="row">{{ order.id }}</th>
+                                          <td style="width: 43%;">
+
+                                              <div class="flex-container">
+                                                  <div class="order_details">
+                                                      <i class="fas fa-user-graduate"></i> {{ order.ac_level }}
+                                                  </div>&nbsp;
+                                                  <div class="order_details">
+                                                      <i class="fas fa-graduation-cap"></i> {{ order.discipline }}
+                                                  </div>&nbsp;
+                                                  <div class="order_details">
+                                                      <i class="far fa-copy"></i> {{ order.total_pages }} pages
+                                                  </div>&nbsp;
+                                                  <div class="order_details">
+                                                      <i class="fas fa-file-alt"></i> {{ order.paper_format }}
+                                                  </div>&nbsp;
+                                                  <div class="order_details">
+                                                      <i class="fas fa-pen-alt"></i> {{ order.paper_type }}
+                                                  </div>&nbsp;
+                                                  
+                                                  <div class="order_details">
+                                                      <i class="fas fa-sliders-h"></i> {{ order.spacing }} spacing
+                                                  </div>&nbsp;
+                                                    
+                                              </div>
+
+
+                                          </td>
+                                          <td>${{ order.grand_total }} USD</td>
+                                          <td>{{ order.due_date.strftime("%b %d %Y %H:%M") }}</td>
+
+                                          {% if order.order_status == "pending_payment" %}
+                                              <td>Unpaid</td>
+                                          {% elif order.order_status == "Cancelled" %}
+                                              <td>
+                                                  <span class="cancelled">Cancelled</span> 
+                                              </td>
+                                          {% else %}
+                                              <td>
+                                                  {{ order.order_status }}
+                                              </td>
+                                          {% endif %}
+                                          
+
+                                          <td style="width: 15%;">
+                                              <div class="dropdown show">
+                                                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      Action
+                                                  </a>
+
+                                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                      <form action="{{ url_for('admin.get_order') }}" method="GET">
+                                                          <input type="hidden" name="orderID" value="{{ order.id }}">
+                                                          <button type="submit" class="dropdown-item" data-target="#centralModalLGInfoDemo">
+                                                              <i class="far fa-eye"></i> View Order
+                                                          </button>
+                                                      </form>
+
+                                                      {% if order.order_status == "Writer pending" %}                                                    
+                                                          <form action="{{ url_for('admin.take_order') }}" method="GET">
+                                                              <input type="hidden" name="orderID" value="{{ order.id }}">
+                                                              <button type="submit" class="dropdown-item">
+                                                                  <i class="far fa-handshake"></i> Take Order
+                                                              </button>
+                                                          </form>
+                                                      {% elif order.order_status == "In Progress" %} 
+                                                          <button type="submit" class="dropdown-item" id="{{ order.id }}" data-toggle="modal" data-target="#confirmOptOutModal" id="{{ order.id }}" onclick="getOrderID(this.id)">
+                                                              <i class="fas fa-undo-alt"></i> Opt out
+                                                          </button>
+                                                      {% endif %}
+                                                  </div>
+                                              </div>
+                                          </td>
+
+                                      </tr>
+                                  </tbody>
+                              {% endfor %}
+                          </table>
+                       
+
+                    {% endif %}
+                  </div>
+              </div>
+              <!-- ORDERS -->
+
+
+
+              <!-- MESSAGES -->
+              <div id="Messages" class="tabcontent">
+                  
+                  <div class="card-header text-center">
+                      Messages
+                  </div>
+
+
+
+                  <div class="card-body">
+                      {% if msg_count == 0 %}
+                          <div class="center">
+                              <div class="zero_content">
+                                  <img src="{{ url_for('static', filename='images/0_msgs.png') }}" /> <br /><br />
+                              </div>
+                          </div>
+                      {% else %}
+                          <table class="table table-hover">
+                              <thead class="blue lighten-4">
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Message Details</th>
+                                    <th>Date Sent</th>
+                                    <th>Order ID</th>
+                                    <th>Sender ID</th>
+                                    <th>Status</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  {% for messages in client_msgs %}
+
+                                      {% if messages.msg_read == False %}
+                                          <tr class="unread">
+                                              <th scope="row">{{ messages.id }}</th>
+                                              <td>{{ messages.message_details }}</td>
+                                              <td>{{ messages.date_sent }}</td>
+                                              <td>
+                                                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo">
+                                                      <i class="far fa-eye"></i> View Order ({{ messages.order_id }})
+                                                  </button>
+                                              </td>
+                                              <td>{{ messages.author_id }}</td>
+                                              
+                                              <td><span class="bold">Unread</span></td>                                              
+                                          </tr>
+                                      {% else %}
+                                          <tr class="read">
+                                              <th scope="row">{{ messages.id }}</th>
+                                              <td>{{ messages.message_details }}</td>
+                                              <td>{{ messages.date_sent }}</td>
+                                              <td>
+                                                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#centralModalLGInfoDemo">
+                                                      <i class="far fa-eye"></i> View Order (#{{ messages.order_id }})
+                                                  </button>
+                                              </td>
+                                              <td>{{ messages.author_id }}</td>                                              
+                                              <td>Read</td>                                              
+                                          </tr>
+                                      {% endif %}
+                                      
+                                  {% endfor %}
+                              </tbody>
+                          </table>
+                      {% endif %}
+
+                  </div>
+              </div>
+              <!-- MESSAGES -->
+
+
+              
+
+          </div>
+          <!-- .Card -->
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-3 mb-4">
+
+          <!--Card-->
+          <div class="card mb-4">
+
+            <!-- Card header -->
+            <div class="card-header text-center">
+                Summary
+            </div>
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- List group links -->
+              <div class="list-group list-group-flush">
+                  <a class="list-group-item list-group-item-action waves-effect">Sales
+                      <span class="badge badge-success badge-pill pull-right">22%
+                        <i class="fas fa-arrow-up ml-1"></i>
+                      </span>
+                  </a>
+                  <a class="list-group-item list-group-item-action waves-effect">Traffic
+                      <span class="badge badge-danger badge-pill pull-right">5%
+                        <i class="fas fa-arrow-down ml-1"></i>
+                      </span>
+                  </a>
+                  <a class="list-group-item list-group-item-action waves-effect">Orders
+                      <span class="badge badge-primary badge-pill pull-right">{{ orders_count }}</span>
+                  </a>
+                  <a class="list-group-item list-group-item-action waves-effect">Issues
+                      <span class="badge badge-primary badge-pill pull-right">123</span>
+                  </a>
+                  <a class="list-group-item list-group-item-action waves-effect">Messages
+                      <span class="badge badge-primary badge-pill pull-right">{{ msg_count }}</span>
+                  </a>
+              </div>
+              <!-- List group links -->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+
+      <!--Call to action-->
+      <div class="pt-4">
+          <a class="btn btn-outline-white" href="{{ url_for('home.home') }}" target="_blank" role="button">
+              Go to Client Website <i class="far fa-compass"></i>
+          </a>
+      </div>
+      <!--/.Call to action-->
+
+    <hr class="my-4">
+
+    <!-- Social icons -->
+    <div class="pb-4">
+      <a href="#" target="_blank">
+        <i class="fab fa-facebook-f mr-3"></i>
+      </a>
+
+      <a href="#" target="_blank">
+        <i class="fab fa-twitter mr-3"></i>
+      </a>
+
+      <a href="#" target="_blank">
+        <i class="fab fa-youtube mr-3"></i>
+      </a>
+
+      <a href="#" target="_blank">
+        <i class="fab fa-google-plus mr-3"></i>
+      </a>
+
+      <a href="#" target="_blank">
+        <i class="fab fa-dribbble mr-3"></i>
+      </a>
+
+      <a href="#" target="_blank">
+        <i class="fab fa-pinterest mr-3"></i>
+      </a>
+
+      <a href="#" target="_blank">
+        <i class="fab fa-github mr-3"></i>
+      </a>
+
+      <a href="#" target="_blank">
+        <i class="fab fa-codepen mr-3"></i>
+      </a>
+    </div>
+    <!-- Social icons -->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+        © 2019 Copyright:
+        <a href="http://masterlywriters.com/" target="_blank"> MasterlyWriters.com </a>
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+  
+        <!-- JQuery -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/admin_js/jquery-3.4.1.min.js') }} "></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/admin_js/popper.min.js') }} "></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/admin_js/bootstrap.min.js') }} "></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/admin_js/mdb.min.js') }} "></script>
+        <!-- Initializations -->
+        <script type="text/javascript">
+            // Animations initialization
+            new WOW().init();
+
+        </script>
+
+
+        {{ dropzone.load_js() }}
+        {{ dropzone.config() }}
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+        <script>
+            Dropzone.options.myDropzone = {
+                clickable: true,
+                addRemoveLinks: true,
+                dictDefaultMessage: "Drop your files here or click to browse ",
+                init: function() {
+                    this.on("sending", function(file, xhr, formData) {
+                        console.log("sending file");
+                    });
+                    this.on("success", function(file, responseText) {
+                        console.log('great success');
+                    });
+                    this.on("addedfile", function(file){
+                        console.log('file added');
+                    });
+                }
+            };
+        </script>
+ 
+
+  <!-- Initializations -->  
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+
+  </script>
+
+  <!--Google Maps-->
+  <script src="https://maps.google.com/maps/api/js"></script>
+    <script>
+      // Regular map
+      function regular_map() {
+        var var_location = new google.maps.LatLng(40.725118, -73.997699);
+
+        var var_mapoptions = {
+          center: var_location,
+          zoom: 14
+        };
+
+        var var_map = new google.maps.Map(document.getElementById("map-container"),
+          var_mapoptions);
+
+        var var_marker = new google.maps.Marker({
+          position: var_location,
+          map: var_map,
+          title: "New York"
+        });
+      }
+
+
+    </script>
+
+    <script>
+
+
+        $(document).ready(function () {
+
+            {% if session['show_modal'] %}
+                $("#centralModalLGInfoDemo").modal('show');
+
+                document.getElementById("modal_footer_action").style.display = "none";
+                var o_status = document.getElementById("order_status").value;
+
+                if (o_status == "In Progress") {
+                    document.getElementById("modal_footer_action").style.display = "block";
+                }
+                //alert(o_status);
+
+                var d_date = document.getElementById("d_date").value;
+                var deadline = new Date(d_date);
+                var current_date = Date.now();
+
+                var duration = deadline - current_date;
+                var seconds = duration / 1000;
+                var minutes = seconds / 60;
+                var hrs = minutes / 60;
+                var days = Math.floor(hrs / 24);
+                //alert(days + " days");
+            {% endif %}
+
+
+            {% if session['order_taken'] %}
+                $("#orderTakenModal").modal('show');
+            {% endif %}
+
+        });
+
+
+        $('#centralModalLGInfoDemo').on('hidden.bs.modal', function () {
+            {{ session.pop('show_modal', None) }}
+        });
+
+        $('#orderTakenModal').on('hidden.bs.modal', function () {
+            {{ session.pop('order_taken', None) }}
+        });
+
+
+        function getOrderID(id) 
+        {
+            document.getElementById("opt_out_id").value = id;
+            //alert(id);
+        }
+
+
+
+
+        function loadContent(evt, option) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(option).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+</body>
+
+</html>

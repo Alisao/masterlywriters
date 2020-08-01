@@ -1,0 +1,853 @@
+{% extends "base.html" %}
+
+    {% block content %}
+
+     
+      
+      <div style="height: 113px;"></div>
+
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+
+      <div class="site-blocks-cover overlay site_banner" style="background-image: url('../static/images/academics-banner.jpg'); " data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="col-12" data-aos="fade">
+          <div class="container ">
+              <div class="flex-container">
+                  <div class="intro">
+                      <h3>
+                        No idea how to write your paper? 
+                        
+                      </h3>
+                      <br>
+                      <h4>No problem. We've got you covered 24/7</h4>
+                      
+                      <p>
+                          Get the best paper for the best price!!
+                      </p>
+                      <p class="order_now_link" style=" margin-top: 20px;">
+                        <a href="{{ url_for('users.place_order') }}"><span class="bg-primary text-white py-3 px-4 rounded" ><span class="icon-plus mr-3"></span>Order now</span></a>
+                      </p>
+                      
+                  </div>
+                  <div class="banner_form">
+                      <span>Check Prices</span> <br>
+                      
+                      <label for="p_type">Type of paper</label>
+                      <select class="js-example-basic-single" name="paper_type" id="paper_type" onchange="computePrices()" style="margin-top: -10px;">
+
+                        <optgroup label="POPULAR">
+                              <option value="Essay" >Essay (Any Type)</option>
+                              <option value="Research Paper" >Research Paper</option>
+                              <option value="Coursework">Coursework</option>
+                              <option value="Case Study">Case Study</option>
+                          </optgroup>
+                          <optgroup label="EDITING SERVICES">
+                              <option value="Editing">Editing</option>
+                              <option value="Proofreading">Proofreading</option>
+                              <option value="Formatting">Formatting</option>
+                          </optgroup>
+                          <optgroup label="OTHER">
+                              <option value="Admission Essay">Admission Essay</option>
+                              <option value="Analysis (Any Type)">Analysis (Any Type)</option>
+                              <option value="Argumentative Essay">Argumentative Essay</option>
+                              <option value="Analysis (Any Type)">Analysis (Any Type)</option>
+                              <option value="Article">Article</option>
+                              <option value="Article Review" >Article Review</option>
+                              <option value="Assignment">Assignment</option>
+                              <option value="Blog Post">Blog Post</option>
+                              <option value="Book/Movie Review">Book/Movie Review</option>
+                              <option value="Business Plan">Business Plan</option>
+                              <option value="Capstone Project">Capstone Project</option>
+                              <option value="College Essay">College Essay</option>
+                              <option value="Creative Writing">Creative Writing</option>
+                              <option value="Critical Thinking">Critical Thinking</option>
+                              <option value="Discussion Essay">Discussion Essay</option>
+                              <option value="Dissertation">Dissertation</option>
+                              <option value="Homework">Homework</option>
+                              <option value="Journal Article">Journal Article</option>
+                              <option value="Lab Report">Lab Report</option>
+                              <option value="Literature Review">Literature Review</option>
+                              <option value="Memo/Letter">Memo/Letter</option>
+                              <option value="Outline">Outline</option>
+                              <option value="Personal Reflection">Personal Reflection</option>
+                              <option value="Poem">Poem</option>
+                              <option value="Presentation/PPT">Presentation/PPT</option>
+                              <option value="Project">Project</option>
+                              <option value="Question/Answer">Question/Answer</option>
+                              <option value="Reflection Paper">Reflection Paper</option>
+                              <option value="Report">Report</option>
+                              <option value="Research Proposal">Research Proposal</option>
+                              <option value="Response Essay">Response Essay</option>
+                              <option value="Speech">Speech</option>                                                
+                              <option value="Summary">Summary</option>
+                              <option value="Term Paper">Term Paper</option>
+                              <option value="Thesis">Thesis</option>
+                          </optgroup>
+                      </select>
+
+                      <label for="urgency">Urgency</label>
+                      <select class="js-example-basic-single" style="margin-top: -10px;" id="urgency" name="urgency" onchange="computePrices()">
+                          <option value="336">14 days</option>
+                          <option value="288">12 days</option>
+                          <option value="240">10 days</option>
+                          <option value="216">9 days</option>
+                          <option value="192">8 days</option>
+                          <option value="168">7 days</option>
+                          <option value="144">6 days</option>
+                          <option value="120">5 days</option>
+                          <option value="96">4 days</option>
+                          <option value="72">3 days</option>
+                          <option value="48">2 days</option>
+                          <option value="24">24 hours</option>
+                          <option value="12">12 hours</option>
+                          <option value="8">8 hours</option>
+                          <option value="4">4 hours</option>
+                      </select>
+
+                      <label for="ac_level">Academic Level</label>
+                      <select class="js-example-basic-single" style="margin-top: -10px;" name="ac_level" id="ac_level" onchange="computePrices()">
+                          <option value="High School">High School</option>
+                          <option value="College">College</option>
+                          <option value="Undergraduate">Undergraduate</option>
+                          <option value="Master">Master</option>
+                          <option value="PhD">PhD</option>
+                      </select>
+
+                      <label for="pages" style="margin-bottom: 0;">Pages</label>
+                      <div class="quantity">
+                          <input type="number" name="t_pages" id="t_pages" min="1" max="200" step="1" value="1" onkeyup="computePrices()">
+                      </div> 
+                      
+                      <div class="page__toggle" style="text-align: left;">
+                          <label class="toggle">
+                              <input class="toggle__input" id="first_order" type="checkbox" onchange="computePrices()">
+                              <span class="toggle__label">
+                                  <span class="toggle__text">New Customer? (20% off)</span>
+                              </span>
+                          </label>
+                      </div>
+                      <div class="price_summary">
+                          <span id="t_price" style="display: none;">Total Price:</span>&nbsp;<span class="banner_g_total" id="g_total"></span>
+                      </div>
+                     
+                      <a href="{{ url_for('users.place_order') }}">
+                          <button type="submit" class="banner_btn" >Proceed</button>
+                      </a>
+                      
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="site-section" style="margin-top: -50px;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+              <h2 class="mb-5">Popular Categories</h2>
+            </div>
+          </div>
+          <div class="row" >
+            
+              <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="800">
+                  <a href="#" class="h-100 feature-item">
+                      <i class='fas fa-chart-line' style='font-size: 36px; color:green;'></i>
+                      <h2 class="h2 tena">Accounting/Finanace</h2>
+                      <span class="counting">391</span>
+                  </a>
+              </div>
+
+              <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="800">
+                  <a href="#" class="h-100 feature-item">
+                      <i class="fab fa-wordpress-simple" style='font-size: 36px; color: green;'></i>
+                      <h2 class="h2 tena">IT / Web</h2>
+                      <span class="counting">192</span>
+                  </a>
+              </div>
+
+              <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="800">
+                  <a href="#" class="h-100 feature-item">
+                      <i class="fas fa-terminal" style='font-size: 36px; color: green;'></i>
+                      <h2 class="h2 tena">Programming</h2>
+                      <span class="counting">021</span>
+                  </a>
+              </div>
+
+
+
+
+
+              <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="800">
+                  <a href="#" class="h-100 feature-item">
+                      <i class='fas fa-pen-alt' style='font-size: 36px; color: green;'></i>
+                      <h2 class="h2 tena">Essay Writing</h2>
+                      <span class="counting">109</span>
+                  </a>
+              </div>
+
+              
+
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="500">
+              <a href="#" class="h-100 feature-item">
+                <span class="d-block icon flaticon-stethoscope mb-3 text-primary" style='font-size: 36px; color:green !important;'></span>
+                <h2 class="h2">Healthcare</h2>
+                <span class="counting">42</span>
+              </a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="600">
+              <a href="#" class="h-100 feature-item">
+                <span class="d-block icon flaticon-computer-graphic mb-3 text-primary" style='font-size: 36px; color:green !important;'></span>
+                <h2 class="h2">Design, Art &amp; Multimedia</h2>
+                <span class="counting">5,409</span>
+              </a>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="800">
+                <a href="#" class="h-100 feature-item">
+                    <i class='fas fa-vials' style='font-size: 36px; color: green;'></i>
+                    <h2 class="h2 tena">Chemistry</h2>
+                    <span class="counting">039</span>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="800">
+                <a href="#" class="h-100 feature-item">
+                    <i class="fas fa-atlas" style='font-size: 36px; color:green !important;'></i>
+                    <h2 class="h2 tena">History</h2>
+                    <span class="counting">329</span>
+                </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="site-section bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 mb-5 mb-md-0" data-aos="fade-up" data-aos-delay="100">
+              <h2 class="mb-5 h3">Samples</h2>
+              <div class="rounded border jobs-wrap">
+
+                <a href="{{ url_for('static', filename='samples/gandhi_apa.pdf') }}" class="job-item d-block d-md-flex align-items-center  border-bottom fulltime" target="_blank">
+                  <div class="company-logo blank-logo text-center text-md-left pl-3">
+                    <img src="{{ url_for('static', filename='images/pdf.png') }}" alt="Image" class="img-fluid mx-auto">
+                  </div>
+                  <div class="job-details h-100">
+                    <div class="p-3 align-self-center">
+                      <h3>Mahatma Gandhi (Essay)</h3>
+                      <div class="d-block d-lg-flex">
+                        <div class="mr-3"><i class="fas fa-graduation-cap"></i> English</div>
+                        <div class="mr-3"><i class="fab fa-algolia"></i> 23 hours</div>
+                        <div class="mr-3"><i class="far fa-copy"></i> 18 pages</div>
+                        <div class="mr-3"><i class="fas fa-pen"></i> APA</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="job-category align-self-center">
+                    <div class="p-3">
+                        <span class="text-info p-2 rounded border border-info">View</span>
+                    </div>
+                  </div>  
+                </a>
+
+                <a href="{{ url_for('static', filename='samples/black_pather_org.pdf') }}" class="job-item d-block d-md-flex align-items-center freelance" target="_blank">
+                  <div class="company-logo blank-logo text-center text-md-left pl-3">
+                    <img src="{{ url_for('static', filename='images/pdf.png') }}" alt="Image" class="img-fluid mx-auto">
+                  </div>
+                  <div class="job-details h-100">
+                    <div class="p-3 align-self-center">
+                      <h3>Black Pather Organization</h3>
+                      <div class="d-block d-lg-flex">
+                        <div class="mr-3"><i class="fas fa-graduation-cap"></i> History</div>
+                        <div class="mr-3"><i class="fab fa-algolia"></i> 23 hours</div>
+                        <div class="mr-3"><i class="far fa-copy"></i> 10 pages</div>
+                        <div class="mr-3"><i class="fas fa-pen"></i> MLA</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="job-category align-self-center">
+                    <div class="p-3">
+                        <span class="text-info p-2 rounded border border-info">View</span>
+                    </div>
+                  </div>  
+                </a>
+
+
+                <a href="{{ url_for('static', filename='samples/apple_and_bengkuang.pdf') }}" class="job-item d-block d-md-flex align-items-center freelance" target="_blank" >
+                  <div class="company-logo blank-logo text-center text-md-left pl-3">
+                    <img src="{{ url_for('static', filename='images/pdf.png') }}" alt="Image" class="img-fluid mx-auto">
+                  </div>
+                  <div class="job-details h-100">
+                    <div class="p-3 align-self-center">
+                      <h3>Apple & Bengkuang Fruit</h3>
+                      <div class="d-block d-lg-flex">
+                        <div class="mr-3"><i class="fas fa-graduation-cap"></i> Education</div>
+                        <div class="mr-3"><i class="fab fa-algolia"></i> 4 days</div>
+                        <div class="mr-3"><i class="far fa-copy"></i> 9 pages</div>
+                        <div class="mr-3"><i class="fas fa-pen"></i> APA</div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="job-category align-self-center">
+                    <div class="p-3">
+                        <span class="text-info p-2 rounded border border-info">View</span>
+                    </div>
+                  </div>  
+                </a>
+
+                <a href="{{ url_for('static', filename='samples/emerging_tech.pdf') }}" class="job-item d-block d-md-flex align-items-center partime" target="_blank">
+                    <div class="company-logo blank-logo text-center text-md-left pl-3">
+                      <img src="{{ url_for('static', filename='images/pdf.png') }}" alt="Image" class="img-fluid mx-auto">
+                    </div>
+                    <div class="job-details h-100">
+                      <div class="p-3 align-self-center">
+                        <h3>Emerging Technologies & Innovation</h3>
+                        <div class="d-block d-lg-flex">
+                          <div class="mr-3"><i class="fas fa-graduation-cap"></i> Computer Science</div>
+                          <div class="mr-3"><i class="fab fa-algolia"></i> 4 days</div>
+                          <div class="mr-3"><i class="far fa-copy"></i> 11 pages</div>
+                          <div class="mr-3"><i class="fas fa-pen"></i> APA</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="job-category align-self-center">
+                        <div class="p-3">
+                            <span class="text-info p-2 rounded border border-info">View</span>
+                        </div>
+                    </div>  
+                </a>
+
+
+              </div>
+
+              <div class="col-md-12 text-center mt-5">
+                <a href="{{ url_for('home.pricing') }}" class="btn btn-primary rounded py-3 px-5"><span class="icon-plus-circle"></span> Check Prices</a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="site-section" data-aos="fade">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 mb-5 mb-md-0">
+              
+                <div class="img-border">
+                  <a href="https://vimeo.com/28959265" class="popup-vimeo image-play">
+                    <span class="icon-wrap">
+                      <span class="icon icon-play"></span>
+                    </span>
+                    <img src="../static/images/hero_2.jpg" alt="Image" class="img-fluid rounded">
+                  </a>
+                </div>
+              
+            </div>
+            <div class="col-md-5 ml-auto">
+              <div class="text-left mb-5 section-heading">
+                <h2>How to Video</h2>
+              </div>
+
+              <p class="mb-4 h5 font-italic lineheight1-5">
+                  &ldquo;New to our site? Watch this video to learn how to easily place your order..&rdquo;
+              </p>
+              <p><a href="https://vimeo.com/28959265" class="popup-vimeo text-uppercase">Watch Video <span class="icon-arrow-right small"></span></a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="site-section site-block-feature bg-light">
+          <div class="container">
+            
+    	        <div class="text-center mb-5 section-heading">
+    	            <h2>Why Choose Us</h2>
+    	        </div>
+
+            	<div class="d-block d-md-flex border-bottom">
+                  <div class="text-center p-4 item border-right" data-aos="fade">
+                      <i class='fas fa-balance-scale' style='font-size:48px; color: green;'></i>
+                      <h2 class="h4">Best Discounts</h2>
+                      <p class="index_content">Get the best discounts with our first time order discount of 20% and our loyalty program discounts for returning clients</p>
+                  </div>
+
+                  <div class="text-center p-4 item" data-aos="fade">
+                      <i class='fas fa-shield-alt' style='font-size:48px; color: green;'></i>
+                      <h2 class="h4">100% Confidentiality</h2>
+                      <p class="index_content">Your data is secure with us. Any information received will be stored carefully. We follow the new GDPR rules strictly.</p>
+                  </div>    	            
+            	</div>
+
+              <div class="d-block d-md-flex">
+                  <div class="text-center p-4 item border-right" data-aos="fade">
+                      <i class='fas fa-business-time' style='font-size:48px; color: green;'></i>
+                      <h2 class="h4">Timely Delivery</h2>
+                      <p class="index_content">We always deliver your papers on time to ensure you achieve maximum results. Our professional writers will write your essays and papers in the shortest time while still maintaining high quality standards</p>
+                  </div>
+
+                  <div class="text-center p-4 item " data-aos="fade">
+                      <i class='fas fa-tags' style='font-size:46px; color: green;'></i>
+                      <h2 class="h4">Original & Unique Content</h2>
+                      <p class="index_content">Our content is 100% original guaranteed</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+
+
+    </div>
+
+    
+      
+
+    <script>
+
+        function computePrices() {
+            var total_price = 0;
+              var price_per_page = 0;
+              var ac_level = document.getElementById("ac_level").value;
+              var deadline = document.getElementById("urgency").value;
+              var pages = document.getElementById("t_pages").value;
+              switch (parseFloat(deadline)) {
+
+                  case 336:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(12.40);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(13.90);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(15.40);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(16.90);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(18.40);
+                      }
+                      break;
+                  case 288:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(15.30);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(16.80);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(18.30);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(19.80);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(21.30);
+                      }
+                      break;
+                  case 240:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(18.20);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(19.70);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(21.20);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(22.70);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(24.20);
+                      }
+                      break;
+                  case 216:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(21.10);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(22.60);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(24.10);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(25.60);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(27.10);
+                      }
+                      break;
+                  case 192:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(24.00);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(25.50);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(27.00);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(28.50);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(30.00);
+                      }
+                      break;
+                  case 168:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(26.90);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(28.40);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(29.90);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(31.40);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(32.90);
+                      }
+                      break;
+                  case 144:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(29.80);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(31.30);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(32.80);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(34.30);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(35.80);
+                      }
+                      break;
+                  case 120:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(32.70);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(34.20);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(35.70);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(37.20);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(38.70);
+                      }
+                      break;
+                  case 96:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(35.30);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(37.10);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(38.30);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(39.80);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(42.60);
+                      }
+                      break;
+                  case 72:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(37.90);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(39.60);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(40.90);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(42.40);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(45.20);
+                      }
+                      break;
+                  case 48:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(40.50);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(42.10);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(43.50);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(45.00);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(47.80);
+                      }
+                      break;
+                  case 24:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(43.10);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(44.60);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(46.10);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(47.60);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(50.40);
+                      }
+                      break;
+                  case 12:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(45.70);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(47.20);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(48.70);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(50.20);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(53.00);
+                      }
+                      break;
+                  case 8:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(48.30);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(50.10);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(51.60);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(53.10);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(57.50);
+                      }
+                      break;
+                  case 4:
+                      switch (ac_level) {
+                          case "High School":
+                            price_per_page = parseFloat(50.60);
+                            break;
+                          case "College":
+                            price_per_page = parseFloat(54.50);
+                            break;
+                          case "Undergraduate":
+                            price_per_page = parseFloat(56.00);
+                            break;
+                          case "Master":
+                            price_per_page = parseFloat(59.50);
+                            break;
+                          case "PhD":
+                            price_per_page = parseFloat(62.80);
+                        }
+                      break;
+                  default:
+                   alert("ERROR!");
+            }
+
+            var order_status = document.getElementById("first_order");
+            if (order_status.checked) {
+                total_price = (pages * price_per_page) * 0.8;
+                
+            } else {
+                total_price = pages * price_per_page;
+            }
+            
+            document.getElementById("t_price").style.display = "inline-block";
+            document.getElementById("g_total").innerHTML = "$" + total_price.toFixed(2) + " USD";
+            //alert(total_price);
+        }
+                
+
+
+        jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up" id="quantity-up">+</div><div class="quantity-button quantity-down" id="quantity-down">-</div></div>').insertAfter('#t_pages');
+              jQuery('.quantity').each(function() {
+                  var spinner = jQuery(this),
+                    input = spinner.find('#t_pages'),
+                    btnUp = spinner.find('.quantity-up'),
+                    btnDown = spinner.find('.quantity-down'),
+                    min = input.attr('min'),
+                    max = input.attr('max');
+
+                  btnUp.click(function() {
+                      var oldValue = parseFloat(input.val());
+                      if (oldValue >= max) {
+                          var newVal = oldValue;
+                      } else {
+                          var newVal = oldValue + 1;
+                      }
+                      spinner.find("#t_pages").val(newVal);
+                      spinner.find("#t_pages").trigger("change");
+                      computePrices();
+                  });
+
+                  btnDown.click(function() {
+                      var oldValue = parseFloat(input.val());
+                      if (oldValue <= min) {
+                          var newVal = oldValue;
+                      } else {
+                          var newVal = oldValue - 1;
+                      }
+                      spinner.find("#t_pages").val(newVal);
+                      spinner.find("#t_pages").trigger("change");
+                      computePrices();
+                  });
+
+            });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
+
+            for (var i = 0; i < total; i++) {
+                new MediaElementPlayer(mediaElements[i], {
+                    pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+                    shimScriptAccess: 'always',
+                    success: function () {
+                        var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
+                        for (var j = 0; j < targetTotal; j++) {
+                            target[j].style.visibility = 'visible';
+                        }
+              }
+            });
+            }
+        });
+      </script>
+
+
+      <script>
+        // This example displays an address form, using the autocomplete feature
+        // of the Google Places API to help users fill in the information.
+
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+        var placeSearch, autocomplete;
+        var componentForm = {
+          street_number: 'short_name',
+          route: 'long_name',
+          locality: 'long_name',
+          administrative_area_level_1: 'short_name',
+          country: 'long_name',
+          postal_code: 'short_name'
+        };
+
+        function initAutocomplete() {
+          // Create the autocomplete object, restricting the search to geographical
+          // location types.
+          autocomplete = new google.maps.places.Autocomplete(
+              /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+              {types: ['geocode']});
+
+          // When the user selects an address from the dropdown, populate the address
+          // fields in the form.
+          autocomplete.addListener('place_changed', fillInAddress);
+        }
+
+        function fillInAddress() {
+          // Get the place details from the autocomplete object.
+          var place = autocomplete.getPlace();
+
+          for (var component in componentForm) {
+            document.getElementById(component).value = '';
+            document.getElementById(component).disabled = false;
+          }
+
+          // Get each component of the address from the place details
+          // and fill the corresponding field on the form.
+          for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            if (componentForm[addressType]) {
+              var val = place.address_components[i][componentForm[addressType]];
+              document.getElementById(addressType).value = val;
+            }
+          }
+        }
+
+        // Bias the autocomplete object to the user's geographical location,
+        // as supplied by the browser's 'navigator.geolocation' object.
+        function geolocate() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var geolocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    var circle = new google.maps.Circle({
+                        center: geolocation,
+                        radius: position.coords.accuracy
+                    });
+                    autocomplete.setBounds(circle.getBounds());
+                });
+            }
+        }
+
+
+
+      </script>
+
+
+        <script>
+
+            $(document).ready(function() {
+                var myVar;
+                myVar = setTimeout(showPage, 2000);
+            });
+
+            function showPage() {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("myDiv").style.display = "block";
+                computePrices();
+            }
+
+        </script>
+
+ {% endblock %}
+
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&libraries=places&callback=initAutocomplete"
+          async defer></script>

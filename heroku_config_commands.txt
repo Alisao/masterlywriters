@@ -1,0 +1,3 @@
+$ heroku config:set APP_SETTINGS=config.ProductionConfig --remote heroku
+$ heroku addons:add heroku-postgresql:hobby-dev
+$ heroku pg:promote HEROKU_POSTGRESQL_GRAY_URL

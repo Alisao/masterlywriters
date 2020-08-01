@@ -1,0 +1,577 @@
+.px-4 {
+    background-color: #4CAF50 !important; /* Green */
+}
+
+.px-4:hover {
+    background-color: white !important;
+    border: 2px solid #4CAF50 !important;
+    color: #4CAF50 !important; /* Green */
+}
+
+.logo_div {
+    margin-top: -10px;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-container > div {
+    padding: 10px;
+}
+.h4 {
+    margin-top: 50px;
+    color: #4CAF50 !important; /* Green */
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+}
+
+.index_content {
+    text-align: center;
+    color: gray;
+}
+
+            
+
+
+
+/*
+=====
+LEVEL 1. CORE STYLES
+=====
+*/
+
+.toggle{
+  --uiToggleSize: var(--toggleSize, 20px);
+  --uiToggleIndent: var(--toggleIndent, .4em);
+  --uiToggleBorderWidth: var(--toggleBorderWidth, 1px);
+  --uiToggleColor: var(--toggleColor, #000);
+  --uiToggleDisabledColor: var(--toggleDisabledColor, #868e96);
+  --uiToggleBgColor: var(--toggleBgColor, #fff);
+  --uiToggleArrowWidth: var(--toggleArrowWidth, 2px);
+  --uiToggleArrowColor: var(--toggleArrowColor, green);
+
+  display: inline-block;
+  position: relative;
+}
+
+.toggle__input{
+  position: absolute;
+  left: -99999px;
+}
+
+.toggle__label{
+  display: inline-flex;
+  min-height: var(--uiToggleSize);
+  padding-left: calc(var(--uiToggleSize) + var(--uiToggleIndent));
+}
+
+.toggle__input:not(:disabled) ~ .toggle__label{
+  cursor: pointer;
+}
+
+.toggle__label::before, 
+.toggle__label::after{
+  content: "";
+  box-sizing: border-box;  
+  width: .7em;
+  height: .7em;
+  font-size: var(--uiToggleSize);
+
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+
+.toggle__label:before{
+  border: var(--uiToggleBorderWidth) solid var(--uiToggleColor);
+  z-index: 2;
+}
+
+.toggle__input:disabled ~ .toggle__label::before{
+  border-color: var(--uiToggleDisabledColor);
+}
+
+.toggle__input:focus ~ .toggle__label::before{
+  box-shadow: 0 0 0 2px var(--uiToggleBgColor), 0 0 0px 4px var(--uiToggleColor);
+}
+
+.toggle__input:not(:disabled):checked:focus ~ .toggle__label::after{
+  box-shadow: 0 0 0 2px var(--uiToggleBgColor), 0 0 0px 4px var(--uiToggleColor);
+}
+
+.toggle__input:not(:disabled) ~ .toggle__label::after{
+  background-color: white;
+  color: green;
+  opacity: 0;
+}
+
+.toggle__input:not(:disabled):checked ~ .toggle__label::after{
+  opacity: 1;
+}
+
+.toggle__text{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/*
+The arrow size and position depends from sizes of square because I needed an arrow correct positioning from the top left corner of the element toggle
+*/
+
+.toggle__text::before{
+  content: "";
+  box-sizing: border-box;
+  width: 0;
+  height: 0;
+  font-size: var(--uiToggleSize);
+
+  border-left-width: 0;
+  border-bottom-width: 0;
+  border-left-style: solid;
+  border-bottom-style: solid;
+  border-color: var(--uiToggleArrowColor);
+
+  position: absolute;
+  top: .5428em;
+  left: .2em;
+  z-index: 3;
+
+  transform-origin: left top;
+  transform: rotate(-40deg) skew(10deg);
+}
+
+.toggle__input:not(:disabled):checked ~ .toggle__label .toggle__text::before{
+  width: .45em;
+  height: .2em;
+  border-left-width: var(--uiToggleArrowWidth);
+  border-bottom-width: var(--uiToggleArrowWidth);
+  will-change: width, height;
+  transition: width .1s ease-out .2s, height .2s ease-out;
+}
+
+/*
+=====
+LEVEL 2. PRESENTATION STYLES
+=====
+*/
+
+/* 
+The demo skin
+*/
+
+.toggle__input:disabled ~ .toggle__label{
+  opacity: .24;
+  cursor: not-allowed;
+}
+
+.toggle__label::before, 
+.toggle__label::after{
+  border-radius: 2px;
+}
+
+/* 
+The animation of switching states
+*/
+
+.toggle__input:not(:disabled) ~ .toggle__label::before,
+.toggle__input:not(:disabled) ~ .toggle__label::after{
+  opacity: 1;
+  transform-origin: center center;
+  will-change: transform;
+  transition: transform .2s ease-out;
+}
+
+.toggle__input:not(:disabled) ~ .toggle__label::before{
+  transform: rotateY(0deg);
+  transition-delay: .2s;
+}
+
+.toggle__input:not(:disabled) ~ .toggle__label::after{
+  transform: rotateY(90deg);
+}
+
+.toggle__input:not(:disabled):checked ~ .toggle__label::before{
+  transform: rotateY(-90deg);
+  transition-delay: 0s;
+}
+
+.toggle__input:not(:disabled):checked ~ .toggle__label::after{
+  transform: rotateY(0deg);
+  transition-delay: .2s;
+}
+
+.toggle__text::before{
+  opacity: 0;
+}
+
+.toggle__input:not(:disabled):checked ~ .toggle__label .toggle__text::before{
+  opacity: 1;
+  transition: opacity .1s ease-out .3s, width .1s ease-out .5s, height .2s ease-out .3s;
+}
+
+/*
+=====
+LEVEL 3. SETTINGS
+=====
+*/
+
+.toggle{
+  --toggleColor: #690e90;
+  --toggleBgColor: green;
+  --toggleSize: 40px;
+}
+
+/*
+=====
+DEMO
+=====
+*/
+
+
+.page{
+  margin: auto;  
+  padding-left: 10px;
+  padding-right: 10px;
+  order: 1;
+}
+
+.page__toggle{
+  font-size: 14px;
+  color: #fff;
+}
+
+.page__toggle:nth-child(n+2){
+  margin-top: 50px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number]
+{
+    -moz-appearance: textfield;
+    width: 100% !important;
+}
+
+.quantity input{
+    width: 90%;
+    height: 35px;
+    line-height: 1.65;
+    float: left;
+    display: block;
+    padding: 0;
+    margin: 0;
+    padding-left: 20px;
+    border: 1px solid #ccc;
+}
+
+.quantity input:focus {
+    outline: 0;
+}
+
+.quantity-nav {
+    float: left;
+    position: relative;
+    height: 42px;
+}
+
+.quantity-button {
+  position: relative;
+  cursor: pointer;
+  border-left: 1px solid #eee;
+  width: 20px;
+  text-align: center;
+  color: #389E29;
+  font-size: 16px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+  font-weight: bolder;
+  line-height: .6em;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  font-weight: 700;
+}
+
+.quantity-button.quantity-up {
+    position: absolute;
+    height: 30%;
+    top: 5px;    
+    border-bottom: 1px solid #eee;
+}
+
+.quantity-button.quantity-down {
+    position: absolute;
+    bottom: 7px;
+    height: 30%;
+}
+
+          
+select {
+    width: 100%;
+    padding: 7px 10px !important;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+
+.input {
+    padding: 7px 10px !important;
+    line-height: 20px !important;
+}
+
+.banner_btn {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    float: right;
+}
+
+.banner_btn:hover {
+    background-color: #45a049;
+}
+
+.intro {
+    margin-top: 100px;
+    width: 69%;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.intro h3 {
+    text-align: left;
+    margin-top: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 36px !important;
+    
+}
+
+.intro h4, p {
+    text-align: left;
+    color: #fff;
+}
+
+.site_banner {
+    max-height: 350px;
+}
+
+.banner_form {
+    width: 30%;
+    background: rgb(37, 149, 26, .3);
+    margin-top: 100px;
+    font-size: 13px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.banner_form > label {
+    float: left;
+}
+.banner_form > span {
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+}
+
+.price_summary {
+color: #fff;
+padding: 10px;
+font-size: 15px;
+text-align: right;
+margin-top: -20px;
+}
+
+.contacts {
+margin-top: 10px;
+width: 50%;
+text-align: left !important;
+}
+
+.contacts_right {
+width: 50%;
+text-align: right !important;
+margin-right: 0px;
+}
+
+
+
+.h2 {
+color: #000;
+font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.tena {
+margin-top: 20px;
+}
+
+.feature-item > i {
+margin-top: 20px;
+}
+
+.feature-item > i:hover {
+color: #fff !important;
+}
+
+a:hover {
+text-decoration: none;
+}
+
+.counting {
+color: #4CAF50 !important; /* Green */
+}
+
+.item {
+    width: 50%;
+}
+
+/*------------------------------------------------------------------
+[ Responsive ]*/
+
+@media (max-width: 992px) {
+    .footer_text {
+        text-align: center;
+    }
+
+    .mb-4 {
+        margin: 0 auto !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    
+}
+
+@media (max-width: 600px) {
+    
+    .mb-4 {
+        margin: 0 auto !important;
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    .banner_form {
+        display: none;
+    }
+    .intro {
+        width: 100%;
+
+    }
+    .intro h3 {
+        margin-top: 170px;
+        font-size: 26px !important;
+        text-align: center !important;
+    }
+
+    .intro p, h4 {
+        text-align: center !important;
+    }
+    .section-heading {
+        margin-top: 20px;
+    }
+
+    .flex-container {
+        display: block;
+    }
+
+    .flex-container > div {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contacts {
+        width: 100%;
+        text-align: center!important;
+    }
+
+    .contacts_mail {
+        width: 100%;
+        float: center;
+    }
+
+    .contacts_right {
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .manage_orders_btn {
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* For mobile phones: */
+    .banner_form {
+        display: none;
+    }
+    .intro {
+        width: 100%;
+    }
+
+    .intro h3 {
+        margin-top: 170px;
+        font-size: 26px !important;
+        text-align: center !important;
+    }
+
+    .section-heading {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .intro p, h4 {
+        text-align: center !important;
+    }
+
+    .mb-4 {
+        margin: 0 auto !important;
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    .contacts {
+        width: 100%;
+        text-align: center!important;
+    }
+
+    .contacts_mail {
+        width: 100%;
+        float: center;
+    }
+
+    .contacts_right {
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .manage_orders_btn {
+        margin: 0 auto;
+        width: 100%;
+    }
+}

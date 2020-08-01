@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>MasterlyWriters | Writing & Editing Services</title>
+
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Work+Sans:300,400,700" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }} ">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}  ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }} ">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+        
+        
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }} ">
+      
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}  ">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }} ">
+
+        <!-- fontawesome icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}">
+
+        <!-- custom styles -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profile_css/style.css') }} ">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/order.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/landing_page_css/base.css') }} ">
+
+
+        <!-- MPYA -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        
+        <!------ Include the above in your HEAD tag ---------->
+
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+
+        <style>
+            .services_flex {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .services_flex > div {
+                background-color: #f1f1f1;
+                width: 29%;
+                margin: 0 auto;
+                padding: 20px;
+                text-align: left;
+            }
+
+            .writing_services_content {
+                margin-top: 15px;
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            }
+
+            .site-logo {
+                margin-top: -10px;
+            }
+
+            .writing_services_list {
+                list-style: none;
+            }
+
+            .writing_services_list li:before {
+                
+                content: "\2192 ";
+                color: green;
+            }
+
+            .writing_services_list a {
+                text-decoration: none;
+                color: gray;
+            }
+
+            .dissertation_services_content {
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            }
+
+            .dissertation_services_list {
+                list-style: none;
+            }
+
+            .dissertation_services_list li:before {
+                
+                content: "\00BB ";
+                color: orange;
+            }
+
+            .dissertation_services_list a {
+                text-decoration: none;
+                color: gray;
+            }
+
+            .dissert_indent {
+                list-style: none;
+            }
+
+            .dissert_indent li {
+                margin-left: 20px;
+            }
+
+            .assignments_list {
+                list-style: none;
+            }
+
+            .assignments_list li:before {
+                color: #6E703F;
+                content: "\2666 ";
+            }
+
+            .assignments_list a {
+                text-decoration: none;
+                color: gray;
+            }
+
+            .content {
+                margin-top: -50px;
+            }
+
+            .page_header {
+                font-size: 36px !important;
+            }
+
+
+          /*------------------------------------------------------------------
+                [ Responsive ]*/
+
+                @media (max-width: 992px) {
+                    .footer_text {
+                        text-align: center;
+                    }
+                    .mb-4 {
+                        margin: 0 auto !important;
+                        width: 100% !important;
+                        text-align: center;
+                    }
+                    .services_flex > div {
+                        width: 100%;
+                        margin: 10px auto;
+                    }
+                    .page_header {
+                        font-size: 26px !important;
+                    }                
+                }
+
+                @media (max-width: 600px) {
+                    .footer_text {
+                        text-align: center;
+                    }
+                    .mb-4 {
+                        margin: 0 auto !important;
+                        width: 100% !important;
+                        text-align: center;
+                    }
+                    .services_flex > div {
+                        width: 100%;
+                        margin: 10px auto;
+                        text-align: center;
+                    }
+                    .page_header {
+                        font-size: 26px !important;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    /* For mobile phones: */
+                    .footer_text {
+                        text-align: center;
+                    }
+                    .mb-4 {
+                        margin: 0 auto !important;
+                        width: 100% !important;
+                        text-align: center;
+                    }
+                    .services_flex > div {
+                        width: 100%;
+                        margin: 10px auto;
+                        text-align: center;
+                    }
+
+                }
+            
+        </style>
+
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+         
+    </head>
+    <body>
+
+        <div id="loader"></div>
+
+
+        <div style="display:none;" id="myDiv" class="animate-bottom">
+          
+            <div class="site-wrap">
+
+                <div class="site-mobile-menu">
+                    <div class="site-mobile-menu-header">
+                        <div class="site-mobile-menu-close mt-3">
+                            <span class="icon-close2 js-menu-toggle"></span>
+                        </div>
+                    </div>
+                    <div class="site-mobile-menu-body"></div>
+                </div> <!-- .site-mobile-menu -->
+              
+          
+                <div class="site-navbar-wrap" >
+                  
+                    <div class="container" >
+                        <div class="flex-container">
+                            <div class="contacts">
+                                <span class="contacts_mail">
+                                    <i class="far fa-envelope"></i> &Tab; &Tab; support@masterlywriters.com
+                                </span>
+                              
+                            </div>
+                            <div class="contacts_right">
+                                {% if current_user.is_authenticated %}
+                                    <a href="{{ url_for('users.profile') }}">
+                                        <button class="manage_orders_btn">
+                                            Manage Orders
+                                        </button>
+                                    </a>
+                                {% else %}
+                                    <a href="{{ url_for('users.session_new') }}">
+                                        <button class="manage_orders_btn">
+                                            Login / Register
+                                        </button>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <hr class="style1">
+
+                        <div class="site-navbar" >
+                          <div class="py-1">
+                            <div class="row align-items-center">
+
+                              <div class="col-2 logo_div">
+                                <h2 class="mb-0 site-logo" >
+                                    <a href="{{ url_for('home.home') }}">
+                                        Masterly<strong class="font-weight-bold">Writers</strong>
+                                    </a>
+                                </h2>
+                              </div>
+
+                              <div class="col-10">
+                                <nav class="site-navigation text-right" role="navigation">
+                                  <div class="container">
+                                      <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3">
+                                          <a href="#" class="site-menu-toggle js-menu-toggle text-black">
+                                              <span class="icon-menu h3"></span>
+                                          </a>
+                                      </div>
+
+                                      <ul class="site-menu js-clone-nav d-none d-lg-block" >
+                                          <li><a href="{{ url_for('home.pricing') }}">Pricing</a></li>
+                                          <li class="has-children">
+                                              <a href="{{ url_for('home.services') }}">Services</a>
+                                              <ul class="dropdown arrow-top">
+                                                  <li><a href="{{ url_for('home.services') }}">Writing Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Dissertation & Thesis</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Editing Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Assignments</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Admission Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Resume Services</a></li>
+                                              </ul>
+                                          </li>
+                                          <li><a href="{{ url_for('home.contact') }}">Contact Us</a></li>
+                                          <li><a href="{{ url_for('home.how_it_works') }}">How it Works</a></li>
+
+                                          {% if current_user.is_authenticated %}
+                                              <li class="has-children">
+                                                  <a href="{{ url_for('users.profile') }}"><i class="fas fa-user-circle" style="font-size: 20px;"></i></a>
+                                                  <ul class="dropdown arrow-top" style="font-size: 13px;">
+                                                      <li><a href="{{ url_for('users.profile') }}"><i class="far fa-user"></i> View Profile</a></li>
+                                                      <li><a href="{{ url_for('users.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li> 
+                                                  </ul>
+                                              </li>
+                                          {% endif %}
+
+                                          <li><a href="{{ url_for('users.place_order') }}">
+                                              <button class="post_button button1"><span class="icon-plus mr-3"></span>
+                                              <span>Order Now</span></button>                                    
+                                          </a></li>
+
+                                      </ul>
+                                  </div>
+                              </nav>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+        
+                <div class="separator"></div>
+
+                <div class="unit-5 overlay" style="background-image: url('../static/images/services_banner.jpg');" >
+                    <div class="container text-center">
+                      <h2 class="page_header">MasterlyWriters | Writing & Editing Services</h2>
+                      <p class="mb-0 unit-6" style="text-align: center; color: #fff;"><a href="{{ url_for('home.home') }}">Home</a> <span class="sep"> > </span> <span>Services</span></p>
+                    </div>
+                </div>
+
+    
+
+    
+
+            <div class="site-section bg-light">
+                <div class="container content" >
+                        
+                        
+                        <div class="services_flex">
+                            <div>
+                                <h3 class="services_header"><i class="fas fa-pen-alt"></i> Writing Services</h3>
+                                <p class="writing_services_content">
+                                    <ul class="writing_services_list">
+                                        <li><a href="#"> Custom Essay</a></li>
+                                        <li><a href="#"> Term Paper</a></li>
+                                        <li><a href="#"> Research Paper</a></li>
+                                        <li><a href="#"> Book Report/Review, Movie Review</a></li>
+                                        <li><a href="#"> Coursework</a></li>
+                                        <li><a href="#"> Case Study</a></li>
+                                        <li><a href="#"> Lab Report</a></li>
+                                        <li><a href="#"> Speech/Presentation</a></li>
+                                        <li><a href="#"> Article</a></li>
+                                        <li><a href="#"> Article Critique</a></li>
+                                        <li><a href="#"> Annotated Bibliography</a></li>
+                                        <li><a href="#"> Reaction Paper</a></li>
+                                    </ul>
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="services_header">
+                                    <i class="fas fa-graduation-cap"></i> Dissertations & Theses
+                                </h3>
+                                <p class="how_to_content">
+                                    <p class="dissertation_services_content">
+                                        <ul class="dissertation_services_list">
+                                            <li><a href="#"> Dissertation</a></li>
+                                            <li>
+                                                <a href="#"> Any Dissertation Chapter</a>
+                                                <ul class="dissert_indent">
+                                                    <li><a href="#"> Abstract</a></li>
+                                                    <li><a href="#"> Introduction Chapter</a></li>
+                                                    <li><a href="#"> Literature Review</a></li>
+                                                    <li><a href="#"> Methodology</a></li>
+                                                    <li><a href="#"> Results</a></li>
+                                                    <li><a href="#"> Discussion</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#"> Thesis</a></li>
+                                            <li><a href="#"> Thesis/Dissertation Proposal</a></li>
+                                            <li><a href="#"> Editing</a></li>
+                                            <li><a href="#"> Proofreading</a></li>
+                                        </ul>
+                                    </p>
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="services_header">
+                                    <i class="fas fa-globe"></i> Assignments
+                                </h3>
+                                <p class="how_to_content">
+                                    <p class="dissertation_services_content">
+                                        <ul class="assignments_list">
+                                            <li><a href="#"> Programming</a></li>
+                                            <li><a href="#"> Powerpoint Presentation</a></li>
+                                            <li><a href="#"> Multiple Choice Questions</a></li>
+                                            <li><a href="#"> Statistics Project</a></li>
+                                            <li><a href="#"> Research Summary</a></li>
+                                            <li><a href="#"> Math/Physics/Economics/Statistics Problems</a></li>
+                                        </ul>
+                                    </p>
+                                </p>
+                            </div>  
+                            <div>
+                                <h3 class="services_header"><i class="fas fa-file-signature"></i> Resume Services</h3>
+                                <p class="writing_services_content">
+                                    <ul class="writing_services_list">
+                                        <li><a href="#"> Resume Writing</a></li>
+                                        <li><a href="#"> Resume Editing</a></li>
+                                        <li><a href="#"> CV Writing</a></li>
+                                        <li><a href="#"> CV Editing</a></li>
+                                        <li><a href="#"> Coverletter</a></li>
+                                    </ul>
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="services_header">
+                                    <i class="fas fa-file-alt"></i> Editing Services
+                                </h3>
+                                <p class="how_to_content">
+                                    <p class="dissertation_services_content">
+                                        <ul class="dissertation_services_list">
+                                            <li><a href="#"> Formatting</a></li>
+                                            <li><a href="#"> Editing</a></li>
+                                            <li><a href="#"> Proofreading</a></li>
+                                        </ul>
+                                    </p>
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="services_header">
+                                    <i class="fas fa-toolbox"></i></i> Admission Services
+                                </h3>
+                                <p class="how_to_content">
+                                    <p class="dissertation_services_content">
+                                        <ul class="assignments_list">
+                                            <li><a href="#"> Admission Essay</a></li>
+                                            <li><a href="#"> Scholarship Essay</a></li>
+                                            <li><a href="#"> Personal Statement</a></li>
+                                            <li><a href="#"> Editing</a></li>
+                                        </ul>
+                                    </p>
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <a href="{{ url_for('users.place_order') }}" >
+                            <button class="post_button button1" style="margin-top: 20px;">
+                                <span class="icon-plus mr-3"></span>
+                                <span>Place Your Order Now</span>
+                            </button>                                    
+                        </a>
+                        
+                </div>
+            </div>
+
+
+
+    
+
+
+            <footer class="page-footer font-small blue-grey lighten-5">
+
+                <div style="background: #ddd;">
+                    <div class="container">
+
+                      <!-- Grid row-->
+                      <div class="row py-4 d-flex align-items-center">
+
+                        <!-- Grid column -->
+                        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                          <h6 class="mb-0">Get connected with us on social networks!</h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                          <!-- Facebook -->
+                          <a class="fb-ic">
+                            <i class="fab fa-facebook-f white-text mr-4"> </i>
+                          </a>
+                          <!-- Twitter -->
+                          <a class="tw-ic">
+                            <i class="fab fa-twitter white-text mr-4"> </i>
+                          </a>
+                          <!-- Google +-->
+                          <a class="gplus-ic">
+                            <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                          </a>
+                          <!--Linkedin -->
+                          <a class="li-ic">
+                            <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                          </a>
+                          <!--Instagram-->
+                          <a class="ins-ic">
+                            <i class="fab fa-instagram white-text"> </i>
+                          </a>
+
+                        </div>
+                        <!-- Grid column -->
+
+                      </div>
+                      <!-- Grid row-->
+
+                    </div>
+                </div>
+
+                <!-- Footer Links -->
+                <div class="container text-center text-md-left mt-5" >
+
+                  <!-- Grid row -->
+                  <div class="row mt-3 dark-grey-text">
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+                      <!-- Content -->
+                      <h6 class="text-uppercase font-weight-bold">About </h6>
+                      <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                      <p class="footer_text">MasterlyWriters was founded to offer high-quality and affordable essays to students of all levels including high school, college, university, and post graduate. </p>
+                      <p class="footer_text">We only select writers who are truly masters in writing to ensure our clients get the best value.</p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Quick Menu</h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Pricing</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">FAQ</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">How it works</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Contact Us</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Testimonials</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Privacy policy</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Terms of use</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">For writers</a>
+                        </p>
+
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Categories</h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Custom Writing</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Editing</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Proofreading</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                      <!-- Links -->
+                      <h6 class="text-uppercase font-weight-bold">Payment Methods</h6>
+                      <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Mastercard</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Payoneer</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">PayPal</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Visa</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                  </div>
+                  <!-- Grid row -->
+
+                </div>
+                <!-- Footer Links -->
+
+                <!-- Copyright -->
+                <div class="footer-copyright text-center text-black-50 py-3" style="background: green; color: #fff !important;">© 2020 Copyright:
+                  <a class="dark-grey-text" href="https://masterlywriters.com/" style="color: #fff !important;"> MasterlyWriters</a>
+                </div>
+                <!-- Copyright -->
+
+              </footer>
+              <!-- Footer -->
+
+
+        </div>
+
+
+  
+        
+
+        <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery-ui.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/popper.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/aos.js') }} "></script>
+
+        
+        <script src="{{ url_for('static', filename='js/mediaelement-and-player.min.js') }} "></script>
+
+        <script src="{{ url_for('static', filename='js/index_main.js') }} "></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+        
+
+  
+        <script>
+
+            
+
+        </script>
+
+        <script type="text/javascript">
+
+            
+            $(document).ready(function() {
+                var myVar;
+                myVar = setTimeout(showPage, 2000);
+            });
+
+            function showPage() {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("myDiv").style.display = "block";
+            }
+
+            
+         
+        </script>
+
+    </body>
+
+
+</html>

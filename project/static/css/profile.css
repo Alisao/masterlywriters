@@ -1,0 +1,504 @@
+
+
+.px-4 {
+    background: white !important;
+    color: green !important;
+}
+
+.checkout_span:after {
+    font-family: FontAwesome;
+    content: "\f023 ";
+    position: relative;
+    left: 23px;
+    top: 0;
+    pointer-events: none;
+    color: white;
+    font-size: 13px;
+}
+
+.checkout_btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 7px 25px !important;
+    margin-top: -8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: center;
+    width: 110px;
+}
+
+.checkout_btn:hover {
+    color: #fff;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    border-radius: 3px;
+    color: white;
+    padding: 11px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button2 {
+    background-color: #bbb; /* Green */
+    border: none;
+    border-radius: 3px;
+    color: #000;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button2:hover {
+    background-color: #4CAF50; /* Green */
+    color: #fff;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.checkout {
+    text-align: left;
+}
+
+
+.msg_button:hover {
+    background: #fff;
+    color: #4CAF50; /* Green */
+    border: 1px solid #4CAF50; /* Green */
+}
+
+.send_msg_btn {
+    padding: 8px 27px;
+     font-size: 15px;
+}
+
+.send_msg_btn:hover {
+    background: red;
+}
+
+
+.checkout_span {
+    position: absolute;
+}
+
+
+
+
+.post_button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+}
+
+.button1:hover {
+    background-color: green;
+    border: 2px solid white;
+    color: white
+}
+
+.cancel_btn {
+    background: rgba(255, 87, 51, .5);
+    color: red;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    padding: 7px 28px;
+    border-radius: 3px;
+}
+
+.cancel_btn:hover {
+    background: rgba(255, 87, 51, .3);
+}
+
+.edit_btn {
+    background: rgba(255, 87, 51, .5);
+    color: red;
+    border-radius: 5px;
+    padding: 7px 22px;
+    cursor: pointer;
+}
+
+.edit_btn:hover {
+    background: rgba(255, 87, 51, .3);
+}
+
+.o_details {
+    text-align: left;
+}
+
+
+.modal_body_span {
+    color: #000;
+}
+
+.modal-title {
+    color: #4CAF50; /* Green */
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+}
+
+.send_msg_btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.send_msg_btn span:after {
+  content: '\f1d8 ';
+  font-family: FontAwesome;
+ 
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.send_msg_btn:hover span {
+  padding-right: 25px;
+}
+
+.send_msg_btn:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.messages {
+    background: #F3F3F3;
+    padding: 20px;
+    border-radius: 1px;
+    color: #A5A3A0;
+    text-align: left;
+    font-size: 13px;
+}
+
+.messages > div {
+    padding: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+#cancel:hover {
+    background: green;
+    width: 100%;
+    padding: 10px 22px;
+}
+
+.g_total1 {
+    font-size: 12px;
+}
+
+
+.order_details {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+
+.drop_down_content {
+    width: 100%;
+    text-align: left;
+}
+
+.drop_down_content:hover {
+    width: 100%;
+    border-radius: 0;
+}
+
+.site-logo {
+    margin-top: -10px;
+}
+
+.prof_details {
+    text-align: right;
+    width: 20% !important;
+}
+
+
+.prof_flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.prof_flex > div {
+    width: 50%;
+    padding: 10px;
+    padding-bottom: 15px;
+}
+
+.prof_title {
+    text-align: left !important;
+    padding-left: 0 !important;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #4CAF50; /* Green */
+}
+
+.prof_action {
+    text-align: right;
+    padding-right: 0 !important;
+    margin-top: 5px;
+}
+
+.price_cell {
+    min-width: 100px;
+}
+
+
+
+.buttonInside{
+    position:relative;
+    margin-bottom: 10px;
+}
+
+.profile_form_input {
+    height: 40px;
+    width:100%;
+    padding: 10px !important;
+    padding-left:10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+
+.pswd_btn{
+    position:absolute;
+    right: 0px;
+    top: -3px;
+    border: none;
+    height: 27px;
+    width: 27px;
+    border-radius:100%;
+    outline:none;
+    text-align:center;
+    font-weight:bold;
+    padding:2px;
+    color: #4CAF50; /* Green */
+    background: white;
+}
+.pswd_btn:hover{
+  cursor:pointer;
+  color: #4CAF50; /* Green */
+}
+#help{
+  display:none;
+  font-style:italic;
+  font-size: 15px;
+}
+
+    
+
+
+    .status_cell {
+        width: 150px;
+    }
+
+    .input-flex {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .input-flex > div {
+        margin: 10px;
+        text-align: center;
+    }
+
+    input[type="tel"] {
+        min-width: 580px !important;
+    }
+
+    input[type="password"] {
+        width: 100% !important;
+    }
+
+    .edit_profile_label {
+        margin-top: 10px;
+        padding: 0;
+    }
+
+
+
+
+
+/*------------------------------------------------------------------
+    [ Responsive ]*/
+
+    @media (max-width: 992px) {
+        .mb-4 {
+            margin: 0 auto !important;
+            width: 100% !important;
+            text-align: center;
+        }
+
+        .edit_profile_label {
+            margin: 0;
+        }
+       
+        .order_details {
+            width: 100px;
+            margin-bottom: -15px;
+            padding: 2px;
+        }
+
+        .status_cell {
+            width: 350px !important;
+        }
+
+        #paypal1 {
+            display: none;
+        }
+
+        #paypal2 {
+            display: block;
+        }
+
+        .checkout_span:after {
+            content: "";
+        }
+
+        .checkout_btn {
+            padding: 7px 10px !important;
+            
+            float: center;
+            width: 110px;
+        }
+
+        input[type="tel"] {
+            min-width: 380px !important;
+            margin-top: 0 !important;
+        }                   
+    }
+
+@media (max-width: 600px) {
+    
+    .mb-4 {
+        margin: 0 auto !important;
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .edit_profile_label {
+        margin: 0;
+    }
+   
+    .order_details {
+        width: 100px;
+        margin-bottom: -15px;
+        padding: 2px;
+    }
+
+    .status_cell {
+        width: 350px !important;
+    }
+
+    #paypal1 {
+        display: none;
+    }
+
+    #paypal2 {
+        display: block;
+    }
+
+    .checkout_span:after {
+        content: "";
+    }
+
+    .checkout_btn {
+        padding: 7px 10px !important;
+        
+        float: center;
+        width: 110px;
+    }
+
+    input[type="tel"] {
+        min-width: 380px !important;
+        margin-top: 0 !important;
+    } 
+
+}
+
+@media (max-width: 480px) {
+    .mb-4 {
+        margin: 0 auto !important;
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .edit_profile_label {
+        margin: 0;
+    }
+   
+    .order_details {
+        width: 100px;
+        margin-bottom: -15px;
+        padding: 2px;
+    }
+
+    .status_cell {
+        width: 350px !important;
+    }
+
+    #paypal1 {
+        display: none;
+    }
+
+    #paypal2 {
+        display: block;
+    }
+
+    .checkout_span:after {
+        content: "";
+    }
+
+    .checkout_btn {
+        padding: 7px 10px !important;
+        
+        float: center;
+        width: 110px;
+    }
+
+    input[type="tel"] {
+        min-width: 380px !important;
+        margin-top: 0 !important;
+    } 
+}

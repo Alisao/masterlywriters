@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Pricing | Affordable Prices, Money Back Guarantee</title>
+
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Work+Sans:300,400,700" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }} ">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}  ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }} ">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+        
+        
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }} ">
+      
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}  ">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }} ">
+
+        <!-- fontawesome icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}">
+
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profile_css/style.css') }} ">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/order.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/landing_page_css/base.css') }} ">
+
+
+        <!-- MPYA -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        
+        <!------ Include the above in your HEAD tag ---------->
+
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+
+        <style>
+            
+
+            .table-striped {
+                text-align: left;
+                font-size: 13px;
+                padding: 5px !important;
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            }
+
+            .table-striped > thead {
+                background: #4CAF50 !important;
+                color: #fff;
+                font-size: 15px;
+            }
+
+            #normal_orders {
+                width: 100%;
+            }
+
+            #complex_orders {
+                width: 100%;
+            }
+
+
+            .discipline {
+                width: 40%;
+            }
+
+            .flex-container {
+                display: flex;
+            }
+
+            .flex-container > div {
+                padding: 10px;
+            }
+
+            /*------------------------------------------------------------------
+                [ Responsive ]*/
+
+                @media (max-width: 992px) {
+                    .alert-validate::before {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                    
+                    .mb-4 {
+                        margin: 0 auto !important;
+                        width: 100% !important;
+                    }
+                }
+
+                @media (max-width: 600px) {
+                    
+                    .mb-4 {
+                        margin: 0 auto !important;
+                        width: 100% !important;
+                    }
+
+                    .discipline {
+                        width: 100%;
+                        margin-top: 20px !important;
+                    }
+
+                }
+
+                @media (max-width: 480px) {
+                    
+                    .mb-4 {
+                        margin: 0 auto !important;
+                        width: 100% !important;
+                    }
+
+                    .discipline {
+                        width: 100%;
+                    }
+                }
+
+            
+        </style>
+
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+        
+    </head>
+    <body>
+
+        <div id="loader"></div>
+
+
+        <div style="display:none;" id="myDiv" class="animate-bottom">
+          
+            <div class="site-wrap">
+
+                <div class="site-mobile-menu">
+                    <div class="site-mobile-menu-header">
+                        <div class="site-mobile-menu-close mt-3">
+                            <span class="icon-close2 js-menu-toggle"></span>
+                        </div>
+                    </div>
+                    <div class="site-mobile-menu-body"></div>
+                </div> <!-- .site-mobile-menu -->
+              
+          
+                <div class="site-navbar-wrap" >
+                  
+                    <div class="container" >
+                        <div class="flex-container">
+                            <div class="contacts">
+                                <span class="contacts_mail">
+                                    <i class="far fa-envelope"></i> &Tab; &Tab; support@masterlywriters.com
+                                </span>
+                              
+                            </div>
+                            <div class="contacts_right">
+                                {% if current_user.is_authenticated %}
+                                    <a href="{{ url_for('users.profile') }}">
+                                        <button class="manage_orders_btn">
+                                            Manage Orders
+                                        </button>
+                                    </a>
+                                {% else %}
+                                    <a href="{{ url_for('users.session_new') }}">
+                                        <button class="manage_orders_btn">
+                                            Login / Register
+                                        </button>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <hr class="style1">
+
+                        <div class="site-navbar" >
+                          <div class="py-1">
+                            <div class="row align-items-center">
+
+                              <div class="col-2 logo_div">
+                                <h2 class="mb-0 site-logo" >
+                                    <a href="{{ url_for('home.home') }}">
+                                        Masterly<strong class="font-weight-bold">Writers</strong>
+                                    </a>
+                                </h2>
+                              </div>
+
+                              <div class="col-10">
+                                <nav class="site-navigation text-right" role="navigation">
+                                  <div class="container">
+                                      <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3">
+                                          <a href="#" class="site-menu-toggle js-menu-toggle text-black">
+                                              <span class="icon-menu h3"></span>
+                                          </a>
+                                      </div>
+
+                                      <ul class="site-menu js-clone-nav d-none d-lg-block" >
+                                          <li><a href="{{ url_for('home.pricing') }}">Pricing</a></li>
+                                          <li class="has-children">
+                                              <a href="{{ url_for('home.services') }}">Services</a>
+                                              <ul class="dropdown arrow-top">
+                                                  <li><a href="{{ url_for('home.services') }}">Writing Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Dissertation & Thesis</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Editing Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Assignments</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Admission Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Resume Services</a></li>
+                                              </ul>
+                                          </li>
+                                          <li><a href="{{ url_for('home.contact') }}">Contact Us</a></li>
+                                          <li><a href="{{ url_for('home.how_it_works') }}">How it Works</a></li>
+
+                                          {% if current_user.is_authenticated %}
+                                              <li class="has-children">
+                                                  <a href="{{ url_for('users.profile') }}"><i class="fas fa-user-circle" style="font-size: 20px;"></i></a>
+                                                  <ul class="dropdown arrow-top" style="font-size: 13px;">
+                                                      <li><a href="{{ url_for('users.profile') }}"><i class="far fa-user"></i> View Profile</a></li>
+                                                      <li><a href="{{ url_for('users.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li> 
+                                                  </ul>
+                                              </li>
+                                          {% endif %}
+
+                                          <li></li>
+
+                                      </ul>
+                                  </div>
+                              </nav>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+        
+                <div style="height: 150px;"></div>
+
+
+                <div class="unit-5 overlay" style="background-image: url('../static/images/pricing.jpg');" >
+                    <div class="container text-center">
+                        <h2 >Order Pricing</h2>
+                        <p class="mb-0 unit-6" style="text-align: center; color: #fff;"><a href="{{ url_for('home.home') }}">Home</a> <span class="sep"> > </span> <span>Order Pricing</span></p>
+                    </div>
+                </div>
+    
+
+    
+
+            <div class="site-section bg-light">
+                <div class="container" style=" margin-top: -50px !important;">
+                        
+
+                    <div class="discipline" id="discipline_div" style="display: block;">
+                        
+                        <select class="js-example-basic-single" name="discipline" id="pricing_discipline" onchange="loadPrices()">
+                            <option value="Select Discipline" selected disabled>Select Discipline</option>
+                            <optgroup label="MOST POPULAR">
+                                <option value="English 101">English 101</option>
+                                <option value="Business Studies">Business Studies</option>
+                                <option value="Management">Management</option>
+                                <option value="Nursing">Nursing</option>
+                                <option value="History">History</option>
+                                <option value="Computer Science">Computer Science</option>
+                            </optgroup>
+                            <optgroup label="HUMANITIES">
+                                <option value="Art (Fine Arts, Performing Arts)">Art (Fine Arts, Performing Arts)</option>
+                                <option value="Classic English Literature">Classic English Literature</option>
+                                <option value="Composition">Composition</option>
+                                <option value="English 101">English 101</option>
+                                <option value="Film & Theatre Studies">Film & Theatre Studies</option>
+                                <option value="History">History</option>
+                                <option value="Linguistics">Linguistics</option>
+                                <option value="Literature">Literature</option>
+                                <option value="Music">Music</option>
+                                <option value="Philosophy">Philosophy</option>
+                                <option value="Poetry">Poetry</option>
+                                <option value="Religious Studies">Religious Studies</option>
+                                <option value="Shakespeare">Shakespeare</option>
+                            </optgroup>
+                            <optgroup label="SOCIAL SCIENCES">
+                                <option value="Anthropology">Anthropology</option>
+                                <option value="Cultural & Ethnic Studies">Cultural & Ethnic Studies</option>
+                                <option value="Economics">Economics</option>
+                                <option value="Ethics">Ethics</option>
+                                <option value="Political Science">Political Science</option>
+                                <option value="Psychology">Psychology</option>
+                                <option value="Social Work & Human Services">Social Work & Human Services</option>
+                                <option value="Sociology">Sociology</option>
+                                <option value="Tourism">Tourism</option>
+                                <option value="Urban Studies">Urban Studies</option>
+                                <option value="Women’s & Gender Studies">Women’s & Gender Studies</option>
+                            </optgroup>
+                            <optgroup label="BUSINESS & ADMINISTRATIVE STUDIES">
+                                <option value="Accounting">Accounting</option>
+                                <option value="Business Studies">Business Studies</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Human Resources Management (HRM)">Human Resources Management (HRM)</option>
+                                <option value="International Relations">International Relations</option>
+                                <option value="Logistics">Logistics</option>
+                                <option value="Management">Management</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Public Relations (PR)">Public Relations (PR)</option>
+                            </optgroup>
+                            <optgroup label="NATURAL SCIENCES">
+                                <option value="Astronomy (and other space science)">Astronomy (& other space science)</option>
+                                <option value="Biology (and other life Sciences)">Biology (& other life Sciences)</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Ecology">Ecology</option>
+                                <option value="Geography">Geography</option>
+                                <option value="Geology (and other earth sciences)">Geology (& other earth sciences)</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Zoology">Zoology</option>
+                            </optgroup>
+                            <optgroup label="FORMAL SCIENCES">
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="Statistics">Statistics</option>
+                            </optgroup>
+                            <optgroup label="PROFESSIONS & APPLIED SCIENCES">
+                                <option value="Agriculture">Agriculture</option>
+                                <option value="Architecture">Architecture, Building and Planning</option>
+                                <option value="Aviation">Aviation</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Communications">Communications</option>
+                                <option value="Criminal Justice">Criminal Justice</option>
+                                <option value="Criminal Law">Criminal Law</option>
+                                <option value="Education">Education</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Environmental Studies">Environmental Studies</option>
+                                <option value="Family & consumer science">Family & consumer science</option>
+                                <option value="Healthcare">Healthcare</option>
+                                <option value="International Trade">International Trade</option>
+                                <option value="IT, Web">IT, Web</option>
+                                <option value="Programming">Programming</option>
+                                <option value="Law">Law</option>
+                                <option value="Leadership Studies">Leadership Studies</option>
+                                <option value="Medical Sciences (Anatomy, Physiology)">Medical Sciences (Anatomy, Physiology)</option>
+                                <option value="Medicine">Medicine</option>
+                                <option value="Nursing">Nursing</option>
+                                <option value="Nutrition">Nutrition</option>
+                                <option value="Public Administration">Public Administration</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Technology">Technology</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                        <br>
+
+                        <div id="normal_orders" style="display: block; width: 100%;">
+                            <table class="table table-striped"  >
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>High School</th>
+                                        <th>College</th>
+                                        <th>Undergraduate</th>
+                                        <th>Master</th>
+                                        <th>PhD</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>14 days</td>
+                                        <td>$12.40 USD</td>
+                                        <td>$13.90 USD</td>
+                                        <td>$15.40 USD</td>
+                                        <td>$16.90 USD</td>
+                                        <td>$18.40 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12 days</td>
+                                        <td>$15.30 USD</td>
+                                        <td>$16.80 USD</td>
+                                        <td>$18.30 USD</td>
+                                        <td>$19.80 USD</td>
+                                        <td>$21.30 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 days</td>
+                                        <td>$18.20 USD</td>
+                                        <td>$19.70 USD</td>
+                                        <td>$21.20 USD</td>
+                                        <td>$22.70 USD</td>
+                                        <td>$24.20 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9 days</td>
+                                        <td>$21.10 USD</td>
+                                        <td>$22.60 USD</td>
+                                        <td>$24.10 USD</td>
+                                        <td>$25.60 USD</td>
+                                        <td>$27.10 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8 days</td>
+                                        <td>$24.00 USD</td>
+                                        <td>$25.50 USD</td>
+                                        <td>$27.00 USD</td>
+                                        <td>$28.50 USD</td>
+                                        <td>$30.00 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7 days</td>
+                                        <td>$26.90 USD</td>
+                                        <td>$28.40 USD</td>
+                                        <td>$29.90 USD</td>
+                                        <td>$31.40 USD</td>
+                                        <td>$32.90 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6 days</td>
+                                        <td>$29.80 USD</td>
+                                        <td>$31.30 USD</td>
+                                        <td>$32.80 USD</td>
+                                        <td>$34.30 USD</td>
+                                        <td>$35.80 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5 days</td>
+                                        <td>$32.70 USD</td>
+                                        <td>$34.20 USD</td>
+                                        <td>$35.70 USD</td>
+                                        <td>$37.20 USD</td>
+                                        <td>$38.70 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4 days</td>
+                                        <td>$35.30 USD</td>
+                                        <td>$37.10 USD</td>
+                                        <td>$38.30 USD</td>
+                                        <td>$39.80 USD</td>
+                                        <td>$42.60 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3 days</td>
+                                        <td>$37.90 USD</td>
+                                        <td>$39.60 USD</td>
+                                        <td>$40.90 USD</td>
+                                        <td>$42.40 USD</td>
+                                        <td>$45.20 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2 days</td>
+                                        <td>$40.50 USD</td>
+                                        <td>$42.10 USD</td>
+                                        <td>$43.50 USD</td>
+                                        <td>$45.00 USD</td>
+                                        <td>$47.80 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>24 hrs</td>
+                                        <td>$43.10 USD</td>
+                                        <td>$44.60 USD</td>
+                                        <td>$46.10 USD</td>
+                                        <td>$47.60 USD</td>
+                                        <td>$50.40 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12 hrs</td>
+                                        <td>$45.70 USD</td>
+                                        <td>$47.20 USD</td>
+                                        <td>$48.70 USD</td>
+                                        <td>$50.20 USD</td>
+                                        <td>$53.00 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8 hrs</td>
+                                        <td>$48.30 USD</td>
+                                        <td>$50.10 USD</td>
+                                        <td>$51.60 USD</td>
+                                        <td>$53.10 USD</td>
+                                        <td>$57.50 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4 hrs</td>
+                                        <td>$50.60 USD</td>
+                                        <td>$54.50 USD</td>
+                                        <td>$56.00 USD</td>
+                                        <td>$59.50 USD</td>
+                                        <td>$62.80 USD</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        
+                        <div id="complex_orders" style="display: none; width: 100%;">
+                            <table class="table table-striped" >
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>High School</th>
+                                        <th>College</th>
+                                        <th>Undergraduate</th>
+                                        <th>Master</th>
+                                        <th>PhD</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr >
+                                        <td>14 days</td>
+                                        <td>$17.50 USD</td>
+                                        <td>$19.50 USD</td>
+                                        <td>$21.50 USD</td>
+                                        <td>$23.50 USD</td>
+                                        <td>$25.50 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12 days</td>
+                                        <td>$20.40 USD</td>
+                                        <td>$22.40 USD</td>
+                                        <td>$24.40 USD</td>
+                                        <td>$26.40 USD</td>
+                                        <td>$28.40 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 days</td>
+                                        <td>$23.30 USD</td>
+                                        <td>$25.30 USD</td>
+                                        <td>$27.30 USD</td>
+                                        <td>$29.30 USD</td>
+                                        <td>$31.30 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9 days</td>
+                                        <td>$26.20 USD</td>
+                                        <td>$28.20 USD</td>
+                                        <td>$30.20 USD</td>
+                                        <td>$32.20 USD</td>
+                                        <td>$34.20 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8 days</td>
+                                        <td>$29.10 USD</td>
+                                        <td>$31.10 USD</td>
+                                        <td>$33.10 USD</td>
+                                        <td>$35.10 USD</td>
+                                        <td>$37.10 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7 days</td>
+                                        <td>$32.00 USD</td>
+                                        <td>$34.00 USD</td>
+                                        <td>$36.00 USD</td>
+                                        <td>$38.00 USD</td>
+                                        <td>$40.00 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6 days</td>
+                                        <td>$34.90 USD</td>
+                                        <td>$36.90 USD</td>
+                                        <td>$38.90 USD</td>
+                                        <td>$40.90 USD</td>
+                                        <td>$42.90 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5 days</td>
+                                        <td>$37.80 USD</td>
+                                        <td>$39.80 USD</td>
+                                        <td>$41.80 USD</td>
+                                        <td>$43.80 USD</td>
+                                        <td>$45.80 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4 days</td>
+                                        <td>$40.40 USD</td>
+                                        <td>$42.40 USD</td>
+                                        <td>$44.40 USD</td>
+                                        <td>$46.40 USD</td>
+                                        <td>$48.40 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3 days</td>
+                                        <td>$43.00 USD</td>
+                                        <td>$45.00 USD</td>
+                                        <td>$47.00 USD</td>
+                                        <td>$49.00 USD</td>
+                                        <td>$51.00 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2 days</td>
+                                        <td>$45.60 USD</td>
+                                        <td>$47.60 USD</td>
+                                        <td>$49.60 USD</td>
+                                        <td>$51.60 USD</td>
+                                        <td>$53.60 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>24 hrs</td>
+                                        <td>$48.20 USD</td>
+                                        <td>$50.20 USD</td>
+                                        <td>$52.20 USD</td>
+                                        <td>$54.20 USD</td>
+                                        <td>$56.20 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12 hrs</td>
+                                        <td>$50.80 USD</td>
+                                        <td>$52.80 USD</td>
+                                        <td>$54.80 USD</td>
+                                        <td>$56.80 USD</td>
+                                        <td>$58.80 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8 hrs</td>
+                                        <td>$53.40 USD</td>
+                                        <td>$55.40 USD</td>
+                                        <td>$57.40 USD</td>
+                                        <td>$59.40 USD</td>
+                                        <td>$61.40 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4 hrs</td>
+                                        <td>$56.60 USD</td>
+                                        <td>$58.60 USD</td>
+                                        <td>$60.60 USD</td>
+                                        <td>$62.60 USD</td>
+                                        <td>$64.60 USD</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        
+                </div>
+            </div>
+
+
+
+    
+
+
+            <footer class="page-footer font-small blue-grey lighten-5">
+
+                <div style="background: #ddd;">
+                    <div class="container">
+
+                      <!-- Grid row-->
+                      <div class="row py-4 d-flex align-items-center">
+
+                        <!-- Grid column -->
+                        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                          <h6 class="mb-0">Get connected with us on social networks!</h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                          <!-- Facebook -->
+                          <a class="fb-ic">
+                            <i class="fab fa-facebook-f white-text mr-4"> </i>
+                          </a>
+                          <!-- Twitter -->
+                          <a class="tw-ic">
+                            <i class="fab fa-twitter white-text mr-4"> </i>
+                          </a>
+                          <!-- Google +-->
+                          <a class="gplus-ic">
+                            <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                          </a>
+                          <!--Linkedin -->
+                          <a class="li-ic">
+                            <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                          </a>
+                          <!--Instagram-->
+                          <a class="ins-ic">
+                            <i class="fab fa-instagram white-text"> </i>
+                          </a>
+
+                        </div>
+                        <!-- Grid column -->
+
+                      </div>
+                      <!-- Grid row-->
+
+                    </div>
+                </div>
+
+                <!-- Footer Links -->
+                <div class="container text-center text-md-left mt-5" >
+
+                  <!-- Grid row -->
+                  <div class="row mt-3 dark-grey-text">
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+                      <!-- Content -->
+                      <h6 class="text-uppercase font-weight-bold">About </h6>
+                      <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                      <p class="footer_text">MasterlyWriters was founded to offer high-quality and affordable essays to students of all levels including high school, college, university, and post graduate. </p>
+                      <p class="footer_text">We only select writers who are truly masters in writing to ensure our clients get the best value.</p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Quick Menu</h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Pricing</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">FAQ</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">How it works</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Contact Us</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Testimonials</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Privacy policy</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Terms of use</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">For writers</a>
+                        </p>
+
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Categories</h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Custom Writing</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Editing</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Proofreading</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                      <!-- Links -->
+                      <h6 class="text-uppercase font-weight-bold">Payment Methods</h6>
+                      <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Mastercard</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Payoneer</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">PayPal</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Visa</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                  </div>
+                  <!-- Grid row -->
+
+                </div>
+                <!-- Footer Links -->
+
+                <!-- Copyright -->
+                <div class="footer-copyright text-center text-black-50 py-3" style="background: green; color: #fff !important;">© 2020 Copyright:
+                  <a class="dark-grey-text" href="https://masterlywriters.com/" style="color: #fff !important;"> MasterlyWriters</a>
+                </div>
+                <!-- Copyright -->
+
+              </footer>
+              <!-- Footer -->
+
+
+        </div>
+
+
+  
+        
+
+        <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery-ui.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/popper.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/aos.js') }} "></script>
+
+        
+        <script src="{{ url_for('static', filename='js/mediaelement-and-player.min.js') }} "></script>
+
+        <script src="{{ url_for('static', filename='js/index_main.js') }} "></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+        
+
+  
+        <script>
+
+            
+
+        </script>
+
+        <script type="text/javascript">
+
+            
+            $(document).ready(function() {
+                var myVar;
+                myVar = setTimeout(showPage, 2000);
+                loadPrices();
+            });
+
+            function showPage() {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("myDiv").style.display = "block";
+            }
+
+            var complexOrders = ["Physics", "Engineering", "SPSS", "Mathematics", "Chemistry", "Statistics", "Architecture", "Civil Engineering", "AutoCAD", "MatLAB", "Programming", "Software Based"]
+
+            
+
+            function loadPrices() {
+                var pricing_discipline = document.getElementById("pricing_discipline").value;
+                //alert(pricing_discipline);
+                if (complexOrders.includes(pricing_discipline)) {
+                    document.getElementById("complex_orders").style.display = "block";
+                    document.getElementById("normal_orders").style.display = "none";
+                } else {
+                    document.getElementById("complex_orders").style.display = "none";
+                    document.getElementById("normal_orders").style.display = "block";
+                }
+            }
+         
+        </script>
+
+    </body>
+
+
+</html>

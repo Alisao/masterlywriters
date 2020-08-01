@@ -1,0 +1,571 @@
+{% extends "base.html" %}
+    
+
+{% block content %}
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/order.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <!-- fontawesome icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+        <!-- custom css -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profile_css/style.css') }} ">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/auth_css/main.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/dropzone.css') }} ">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/order_form.css') }}">
+
+        {{ dropzone.load_css() }}
+        {{ dropzone.style('border: 1px dashed #4CAF50; text-align: center;') }}
+
+        {{ JSGlue.include() }}
+
+        <style type="text/css">
+            .overlay {
+                background-image: url('../static/images/order.jpg');
+                height: 150px !important;
+            }
+        </style>
+    
+    
+  
+    <div style="height: 180px;"></div>
+
+    <div class="unit-5 overlay" >
+        <div class="container text-center">
+            <h2 class="order_header">Place an order</h2>
+            <p class="mb-0 unit-6">
+                <a href="{{ url_for('home.home') }}">Home</a> 
+                <span class="sep"> > </span> 
+                <span>Place Order</span>
+            </p>
+        </div>
+    </div>
+
+    
+    <div class="site-section bg-light" style="margin-top: -70px;">
+        <div class="container" >
+            <div class="order_flex">
+                <div class="order-form">
+                    <form method="POST" class="place_order_form" role="form" action="{{ url_for('users.save_order') }}" id="order_form" name="order_form">
+                        {{ order_form.csrf_token }}
+                        <div class="form-group">
+                            <label for="topic">Topic:</label>
+                          
+                            {{ order_form.topic(placeholder="topic ...", id="topic", class="form_input") }}
+                                        
+                            {% if order_form.topic.errors %}
+                                {% for error in order_form.topic.errors %}
+                                    <span class="error" id="topic_error">
+                                        *{{ error }}
+                                    </span>
+                                    <script type="text/javascript">
+                                        document.getElementById("topic").style.borderColor = "red";
+                                    </script>
+                                    
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label class="order_label" for="paper_type">Paper Type:</label>
+                            <select class="js-example-basic-single" name="paper_type" id="paper_type" onchange="loadSummary()">
+                                <optgroup label="POPULAR">
+                                    <option value="Argumentative Essay">Argumentative Essay</option>
+                                    <option value="Case Study">Case Study</option>
+                                    <option value="Coursework">Coursework</option>
+                                    <option value="Essay">Essay (Any Type)</option>
+                                    <option value="Research Paper">Research Paper</option>
+                                    <option value="Rhetoric Essay">Rhetoric Essay</option>
+                                </optgroup>
+                                <optgroup label="EDITING SERVICES">
+                                    <option value="Editing">Editing</option>
+                                    <option value="Proofreading">Proofreading</option>
+                                    <option value="Formatting">Formatting</option>
+                                </optgroup>
+                                <optgroup label="OTHER">
+                                    <option value="Admission Essay">Admission Essay</option>
+                                    <option value="Analysis (Any Type)">Analysis (Any Type)</option>
+                                    <option value="Analysis (Any Type)">Analysis (Any Type)</option>
+                                    <option value="Article">Article</option>
+                                    <option value="Article Review" >Article Review</option>
+                                    <option value="Assignment">Assignment</option>
+                                    <option value="Blog Post">Blog Post</option>
+                                    <option value="Book/Movie Review">Book/Movie Review</option>
+                                    <option value="Business Plan">Business Plan</option>
+                                    <option value="Capstone Project">Capstone Project</option>
+                                    <option value="College Essay">College Essay</option>
+                                    <option value="Creative Writing">Creative Writing</option>
+                                    <option value="Critical Thinking">Critical Thinking</option>
+                                    <option value="Discussion Essay">Discussion Essay</option>
+                                    <option value="Dissertation">Dissertation</option>
+                                    <option value="Homework">Homework</option>
+                                    <option value="Journal Article">Journal Article</option>
+                                    <option value="Lab Report">Lab Report</option>
+                                    <option value="Literature Review">Literature Review</option>
+                                    <option value="Memo/Letter">Memo/Letter</option>
+                                    <option value="Outline">Outline</option>
+                                    <option value="Personal Reflection">Personal Reflection</option>
+                                    <option value="Poem">Poem</option>
+                                    <option value="Presentation/PPT">Presentation/PPT</option>
+                                    <option value="Project">Project</option>
+                                    <option value="Question/Answer">Question/Answer</option>
+                                    <option value="Reflection Paper">Reflection Paper</option>
+                                    <option value="Report">Report</option>
+                                    <option value="Research Proposal">Research Proposal</option>
+                                    <option value="Response Essay">Response Essay</option>
+                                    <option value="Speech">Speech</option>                                                
+                                    <option value="Summary">Summary</option>
+                                    <option value="Term Paper">Term Paper</option>
+                                    <option value="Thesis">Thesis</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="form-group" >
+                            <label class="order_label" for="discipline">Discipline:</label>
+                            <select class="js-example-basic-single" name="discipline" id="discipline" onchange="loadSummary()">
+                                <optgroup label="MOST POPULAR">
+                                    <option value="English">English</option>
+                                    <option value="English 101">English 101</option>
+                                    <option value="Business Studies">Business Studies</option>
+                                    <option value="Management">Management</option>
+                                    <option value="Nursing">Nursing</option>
+                                    <option value="History">History</option>
+                                    <option value="Computer Science">Computer Science</option>
+                                </optgroup>
+                                <optgroup label="HUMANITIES">
+                                    <option value="Art (Fine Arts, Performing Arts)">Art (Fine Arts, Performing Arts)</option>
+                                    <option value="Classic English Literature">Classic English Literature</option>
+                                    <option value="Composition">Composition</option>
+                                    <option value="English 101">English 101</option>
+                                    <option value="Film & Theatre Studies">Film & Theatre Studies</option>
+                                    <option value="History">History</option>
+                                    <option value="Linguistics">Linguistics</option>
+                                    <option value="Literature">Literature</option>
+                                    <option value="Music">Music</option>
+                                    <option value="Philosophy">Philosophy</option>
+                                    <option value="Poetry">Poetry</option>
+                                    <option value="Religious Studies">Religious Studies</option>
+                                    <option value="Shakespeare">Shakespeare</option>
+                                </optgroup>
+                                <optgroup label="SOCIAL SCIENCES">
+                                    <option value="Anthropology">Anthropology</option>
+                                    <option value="Cultural & Ethnic Studies">Cultural & Ethnic Studies</option>
+                                    <option value="Economics">Economics</option>
+                                    <option value="Ethics">Ethics</option>
+                                    <option value="Political Science">Political Science</option>
+                                    <option value="Psychology">Psychology</option>
+                                    <option value="Social Work & Human Services">Social Work & Human Services</option>
+                                    <option value="Sociology">Sociology</option>
+                                    <option value="Tourism">Tourism</option>
+                                    <option value="Urban Studies">Urban Studies</option>
+                                    <option value="Women’s & Gender Studies">Women’s & Gender Studies</option>
+                                </optgroup>
+                                <optgroup label="BUSINESS & ADMINISTRATIVE STUDIES">
+                                    <option value="Accounting">Accounting</option>
+                                    <option value="Business Studies">Business Studies</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Human Resources Management (HRM)">Human Resources Management (HRM)</option>
+                                    <option value="International Relations">International Relations</option>
+                                    <option value="Logistics">Logistics</option>
+                                    <option value="Management">Management</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Public Relations (PR)">Public Relations (PR)</option>
+                                </optgroup>
+                                <optgroup label="NATURAL SCIENCES">
+                                    <option value="Astronomy (and other space science)">Astronomy (& other space science)</option>
+                                    <option value="Biology (and other life Sciences)">Biology (& other life Sciences)</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Ecology">Ecology</option>
+                                    <option value="Geography">Geography</option>
+                                    <option value="Geology (and other earth sciences)">Geology (& other earth sciences)</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Zoology">Zoology</option>
+                                </optgroup>
+                                <optgroup label="FORMAL SCIENCES">
+                                    <option value="Computer Science">Computer Science</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Statistics">Statistics</option>
+                                </optgroup>
+                                <optgroup label="PROFESSIONS & APPLIED SCIENCES">
+                                    <option value="Agriculture">Agriculture</option>
+                                    <option value="Architecture">Architecture, Building and Planning</option>
+                                    <option value="Aviation">Aviation</option>
+                                    <option value="Civil Engineering">Civil Engineering</option>
+                                    <option value="Communications">Communications</option>
+                                    <option value="Criminal Justice">Criminal Justice</option>
+                                    <option value="Criminal Law">Criminal Law</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Environmental Studies">Environmental Studies</option>
+                                    <option value="Family & consumer science">Family & consumer science</option>
+                                    <option value="Healthcare">Healthcare</option>
+                                    <option value="International Trade">International Trade</option>
+                                    <option value="IT, Web">IT, Web</option>
+                                    <option value="Programming">Programming</option>
+                                    <option value="Law">Law</option>
+                                    <option value="Leadership Studies">Leadership Studies</option>
+                                    <option value="Medical Sciences (Anatomy, Physiology)">Medical Sciences (Anatomy, Physiology)</option>
+                                    <option value="Medicine">Medicine</option>
+                                    <option value="Nursing">Nursing</option>
+                                    <option value="Nutrition">Nutrition</option>
+                                    <option value="Public Administration">Public Administration</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Technology">Technology</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="form-group" >
+                            <label class="order_label" for="ac_level">Academic Level:</label>
+                            <select class="js-example-basic-single" style="line-height: 40px; font-size: 13px;" name="ac_level" id="ac_level" onchange="loadSummary()">
+                                <option value="High School">High School</option>
+                                <option value="College">College</option>
+                                <option value="Undergraduate">Undergraduate</option>
+                                <option value="Master">Master</option>
+                                <option value="PhD">PhD</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" >
+                            <label class="order_label" for="due_date">Deadline:</label>
+                            <select class="js-example-basic-single" id="due_date" name="due_date" onchange="loadSummary()">
+                                <option value="336">14 days</option>
+                                <option value="288">12 days</option>
+                                <option value="240">10 days</option>
+                                <option value="216">9 days</option>
+                                <option value="192">8 days</option>
+                                <option value="168">7 days</option>
+                                <option value="144">6 days</option>
+                                <option value="120">5 days</option>
+                                <option value="96">4 days</option>
+                                <option value="72">3 days</option>
+                                <option value="48">2 days</option>
+                                <option value="24">24 hours</option>
+                                <option value="12">12 hours</option>
+                                <option value="8">8 hours</option>
+                                <option value="4">4 hours</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="order_label">No. of Pages:</label>
+                            <div class="input_flex">
+                                <div class="quantity" >
+
+                                    <input class="form_input" type="number" name="t_pages" id="t_pages" min="1" max="200" step="1" value="1" onkeyup="OnKeyUp(this.value)" style="line-height: 40px !important;">
+                                    <div class="word_count" id="word_count">
+                                        <input class="w_count" type="text" name="word_count" id="w_count">
+                                    </div>
+                                </div>
+
+                                <div class="spacing_btn_group" style="background: none; margin-top: 5px !important;">
+                                    <label class="space_label" for="opt_1" >
+                                        Spacing
+                                    </label>
+                                    <input id="opt_1" class="spacing__option" type="radio" name="spacing" onchange="checkRadio(id)" value="Single">
+                                    <label class="spacing__label" for="opt_1">
+                                        Single
+                                    </label>
+                                    <input id="opt_2" class="spacing__option" type="radio" name="spacing" checked="checked" onchange="checkRadio(id)" value="Double">
+                                    <label class="spacing__label" for="opt_2">
+                                        Double
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sources">No. of Sources:</label>
+                            <div class="quantity">
+                                <input class="form_input" id="sources" type="number" name="sources" min="1" max="200" step="1" value="1" />
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="form-group" style="margin-top: 10px !important;">
+                            <label class="order_label" for="paper_format">Paper Format:</label>
+                            <div class="format_options">
+                                <input type="radio" class="formats" id="apa" name="p_format" checked value="APA">
+                                <label class="p_format" for="apa">APA</label>
+
+                                <input type="radio" class="formats" id="mla" name="p_format" value="MLA">
+                                <label class="p_format" for="mla">MLA</label>
+
+                                <input type="radio" class="formats" id="chicago" name="p_format" value="Chicago">
+                                <label class="p_format" for="chicago">Chicago</label>
+
+                                <input type="radio" class="formats" id="harvard" name="p_format" value="Harvard">
+                                <label class="p_format" for="harvard">Harvard</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="instructions">Instructions:</label>
+                            {{ order_form.instructions(class="form-control instructions", rows="8", placeholder="Type your instructions here") }}
+                            <span class="error">
+                                {% if order_form.instructions.errors %}
+                                    {% for error in order_form.instructions.errors %}
+                                        *{{ error }}
+                                    {% endfor %}
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        <input type="hidden" name="g_total" id="g_total">
+                        <input type="submit" style="display:none" />
+
+                    </form>
+
+                    <div class="form-group">
+                        <label class="order_label" for="attachments">Files / Attachments (optional)</label> 
+                        <div id="uploads"></div>
+                        {{ dropzone.create('/upload_files') }}
+                    </div>
+
+                    <button type="submit" class="contact_form_btn" id="place_order_btn">
+                        <span>Submit </span>
+                    </button>
+                    <br><br>
+                    
+                </div>
+
+
+
+                <div class="order_summary">
+                    <div class="p-4 mb-3 bg-white">
+                        <h3 class="h5 text-black mb-3">Summary</h3>
+                        <hr>
+                        <p class="mb-0 font-weight-bold">
+                            <div class="summary_flex">
+                               <div id="ac_level_summary" style="text-align: left; color: #000;">
+                                </div>
+                                    <div id="p_type_summary" style="text-align: left; color: #000;">
+                                </div>
+                                <div id="discipline_summary" style="text-align: left; color: #000;">
+                                </div>
+                            </div>
+                        </p>
+                        <hr>
+
+                        <p class="mb-4">
+                            <div class="flex-box">
+                                <div>
+                                    <input type="text" name="summary_pages" id="pages_summary" style="border: none; border-bottom: 1px solid #ccc; padding-top: 0;  padding-left: 0;" />
+                                </div>
+                                <div>
+                                    <input type="text" name="summary_total" id="summary_total" style="border: none; border-bottom: 1px solid #ccc; text-align: right; padding-top: 0;  padding-left: 0;" />
+                                </div>
+                            </div>
+                        </p>
+                        <p class="mb-4">
+                            <div class="flex-box" style="font-size: 16px; font-weight: bold;">
+                                <div style="text-align: left; ">
+                                  Total price
+                                </div>
+                                <div id="grand_total" style="text-align: right; padding-right: 10px; color: #389E29;">
+                                  
+                                </div>
+                            </div>
+                        </p>
+                        <hr>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+        {{ dropzone.load_js() }}
+        {{ dropzone.config() }}
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+        <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery-ui.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/popper.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/aos.js') }} "></script>
+
+          
+        <script src="{{ url_for('static', filename='js/mediaelement-and-player.min.js') }} "></script>
+
+        <script src="{{ url_for('static', filename='js/index_main.js') }} "></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+        <!-- custom js -->
+        <script src="{{ url_for('static', filename='js/order.js') }}"></script>
+
+        
+
+    <script>
+
+        $(document).ready(function() {
+            var myVar;
+            myVar = setTimeout(showPage, 3000);
+        });
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        }
+    </script>
+
+    <script>
+        Dropzone.options.myDropzone = {
+            clickable: true,
+            addRemoveLinks: true,
+            dictDefaultMessage: "Drop your files here or click to browse ",
+            init: function() {
+                this.on("sending", function(file, xhr, formData) {
+                  console.log("sending file");
+                });
+                this.on("success", function(file, responseText) {
+                  console.log('great success');
+                });
+                this.on("addedfile", function(file){
+                  console.log('file added');
+                });
+            }
+        };
+    </script>
+
+    <script>            
+        jQuery(document).ready(function($){
+            $('.js-example-basic-single').select2();
+            $("#singleSelectExample").select2({
+              placeholder: 'Select an option...',
+              allowClear: true
+            });
+
+            $('select').select2({width:100});
+            $('b[role="presentation"]').hide();
+            $('.select2-selection__arrow').append('<i class="fa fa-angle-down"></i>');
+        });
+    </script>
+
+    <script type="text/javascript">
+            
+
+            jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up" id="quantity-up">+</div><div class="quantity-button quantity-down" id="quantity-down">-</div></div>').insertAfter('#t_pages');
+                jQuery('.quantity').each(function() {
+                  var spinner = jQuery(this),
+                    input = spinner.find('#t_pages'),
+                    btnUp = spinner.find('.quantity-up'),
+                    btnDown = spinner.find('.quantity-down'),
+                    min = input.attr('min'),
+                    max = input.attr('max');
+
+                  btnUp.click(function() {
+                      var oldValue = parseFloat(input.val());
+                      if (oldValue >= max) {
+                          var newVal = oldValue;
+                          computeWordCount(newVal);
+                      } else {
+                          var newVal = oldValue + 1;
+                          computeWordCount(newVal);
+                      }
+                      spinner.find("#t_pages").val(newVal);
+                      spinner.find("#t_pages").trigger("change");
+                      loadSummary();
+                  });
+
+                  btnDown.click(function() {
+                      var oldValue = parseFloat(input.val());
+                      if (oldValue <= min) {
+                          var newVal = oldValue;
+                          computeWordCount(newVal);
+                      } else {
+                          var newVal = oldValue - 1;
+                          computeWordCount(newVal);
+                      }
+                      spinner.find("#t_pages").val(newVal);
+                      spinner.find("#t_pages").trigger("change");
+                      loadSummary();
+                  });
+
+            });
+
+
+            $(document).ready(function() {
+                $("#place_order_btn").click(function(e) {
+                    e.preventDefault();
+                    $("#order_form").submit();
+                });
+
+                var opt_1 = document.getElementById("opt_1");
+                if (opt_1.checked) {
+                    document.getElementById("w_count").value = "(500 words)";
+                }
+
+                loadSummary();
+            });
+
+            
+
+            function checkRadio(id) {
+                var tot_word_count;
+                var t_pages = document.getElementById("t_pages").value;
+                var default_single_word_count = 500;
+                var default_double_word_count = 250;
+                if (id == "opt_1") {
+                    tot_word_count = default_single_word_count * t_pages;
+                    document.getElementById("w_count").value = "("+tot_word_count + " words)";
+                } else if (id == "opt_2") {
+                    tot_word_count = default_double_word_count * t_pages;
+                    document.getElementById("w_count").value = "("+tot_word_count + " words)";
+                }
+
+                loadSummary();
+            }
+
+            function computeWordCount(curVal) {
+                var tot_word_count;
+                var default_single_word_count = 500;
+                var default_double_word_count = 250;
+
+
+                var opt_1 = document.getElementById("opt_1");
+                var opt_2 = document.getElementById("opt_2");
+                if (opt_1.checked) {
+                    tot_word_count = default_single_word_count * curVal;
+                    document.getElementById("w_count").value = "("+tot_word_count + " words)";
+                } else if (opt_2.checked) {
+                    tot_word_count = default_double_word_count * curVal;
+                    document.getElementById("w_count").value = "("+tot_word_count + " words)";
+                }
+            }
+
+            function OnKeyUp(val) {
+                computeWordCount(val);
+                loadSummary();
+            }
+
+
+
+
+
+            
+            
+        </script>
+
+
+{% endblock %}
+

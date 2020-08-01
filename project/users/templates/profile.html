@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Masterly Writers | User Profile</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+
+        {% block styles %}
+            {{ bootstrap.load_css() }}
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/css/intlTelInput.css">
+
+            <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Work+Sans:300,400,700" rel="stylesheet">
+            <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }} ">
+
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}  ">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }} ">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }} ">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }} ">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }} ">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }} ">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }} ">
+
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+            
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+            
+            
+            
+            <link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }} ">
+          
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}  ">
+
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }} ">
+
+            <!-- fontawesome icons -->
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+            <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}">
+
+            <!-- custom css -->
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profile_css/style.css') }} ">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/order.css') }} ">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profile.css') }} ">
+
+
+            <!-- MPYA -->
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">        
+            <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+            <style type="text/css">
+                .view_btn {
+                    background: #bbb;
+                    padding: 7px 18px;
+                    color: #000;
+                    cursor: pointer;
+                    border: none;
+                    border-radius: 3px;
+                }
+
+                .view_btn:hover {
+                    background: #4CAF50; /* Green */
+                    color: #fff;
+                    width: 100%;
+                    border: none !important;
+                }
+
+                .view_btn:focus {
+                    border: none !important;
+                }
+
+                .error {
+                    color: red;
+                    font-style: italic;
+                    padding: 10px 0 10px 0;
+                }
+
+                .change_pswd_btn {
+                    display: inline-block;
+                    border-radius: 4px;
+                    background-color: #4CAF50;
+                    border: none;
+                    color: #FFFFFF;
+                    text-align: center;
+                    padding: 12px 20px;
+                    transition: all 0.5s;
+                    cursor: pointer;
+                    margin: 5px;
+                    font-size: 16px;
+                }
+
+                .change_pswd_btn:hover {
+                    background-color: #FF5733;
+                }
+
+                .show_order_btn {
+                    border: none;
+                    padding: 5px 0 2px 5px;
+                    font-size: 12px;
+                    color: #FF5733;
+                    margin-top: 5px;
+                }
+
+                .approved {
+                    color: #4CAF50;
+                    font-size: 15px;
+                    font-weight: 600;
+                }
+
+                .info_warning {
+                    color: #F17D58;
+                    font-size: 15px;
+                    font-weight: 600;
+                }
+
+                .flashes {
+                    width: 100%;
+                    margin-bottom: 20px;
+                    background: rgba(49, 132, 30, .8);
+                    color: white;
+                    border-radius: 3px;
+                    border: 1px solid white;
+                    padding: 20px !important;
+                    font-size: 15px;
+                    text-transform: uppercase;
+                }
+
+                .flashes > ul {
+                    list-style-type: none;
+                    font-size: 15px;
+                }
+
+                .btn, .dropdown-menu {
+                    font-size: 15px;
+                    padding-right: 10px;
+                }
+
+                h6.text-uppercase, h6.mb-0 {
+                    font-size: 16px;
+                }
+
+                .flex-wrap {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+
+                .flex-wrap > div {
+                    width: 50%;
+                }
+
+                .close {
+                    border: 1px solid green;
+                    background: white;
+                    color: green;
+                    opacity: 1;
+                }
+
+                .close:hover {
+                    background: green;
+                    color: white !important;
+                }
+
+            </style>
+
+        {% endblock %}
+        
+    </head>
+    <body>
+
+        <div id="loader"></div>
+
+
+        <div style="display:none;" id="myDiv" class="animate-bottom">
+          
+            <div class="site-wrap">
+
+                <div class="site-mobile-menu">
+                    <div class="site-mobile-menu-header">
+                        <div class="site-mobile-menu-close mt-3">
+                            <span class="icon-close2 js-menu-toggle"></span>
+                        </div>
+                    </div>
+                    <div class="site-mobile-menu-body"></div>
+                </div> <!-- .site-mobile-menu -->
+              
+          
+                <div class="site-navbar-wrap" style="background-image: url(../static/images/profile_banner.jpg); color: white; opacity: 0.8;">
+                  
+                    <div class="container" >
+                        <div class="site-navbar" >
+                          <div class="py-1" style="background-image: url(../static/images/profile_banner.jpg); margin-left: -15px;">
+                            <div class="row align-items-center" style="background-color: transparent;">
+                              <div class="col-2">
+                                <h2 class="mb-0 site-logo" ><a style="color: white;" href="{{ url_for('home.home') }}">Masterly<strong class="font-weight-bold" style="color: white; opacity: 2.0;">Writers</strong> </a></h2>
+                              </div>
+                              <div class="col-10">
+                                <nav class="site-navigation text-right" role="navigation">
+                                  <div class="container" style="background-color: transparent;">
+                                      <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3">
+                                          <a href="#" class="site-menu-toggle js-menu-toggle text-black">
+                                              <span class="icon-menu h3"></span>
+                                          </a>
+                                      </div>
+
+                                      <ul class="site-menu js-clone-nav d-none d-lg-block" >
+                                          <li><a style="color: #fff !important;" href="{{ url_for('home.pricing') }}">Pricing</a></li>
+                                          <li class="has-children">
+                                              <a style="color: #fff !important;" href="{{ url_for('home.services') }}">Services</a>
+                                              <ul class="dropdown arrow-top">
+                                                  <li><a href="{{ url_for('home.services') }}">Writing Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Dissertation & Thesis</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Editing Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Assignments</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Admission Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Resume Services</a></li>
+                                              </ul>
+                                          </li>
+                                          <li><a href="{{ url_for('home.contact') }}" style="color: #fff !important;">Contact Us</a></li>
+                                          <li><a style="color: #fff !important;" href="{{ url_for('home.how_it_works') }}">How it Works</a></li>
+
+                                          {% if current_user.is_authenticated %}
+                                                <li class="has-children" >
+                                                    <a href="{{ url_for('users.profile') }}" style="color: #fff !important;">
+                                                        <i class="fas fa-user-circle" style="font-size: 20px;"></i>
+                                                    </a>
+                                                  <ul class="dropdown arrow-top" style="font-size: 13px;">
+                                                      <li><a href="{{ url_for('users.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li> 
+                                                  </ul>
+                                              </li>
+                                          {% endif %}
+
+                                            <li>
+                                                <a href="{{ url_for('users.place_order') }}">
+                                                  <button class="post_button button1"><span class="icon-plus mr-3"></span>
+                                                  <span>New Order</span></button>                                    
+                                                </a>
+                                            </li>
+
+                                      </ul>
+                                  </div>
+                              </nav>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <hr>
+        
+                <div style="height: 70px;"></div>
+
+
+    
+
+    
+
+            <div class="site-section bg-light">
+              <div class="container" >
+
+                  <div class="row">
+                       {% with messages = get_flashed_messages() %}
+                          {% if messages %}
+                              <div class="flashes">
+                                  <ul >
+                                      {% for message in messages %}
+                                        <li><i class="fas fa-info-circle"></i> {{ message }}</li>
+                                      {% endfor %}
+                                  </ul>
+                              </div>
+                          {% endif %}
+                      {% endwith %}
+
+                      <div class="tab" style="height: 100%; background: white;">
+                          <button class="tablinks" onclick="openContent(event, 'allOrders')" id="defaultOpen">All Orders</button>
+                          <button class="tablinks" onclick="openContent(event, 'Paris')">Completed Orders</button>
+                          <button class="tablinks" onclick="openContent(event, 'Messages')">Messages</button>
+                          <button class="tablinks" onclick="openContent(event, 'Profile')" id="user_profile">Personal Profile</button>
+                      </div>
+
+
+
+                      
+                      <div id="allOrders" class="tabcontent" style="background: #f1f1f1; border: none; border-top: 1px solid #ccc;">
+                          {% if posts_count == 0 %}
+                              <div class='parent flex-parent'>
+                                    <div class='child flex-child'>
+                                        <img src="{{ url_for('static', filename='images/0_orders.png') }}" /> <br /><br />
+                                        <a href="{{ url_for('users.place_order') }}">
+                                            <button class="post_button button1"><span class="icon-plus mr-3"></span>
+                                            <span >New Order</span></button>                                    
+                                        </a>
+                                    </div>
+                                </div>
+                          {% else %}
+
+                            <table role="table" id="orders">
+                                <thead role="rowgroup">
+                                    <tr role="row" style="font-size: 13px;">
+                                      <th role="columnheader">SKU</th>
+                                      <th role="columnheader">Order details</th>
+                                      <th role="columnheader">Price</th>
+                                      <th role="columnheader">Status</th>
+                                      <th role="columnheader">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody role="rowgroup">
+                                    {% for orders in all_orders %}
+                                        <tr role="row" style="font-size: 13px;">
+                                            <td role="cell">
+                                                #{{ orders.id }}
+                                            </td>
+                                            <td role="cell">
+                                                <div class="flex-container">
+                                                    <div class="order_details">
+                                                        <i class="fas fa-user-graduate"></i> {{ orders.ac_level }}
+                                                    </div>&nbsp;
+                                                    <div class="order_details">
+                                                        <i class="fas fa-graduation-cap"></i> {{ orders.discipline }}
+                                                    </div>&nbsp;
+                                                    <div class="order_details">
+                                                        <i class="far fa-copy"></i> {{ orders.total_pages }} pages
+                                                    </div>&nbsp;
+                                                    <div class="order_details">
+                                                        <i class="fas fa-file-alt"></i> {{ orders.paper_format }}
+                                                    </div>&nbsp;
+                                                    <div class="order_details">
+                                                        <i class="fas fa-pen-alt"></i> {{ orders.paper_type }}
+                                                    </div>&nbsp;
+                                                    
+                                                    <div class="order_details">
+                                                        <i class="fas fa-sliders-h"></i> {{ orders.spacing }} spacing
+                                                    </div>&nbsp;
+                                                    
+                                                </div>
+                                                  
+                                              </td>
+
+                                              
+                                              <td role="cell" class="price_cell">
+                                                  ${{ orders.grand_total }} USD
+                                              </td>
+                                              <td role="cell" class="status_cell">
+                                                  {% if orders.order_status == "pending_payment" %}
+                                                      <!-- Paypal buy now button -->
+
+                                                      <form class="checkout" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+
+                                                        <input type="hidden" name="cmd" value="_xclick">
+                                                        <input type="hidden" name="custom" value="{{ current_user.id }}">
+                                                        <input type="hidden" name="business" value="masterlywriters20@gmail.com">
+                                                        <input type="hidden" name="item_name" value="Assignment Order">
+                                                        <input type="hidden" name="item_number" value="{{ orders.id }}">
+                                                        <input type="hidden" name="no_shipping" value="1">
+                                                        <input type="hidden" name="return" value="http://masterlywriters.com/paypal_success">
+                                                        <input type="hidden" name="cancel_return" value="http://masterlywriters.com/paypal_cancel">
+                                                        <input type="hidden" name="notify_url" value="http://masterlywriters.com/paypal_ipn">
+                                                        <input type="hidden" name="no_note" value="1">
+                                                        <input type="hidden" name="currency_code" value="USD">
+                                                        <input type="hidden" name="tax" value="0">
+                                                        <input type="hidden" name="lc" value="US">
+                                                        <input type="hidden" name="bn" value="PP-DonationsBF">
+                                                        <input type="text" name="amount" value="0.01">
+                                                        <input type="hidden" name="hosted_button_id" value="5DWA2CG7H3BUE">
+
+                                                        <span class="checkout_span" id="paypal1">
+                                                            <input type="submit" class="checkout_btn" value="&nbsp; | Pay Now" name="submit" title="PayPal - The safer, easier way to pay online!" class="paypal_btn">
+                                                        </span>
+
+                                                        <span class="checkout_span" id="paypal2">
+                                                            <input type="submit" class="checkout_btn" value="Pay Now" name="submit" title="PayPal - The safer, easier way to pay online!" class="paypal_btn">
+                                                        </span>
+
+                                                        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+
+                                                    </form>
+
+
+                                                  {% elif orders.order_status == "Writer pending" %}
+                                                      <div>Writer pending</div>
+                                                  {% elif orders.order_status == "Cancelled" %}
+                                                      <div>
+                                                          <span class="g_total g_total1">*(Order Cancelled)</span>
+                                                      </div>
+                                                  {% elif orders.order_status == "Approved" %}
+                                                      <div>
+                                                          <span class="approved"><i class="fas fa-star"></i> {{ orders.order_status }}</span>
+                                                      </div>
+                                                  {% elif orders.order_status == "Revision required" %}
+                                                      <div>
+                                                          <span class="info_warning"><i class="fas fa-exclamation-triangle"></i> Revision</span>
+                                                      </div>
+                                                  {% else %}
+                                                      <div>{{ orders.order_status }}</div>
+                                                  {% endif %}
+                                              </td>
+                                              <td role="cell" style="width: 150px;">
+
+                                                  <div>
+                                                    
+                                                  </div>
+
+                                                  {% if orders.order_status == "Writer pending" or orders.order_status == "Approved" or orders.order_status == "Client Approval" or orders.order_status == "Revision required" %}
+                                                      <form method="GET" action="{{ url_for('users.view_order') }}">
+                                                          <input type="hidden" name="order_id" value="{{ orders.id }}" />
+                                                          <button type="submit" class="view_btn">
+                                                              <i class="far fa-eye"></i> | View
+                                                          </button>
+                                                      </form>
+                                                  {% elif orders.order_status == "Cancelled" %}
+                                                      <form method="GET" action="{{ url_for('users.update_order') }}">
+                                                      
+                                                          <input type="hidden" name="order_id" value="{{ orders.id }}" />
+                                                          <button type="submit" class="button2"><i class="fas fa-redo" style="font-size: 13px;"></i> Reorder</button>
+                                                      </form>
+                                                      <form method="GET" action="{{ url_for('users.view_order') }}">
+                                                          <input type="hidden" name="order_id" value="{{ orders.id }}" />
+                                                          <button type="submit" class="show_order_btn">
+                                                              <i class="far fa-eye"></i> | Show order
+                                                          </button>
+                                                      </form>
+                                                      
+
+                                                  {% else %}
+
+                                                  <div class="dropdown">
+                                                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                          Action
+                                                      </button>
+                                                    
+                                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                          <a class="dropdown-item" href="#">
+                                                              <form method="GET" action="{{ url_for('users.view_order') }}">
+                                                                  <input type="hidden" name="order_id" value="{{ orders.id }}" />
+                                                                  <button type="submit" class="view_btn drop_down_content">
+                                                                      <i class="far fa-eye"></i> | View
+                                                                  </button>
+                                                              </form> 
+                                                          </a>
+
+                                                          {% if orders.order_status == "pending_payment" %}
+                                                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#cancelOrderModal">
+                                                              <button class="cancel_btn drop_down_content" style="margin: 0 auto; width: 100% !important;">
+                                                                  <i class="fas fa-times"></i> | Cancel
+                                                              </button>
+                                                                  
+                                                          </a>
+                                                          {% endif %}
+                                                        
+
+                                                      </div>
+                                                  </div>
+
+                                                  {% endif %}
+                                                   
+                                              </td>
+
+
+                                              <!-- Cancel Order Modal UI -->
+                                            <div class="modal fade" id="cancelOrderModal" tabindex="-1" role="dialog" aria-labelledby="cancelOrderModal" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <h5 class="modal-title" id="cancelOrderModal">Cancel Order</h5>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                    </div>
+                                                    <div class="modal-body" style="font-size: 16px; text-align: left;">
+                                                        <span class="modal_body_span">Are you sure you want to cancel this order?</span>
+                                                        <strong style="display: block; color: #FF5733;">(order id: # {{ orders.id }}) </strong>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                      <form method="GET" action="{{ url_for('users.cancel_order') }}">
+                                                          <button type="submit" class="btn btn-danger">Yes</button>
+                                                          
+                                                          <input type="hidden" name="order_id" value="{{ orders.id }}" />
+                                                      </form>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </div> 
+
+                                              
+                                        </tr>
+                                      {% endfor %}
+                                </tbody>
+                            </table>
+                          {% endif %} 
+                      </div>
+
+
+
+
+
+
+
+
+
+                      <div id="Paris" class="tabcontent">
+
+                          <a href="{{ url_for('users.place_order') }}">
+                              <img src="{{ url_for('static', filename='images/coming_soon.png') }}" style="max-width: 300px;">
+                              <button class="post_button button1"><span class="icon-plus mr-3"></span>
+                              <span >New Order</span></button>                                    
+                          </a>
+                      </div>
+
+
+
+
+                    <div id="Messages" class="tabcontent">
+                        <img src="{{ url_for('static', filename='images/coming_soon.png') }}" style="max-width: 300px;">
+                    </div>
+
+                    <div id="Profile" class="tabcontent">
+                        <div class="prof_flex">
+                            <div class="prof_title">
+                                <span>
+                                    My Profile Details
+                                </span>
+                                
+                            </div>
+                            <div class="prof_action">
+                                <button class="button button1" id="edit_profile_btn" onclick="enableFields()"> <i class="fas fa-user-edit"></i> Click to Edit Profile</button>
+                            </div>
+                        </div>
+                        
+                        
+
+                            <table class="table table-striped">
+                                
+                                <tbody>
+                                    
+                                    <tr>
+                                        <td class="prof_details">
+                                            <label class="edit_profile_label" for="email">Email</label>
+                                        </td>
+                                        <td>
+                                            <input class="profile_form_input" type="text" name="email" id="email" value="{{ current_user.email }}" disabled="true">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="prof_details">
+                                            <label class="edit_profile_label" for="username">Username</label>
+                                        </td>
+                                        <td>
+                                            <input class="profile_form_input" type="text" name="username" id="username" value="{{ current_user.username }}" disabled="true">
+                                        </td>
+                                    </tr>
+                                    <form class="prof_form" id="update_profile_form" role="form" action="{{ url_for('users.edit_profile') }}" method="POST">
+
+                                        {{ profile_form.csrf_token }}
+
+                                        <tr>
+                                            <td class="prof_details">
+                                                <label class="edit_profile_label" for="full_name">
+                                                    Name
+                                                </label> 
+                                            </td>
+                                            <td >
+                                                {{ profile_form.name(class="profile_form_input", id="full_name", value=current_user.name, disabled="true") }}
+                                                <span class="error" id="name_error">
+                                                    
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="prof_details">
+                                                <label class="edit_profile_label" for="full_name">Phone</label> 
+                                            </td>
+                                            <td>
+                                                {{ profile_form.phone(class="profile_form_input", id="phone", value=current_user.phone_number) }}
+                                                <span class="error" id="phone_error">
+                                                    
+                                                </span>
+
+                                                {% if duplicate_phone_error %}
+                                                    <span class="error">
+                                                        {{ duplicate_phone_error }}
+                                                    </span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="prof_details"></td>
+                                            <td>
+                                                <button type="submit" class="change_pswd_btn" id="form_submit_btn" style="display: none; float: right; margin-right: 0 !important;">
+                                                    <i class="far fa-save"></i> Save Changes
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </form>
+                                     
+                                  </tbody>
+                              </table>
+                          
+
+                            <div class="prof_flex">
+                                <div class="prof_title">
+                                   
+                                </div>
+                                <div class="prof_action">
+                                    <button href="#change_password_section" data-toggle="collapse" class="button button1" id="change_pswd_form_toggle"> <i class="fas fa-key"></i> Click to Change Password</button>
+                                </div>
+                            </div>
+
+                            <div id="change_password_section" class="collapse">
+                                <form class="prof_form" role="form" name="change_pswd_form" id="change_pswd_form" action="{{ url_for('users.change_account_password') }}" method="post">
+                                {{ change_pswd_form.csrf_token }}
+
+                                <table class="table table-striped">
+                                
+                                    <tbody>
+
+                                        <tr>
+                                            <td class="prof_details" style="width: 20%;">
+                                                <label class="edit_profile_label" for="old_password" id="for_old_password">Old Password</label>
+                                            </td>
+                                            <td>
+                                                {{ change_pswd_form.old_password(placeholder="Enter your old password...", class="profile_form_input", id="old_password") }}
+
+                                                {% if change_pswd_form.old_password.errors %}
+                                                    {% for error in change_pswd_form.old_password.errors %}
+                                                        <span class="error" id="old_password_error">*{{ error }}</span>
+                                                    {% endfor %}
+                                                {% endif %}
+
+                                                {% if invalid_pswd_msg %}
+                                                    <span class="error" id="old_password_error">*{{ invalid_pswd_msg }}</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="prof_details">
+                                                <label class="edit_profile_label" id="for_new_pswd" for="new_password">New Password</label>
+                                            </td>
+                                            <td>
+                                                {{ change_pswd_form.new_password(placeholder="Enter your new password...", class="profile_form_input", id="new_password") }}
+
+                                                {% if change_pswd_form.new_password.errors %}
+                                                    {% for error in change_pswd_form.new_password.errors %}
+                                                        <span class="error">*{{ error }}</span>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="prof_details">
+                                                <label class="edit_profile_label" id="for_confirm_new_pswd" for="confirm_new_pswd">Retype New Password</label>
+                                            </td>
+                                            <td>
+                                                {{ change_pswd_form.confirm_new_pswd(placeholder="Retype your new password...", class="profile_form_input", id="confirm_new_pswd") }}
+
+                                                {% if change_pswd_form.confirm_new_pswd.errors %}
+                                                    {% for error in change_pswd_form.confirm_new_pswd.errors %}
+                                                        <span class="error" id="pswd_error">*{{ error }}</span>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="prof_details">
+                                                
+                                            </td>
+                                            <td>
+                                                <div class="flex-wrap">
+                                                    <div>
+                                                        <a href="{{ url_for('users.profile') }}" class="change_pswd_btn close" style="font-size: 13px; float: left; margin-left: 0 !important;" role="button">
+                                                            <i class="fas fa-eject"></i> Cancel
+                                                        </a>
+                                                    </div>
+                                                    <div>
+                                                        <button type="submit" class="change_pswd_btn" id="change_pswd_btn" style="font-size: 13px; float: right; margin-right: 0 !important;">
+                                                            <i class="fas fa-user-shield"></i> Update Password
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                         
+                                    </tbody>
+
+                                </table>
+                            </form>
+                            </div>
+                          
+                      </div>
+
+                     
+
+                </div>
+
+              </div>
+            </div>
+
+
+
+    
+
+
+            <footer class="page-footer font-small blue-grey lighten-5">
+
+                <div style="background: #ddd; font-size: 14px !important;">
+                    <div class="container">
+
+                        <!-- Grid row-->
+                        <div class="row py-4 d-flex align-items-center">
+
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                                <h6 class="mb-0">Get connected with us on social networks!</h6>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                                <!-- Facebook -->
+                                <a class="fb-ic">
+                                    <i class="fab fa-facebook-f white-text mr-4"> </i>
+                                </a>
+                                <!-- Twitter -->
+                                <a class="tw-ic">
+                                    <i class="fab fa-twitter white-text mr-4"> </i>
+                                </a>
+                                <!-- Google +-->
+                                <a class="gplus-ic">
+                                    <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                                </a>
+                                <!--Linkedin -->
+                                <a class="li-ic">
+                                    <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                                </a>
+                                <!--Instagram-->
+                                <a class="ins-ic">
+                                    <i class="fab fa-instagram white-text"> </i>
+                                </a>
+
+                            </div>
+                            <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row-->
+
+                    </div>
+                </div>
+
+                <!-- Footer Links -->
+                <div class="container text-center text-md-left mt-5" style="font-size: 15px;">
+
+                  <!-- Grid row -->
+                  <div class="row mt-3 dark-grey-text">
+
+                      <!-- Grid column -->
+                      <div class="col-md-3 col-lg-4 col-xl-3 mb-4" style="box-shadow: none !important;">
+
+                        <!-- Content -->
+                        <h6 class="text-uppercase font-weight-bold" style="font-size: 16px;">About </h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p class="footer_text">MasterlyWriters was founded to offer high-quality and affordable essays to students of all levels including high school, college, university, and post graduate. </p>
+                        <p class="footer_text">We only select writers who are truly masters in writing to ensure our clients get the best value.</p>
+
+                      </div>
+                      <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Quick Menu</h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Pricing</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">FAQ</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">How it works</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Contact Us</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Testimonials</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Privacy policy</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Terms of use</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">For writers</a>
+                        </p>
+
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Categories</h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Custom Writing</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Editing</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Proofreading</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                      <!-- Links -->
+                      <h6 class="text-uppercase font-weight-bold">Payment Methods</h6>
+                      <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Mastercard</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Payoneer</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">PayPal</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Visa</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                  </div>
+                  <!-- Grid row -->
+
+                </div>
+                <!-- Footer Links -->
+
+                <!-- Copyright -->
+                <div class="footer-copyright text-center text-black-50 py-3" style="background: green; color: #fff !important;">© 2020 Copyright:
+                  <a class="dark-grey-text" href="https://masterlywriters.com/" style="color: #fff !important;"> MasterlyWriters</a>
+                </div>
+                <!-- Copyright -->
+
+              </footer>
+              <!-- Footer -->
+
+
+        </div>
+
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        {% block scripts %}
+            
+            {{ bootstrap.load_js() }}
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/intlTelInput.min.js"></script>
+
+                <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }} "></script>
+                <script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }} "></script>
+                <script src="{{ url_for('static', filename='js/jquery-ui.js') }} "></script>
+                <script src="{{ url_for('static', filename='js/bootstrap.min.js') }} "></script>
+                <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }} "></script>
+                <script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }} "></script>
+                <script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }} "></script>
+                <script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }} "></script>
+                <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }} "></script>
+                <script src="{{ url_for('static', filename='js/aos.js') }} "></script>
+
+                
+                <script src="{{ url_for('static', filename='js/mediaelement-and-player.min.js') }} "></script>
+
+                <script src="{{ url_for('static', filename='js/index_main.js') }} "></script>
+                <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+                
+
+          
+                <script>
+
+                    $(document).ready(function() {
+                        var myVar;
+                        myVar = setTimeout(showPage, 2000);
+                    });
+
+                    function showPage() {
+                        document.getElementById("loader").style.display = "none";
+                        document.getElementById("myDiv").style.display = "block";
+
+                        {% if session['revision_updated'] %}
+                            alert('Revision requested successfully');
+                            {{ session.pop('revision_updated', None) }}
+                        {% endif %}
+                        
+
+                        $("#form_submit_btn").click(function(e) {
+                            e.preventDefault();
+                            var name = document.getElementById("full_name").value;
+
+                            var phoneNo = document.getElementById("phone").value;
+                            //alert(phoneNo);
+
+
+                            var valid_no = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{5}[-\s\.]?[0-9]{4,6}$/im
+
+                            if (name.length < 3) {
+                                var name_input_error = "*your full name should comprise of atleast 3 characters";
+                                document.getElementById("name_error").innerHTML = name_input_error;
+                                document.getElementById("full_name").style.border = "1px solid #FF3333";
+                            } else {
+                                if (phoneNo.match(valid_no)) {
+                                    //alert("rada safi");
+                                    $("#update_profile_form").submit();
+                                } else {
+                                    alert("invalid phone number");
+                                    document.getElementById("phone_error").innerHTML = "invalid phone number";
+                                    document.getElementById("_phone").style.border = "1px solid #FF3333";
+                                }
+                            }
+                        });
+                    }
+
+                    function openContent(evt, actionName) {
+                        var i, tabcontent, tablinks;
+                        tabcontent = document.getElementsByClassName("tabcontent");
+                        for (i = 0; i < tabcontent.length; i++) {
+                          tabcontent[i].style.display = "none";
+                        }
+                        tablinks = document.getElementsByClassName("tablinks");
+                        for (i = 0; i < tablinks.length; i++) {
+                          tablinks[i].className = tablinks[i].className.replace(" active", "");
+                        }
+                        document.getElementById(actionName).style.display = "block";
+                        evt.currentTarget.className += " active";
+                    }
+
+
+
+
+
+                    var wtf_phone_field = document.getElementById('phone');
+                    wtf_phone_field.style.position = 'absolute';
+                    wtf_phone_field.style.lineHeight = "40px";
+                    wtf_phone_field.style.top = '-9999px';
+                    wtf_phone_field.style.left = '-9999px';
+                    wtf_phone_field.parentElement.insertAdjacentHTML('beforeend', '<div><input type="tel" id="_phone" style="border:1px solid #ccc; border-radius: 3px;" disabled></div>');
+                    var fancy_phone_field = document.getElementById('_phone');
+                    fancy_phone_field.style.lineHeight = "40px";
+                    var fancy_phone_iti = window.intlTelInput(fancy_phone_field, {
+                        separateDialCode: true,
+                        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/utils.js",
+                    });
+                    fancy_phone_iti.setNumber(wtf_phone_field.value);
+
+                    fancy_phone_field.addEventListener('blur', function() {
+                        wtf_phone_field.value = fancy_phone_iti.getNumber();
+                    });
+
+
+
+
+
+
+                    {% if duplicate_phone_error %}
+                        //alert('apo sawa');
+                        document.getElementById("user_profile").click();
+                        document.getElementById("full_name").disabled = false;
+                        document.getElementById("_phone").disabled = false;
+                        document.getElementById("form_submit_btn").style.display = "block";
+                    {% else %}
+                        // Get the element with id="defaultOpen" and click on it
+                        document.getElementById("defaultOpen").click();
+                    {% endif %}
+
+                    {% if invalid_pswd_msg %}
+                        document.getElementById("user_profile").click();
+                        document.getElementById("change_pswd_form_toggle").click();
+                        document.getElementById("for_old_password").style.color = "red";
+                        document.getElementById("for_old_password").style.fontStyle = "oblique";
+                        document.getElementById("old_password").style.borderColor = "red";
+                    {% elif change_pswd_form.old_password.errors %}
+                        document.getElementById("user_profile").click();
+                        document.getElementById("change_pswd_form_toggle").click();
+                        document.getElementById("for_old_password").style.color = "red";
+                        document.getElementById("for_old_password").style.fontStyle = "oblique";
+                        document.getElementById("old_password").style.borderColor = "red";
+                    {% elif change_pswd_form.new_password.errors %}
+                        document.getElementById("user_profile").click();
+                        document.getElementById("change_pswd_form_toggle").click();
+                        document.getElementById("for_new_pswd").style.color = "red";
+                        document.getElementById("for_new_pswd").style.fontStyle = "oblique";
+                        document.getElementById("new_password").style.borderColor = "red";
+                    {% elif change_pswd_form.confirm_new_pswd.errors %}
+                        document.getElementById("user_profile").click();
+                        document.getElementById("change_pswd_form_toggle").click();
+                        document.getElementById("for_confirm_new_pswd").style.color = "red";
+                        document.getElementById("for_confirm_new_pswd").style.fontStyle = "oblique";
+                        document.getElementById("confirm_new_pswd").style.borderColor = "red";
+                    {% else %}
+                        // Get the element with id="defaultOpen" and click on it
+                        document.getElementById("defaultOpen").click();
+                    {% endif %}
+                    
+
+                    function enableFields() {
+                        document.getElementById("full_name").disabled = false;
+                        document.getElementById("_phone").disabled = false;
+                        document.getElementById("form_submit_btn").style.display = "block";
+                    }
+
+
+                    $("#change_pswd_btn").click(function (e) {
+                        e.preventDefault();
+                        $("#change_pswd_form").submit();
+                    });
+
+
+                </script>
+
+        {% endblock %}
+
+    </body>
+
+
+</html>

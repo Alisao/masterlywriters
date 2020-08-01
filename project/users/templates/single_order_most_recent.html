@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Masterly Writers | View Order Details</title>
+
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Work+Sans:300,400,700" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }} ">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}  ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }} ">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+        
+        
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }} ">
+      
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}  ">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }} ">
+
+        <!-- fontawesome icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}">
+
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profile_css/style.css') }} ">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/order.css') }} ">
+
+
+        <!-- MPYA -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+
+
+        <style>
+            /* Center the loader */
+            #loader {
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              z-index: 1;
+              width: 150px;
+              height: 150px;
+              margin: -75px 0 0 -75px;
+              border: 16px solid #f3f3f3;
+              border-radius: 50%;
+              border-top: 16px solid #3498db;
+              width: 120px;
+              height: 120px;
+              -webkit-animation: spin 2s linear infinite;
+              animation: spin 2s linear infinite;
+            }
+
+            @-webkit-keyframes spin {
+              0% { -webkit-transform: rotate(0deg); }
+              100% { -webkit-transform: rotate(360deg); }
+            }
+
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
+
+            /* Add animation to "page content" */
+            .animate-bottom {
+              position: relative;
+              -webkit-animation-name: animatebottom;
+              -webkit-animation-duration: 1s;
+              animation-name: animatebottom;
+              animation-duration: 1s
+            }
+
+            @-webkit-keyframes animatebottom {
+              from { bottom:-100px; opacity:0 } 
+              to { bottom:0px; opacity:1 }
+            }
+
+            @keyframes animatebottom { 
+              from{ bottom:-100px; opacity:0 } 
+              to{ bottom:0; opacity:1 }
+            }
+
+            #myDiv {
+              display: none;
+              text-align: center;
+            }
+
+            .flashes {
+                width: 100%;
+                margin-bottom: 20px;
+                margin-top: -40px;
+                background: rgba(255, 87, 51, .3);
+                color: red;
+                border-radius: 3px;
+                padding-top: 20px;
+            }
+
+            .flashes > ul {
+                list-style-type: none;
+            }
+
+            .px-4 {
+                background: white !important;
+                color: green !important;
+            }
+
+            .checkout_span:after {
+                font-family: FontAwesome;
+                content: "\f023 ";
+                font-size: 15px;
+                position: absolute;
+                left: 11px;
+                top: 1px;
+                pointer-events: none;
+                color: white;
+            }
+
+            .checkout_btn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 11px 18px !important;
+                left: 10px;
+                margin-top: -10px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                float: right;
+            }
+
+            .checkout_btn:hover {
+                background-color: #45a049;
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+            }
+
+            .button {
+                background-color: #4CAF50; /* Green */
+                border: none;
+                border-radius: 3px;
+                color: white;
+                padding: 11px 22px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 13px;
+                cursor: pointer;
+                -webkit-transition-duration: 0.4s; /* Safari */
+                transition-duration: 0.4s;
+            }
+            .button2 {
+                margin-top: -10px;
+            }
+
+            .button2:hover {
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+                margin-top: -10px;
+            }
+
+            .checkout {
+                margin-left: 20px;
+            }
+
+
+            .msg_button:hover {
+                background: #fff;
+                color: #4CAF50; /* Green */
+                border: 1px solid #4CAF50; /* Green */
+            }
+
+            .send_msg_btn {
+                padding: 8px 27px;
+                 font-size: 15px;
+            }
+
+            .send_msg_btn:hover {
+                background: red;
+            }
+
+            .reorder_btn {
+                background: rgba(219, 217, 216, .5);
+                color: #4CAF50; /* Green */
+                border-radius: 5px;
+                cursor: pointer;
+                padding: 10px 22px;
+            }
+
+
+            .checkout_span {
+                position: absolute;
+            }
+
+
+
+
+            .post_button {
+                background-color: #4CAF50; /* Green */
+                border: none;
+                color: white;
+                padding: 10px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+
+            }
+
+            .button1 {
+                background-color: white; 
+                color: black; 
+                border: 2px solid #4CAF50;
+                border-radius: 5px;
+            }
+
+            .button1:hover {
+                background-color: green;
+                border: 2px solid white;
+                color: white
+            }
+
+
+
+            .cancel_btn {
+                background: rgba(255, 87, 51, .5);
+                color: red;
+                border-radius: 5px;
+                margin-top: 10px;
+                cursor: pointer;
+                padding: 10px 22px;
+                
+            }
+
+
+            .cancel_btn:hover {
+                background: rgba(255, 87, 51, .3);
+            }
+
+            .edit_btn {
+                background: rgba(255, 87, 51, .5);
+                color: red;
+                border-radius: 5px;
+                padding: 7px 22px;
+                cursor: pointer;
+            }
+
+            .edit_btn:hover {
+                background: rgba(255, 87, 51, .3);
+            }
+
+            .o_details {
+                text-align: left;
+            }
+
+
+            .modal_body_span {
+                color: gray;
+            }
+
+            .modal-title {
+                color: gray;
+                font-weight: 500;
+                font-size: 17px;
+                text-align: center;
+            }
+
+            .send_msg_btn span {
+              cursor: pointer;
+              display: inline-block;
+              position: relative;
+              transition: 0.5s;
+            }
+
+            .send_msg_btn span:after {
+              content: '\f1d8 ';
+              font-family: FontAwesome;
+             
+              position: absolute;
+              opacity: 0;
+              top: 0;
+              right: -20px;
+              transition: 0.5s;
+            }
+
+            .send_msg_btn:hover span {
+              padding-right: 25px;
+            }
+
+            .send_msg_btn:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+
+            .messages {
+                background: #F3F3F3;
+                padding: 20px;
+                border-radius: 1px;
+                color: #A5A3A0;
+                text-align: left;
+                font-size: 13px;
+            }
+            
+            .messages > div {
+                padding: 10px;
+            }
+
+            textarea {
+                width: 100%;
+                padding: 12px 20px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                background-color: #f8f8f8;
+                font-size: 13px !important;
+            }
+
+            .modal-body
+            {
+                font-size: 13px;
+            }
+
+            .details {
+                width: 70% !important;
+                box-shadow: 0 12px 23px rgba(0, 0, 0, 0.23), 0 10px 10px rgba(0, 0, 0, 0.19);
+            }
+
+            .actions_panel {
+                width: 29%;
+                background: yellow;
+                margin-left: 10px !important;
+            }
+
+   
+
+
+            .site-logo {
+                margin-top: -10px;
+            }
+
+            .order_title {
+                color: #4CAF50; /* Green */
+                font-weight: 600;
+                white-space: nowrap !important;
+            }
+
+            .btn {
+                margin-top: 5px;
+                font-size: 13px;
+            }
+
+            .btn:hover {
+                background-color: initial;
+            }
+            .btn-arrow-right {
+                position: relative;
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+            .btn-arrow-right {
+                padding-left: 26px;
+            }
+            .btn-arrow-right:before,
+            .btn-arrow-right:after { /* make two squares (before and after), looking similar to the button */
+                content:"";
+                position: absolute;
+                top: 5px; /* move it down because of rounded corners */
+                width: 22px; /* same as height */
+                height: 22px; /* button_outer_height / sqrt(2) */
+                background: inherit; /* use parent background */
+                border: none; /* use parent border */
+                border-left-color: none; /* hide left border */
+                border-bottom-color: transparent; /* hide bottom border */
+                border-radius: 0px 4px 0px 0px; /* round arrow corner, the shorthand property doesn't accept "inherit" so it is set to 4px */
+                -webkit-border-radius: 0px 4px 0px 0px;
+                -moz-border-radius: 0px 4px 0px 0px;
+            }
+            .btn-arrow-right:before,
+            .btn-arrow-right:after {
+                transform: rotate(45deg); /* rotate right arrow squares 45 deg to point right */
+                -webkit-transform: rotate(45deg);
+                -moz-transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+            }
+            .btn-arrow-left:before {
+                transform: rotate(225deg); /* rotate left arrow squares 225 deg to point left */
+                -webkit-transform: rotate(225deg);
+                -moz-transform: rotate(225deg);
+                -o-transform: rotate(225deg);
+                -ms-transform: rotate(225deg);
+            }
+            .btn-arrow-right:before { /* align the "before" square to the left */
+                left: -11px;
+            }
+            .btn-arrow-right:after { /* align the "after" square to the right */
+                right: -11px;
+            }
+            .btn-arrow-right:after { /* bring arrow pointers to front */
+                z-index: 1;
+            }
+            .btn-arrow-right:before { /* hide arrow tails background */
+                background-color: white;
+            }
+
+            
+
+            .btn-info {
+                background: rgb(209, 205, 198);
+                border: none;
+                color: gray;
+            }
+
+            .btn-info:hover {
+                background: rgb(209, 205, 198);
+                border: none;
+                color: gray;
+            }
+
+            .single_order {
+                background: white;
+            }
+
+            .details_container {
+                display: flex;
+                flex-wrap: nowrap;
+                
+            }
+
+            .details_container > div {
+                text-align: center;
+                padding: 20px;
+            }
+
+            .left {
+                color: gray;
+                width: 35%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin-top: 8px !important;
+                text-align: left;
+            }
+
+            .left_content {
+                width: 35% !important;
+                text-align: left !important;
+            }
+
+            .o_header {
+                color: green;
+                font-size: 15px;
+                font-weight: 600;
+            }
+
+            .right_content {
+                float: right;
+                text-align: left !important;
+                width: 64%;
+            }
+
+            .right_middle_content, .left_middle_content {
+                margin-top: -20px;
+                font-size: 13px;
+                color: gray;
+            }
+
+            .actions_flex {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .actions_flex > div {              
+                margin: 10px;
+                text-align: center;
+            }
+
+
+            .dismiss:hover {
+                color: green;
+            }
+
+            .box {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .box > div {
+                padding: 10px;
+            }
+
+            .info_label {
+                width: 30%;
+                text-align: right;
+                font-style: italic;
+            }
+
+            .revision {
+                margin-top: -20px !important;
+            }
+
+            .order_desc {
+                width: 49%;
+                text-align: left;
+            }
+
+
+
+            
+.sub_tab-wrap {
+    -webkit-transition: 0.3s box-shadow ease;
+    transition: 0.3s box-shadow ease;
+    border-radius: 6px !important;
+    max-width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+    position: relative;
+    list-style: none;
+    background-color: #fff;
+    margin: 0 auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    color: gray;
+    font-size: 13px;
+}
+
+.sub_tab {
+    display: none;
+}
+.sub_tab:checked:nth-of-type(1) ~ .sub_tab__content:nth-of-type(1) {
+    opacity: 1;
+    -webkit-transition: 0.5s opacity ease-in, 0.2s transform ease;
+    transition: 0.5s opacity ease-in, 0.2s transform ease;
+    position: relative;
+    top: 0;
+    z-index: 100;
+    -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+    text-shadow: 0 0 0;
+}
+.sub_tab:checked:nth-of-type(2) ~ .sub_tab__content:nth-of-type(2) {
+    opacity: 1;
+    -webkit-transition: 0.5s opacity ease-in, 0.2s transform ease;
+    transition: 0.5s opacity ease-in, 0.2s transform ease;
+    position: relative;
+    top: 0;
+    z-index: 100;
+    -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+    text-shadow: 0 0 0;
+}
+.sub_tab:checked:nth-of-type(3) ~ .sub_tab__content:nth-of-type(3) {
+    opacity: 1;
+    -webkit-transition: 0.5s opacity ease-in, 0.2s transform ease;
+    transition: 0.5s opacity ease-in, 0.2s transform ease;
+    position: relative;
+    top: 0;
+    z-index: 100;
+    -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+    text-shadow: 0 0 0;
+}
+.sub_tab:checked:nth-of-type(4) ~ .sub_tab__content:nth-of-type(4) {
+    opacity: 1;
+    -webkit-transition: 0.5s opacity ease-in, 0.2s transform ease;
+    transition: 0.5s opacity ease-in, 0.2s transform ease;
+    position: relative;
+    top: 0;
+    z-index: 100;
+    -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+    text-shadow: 0 0 0;
+}
+.sub_tab:first-of-type:not(:last-of-type) + label {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.sub_tab:not(:first-of-type):not(:last-of-type) + label {
+  border-radius: 0;
+}
+.sub_tab:last-of-type:not(:first-of-type) + label {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.sub_tab:checked + label {
+    background-color: #fff;
+    box-shadow: 0 -1px 0 #fff inset;
+    cursor: default;
+}
+.sub_tab:checked + label:hover {
+    box-shadow: 0 -1px 0 #fff inset;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+.sub_tab + label {
+    width:100%;   
+    box-shadow: 0 -1px 0 #eee inset;
+    border-radius: 6px 6px 0 0 !important;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: #333;
+    -webkit-box-flex: 3;
+    -webkit-flex-grow: 3;
+      -ms-flex-positive: 3;
+          flex-grow: 3;
+    text-align: center;
+    background-color: #f2f2f2;
+    -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+    text-align: center;
+    -webkit-transition: 0.3s background-color ease, 0.3s box-shadow ease;
+    transition: 0.3s background-color ease, 0.3s box-shadow ease;
+    height: 50px;
+    box-sizing: border-box;
+    padding: 15px;
+}
+@media (min-width:768px) {
+        
+    .sub_tab + label {
+        width:auto;
+    }
+}
+.sub_tab + label:hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 1px 0 #f4f4f4 inset;
+}
+.sub_tab__content {
+    padding: 10px 25px;
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    opacity: 0;
+    left: 0;
+    -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+    border-radius: 6px;
+    
+}
+
+
+
+
+            @media only screen and (max-width:800px) {
+            /* For tablets: */
+                .file_details {
+                    min-width: 100%;
+                    padding: 10px;
+                }
+
+                .details_container {
+                    display: block !important;
+                }
+
+                .details_container > div{
+                    width: 100% !important;
+                }
+
+                .left {
+                    width: 100% !important;
+                }
+
+                .right_content {
+                    width: 100% !important;
+                }
+
+                .checkout_span:after {
+                    top: 2px;
+                }
+
+                .checkout_btn {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 11px 20px !important;
+                    left: 10px;
+                    margin-top: -10px !important;
+                }
+
+                .checkout_btn:hover {
+                    background-color: #45a049;
+                    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+                }
+
+                .box {
+                    width: 100%;
+                }
+
+            }
+            @media only screen and (max-width:500px) {
+              /* For mobile phones: */
+                
+                .file_details {
+                    min-width: 100%;
+                    padding: 10px;
+                }
+
+                .f_id {
+                    width: 20%;
+                }
+            }
+        </style>
+        
+    </head>
+    <body >
+
+        <div id="loader"></div>
+
+
+
+        <!-- Send Message Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+                <form action="{{ url_for('users.send_message') }}" role="form" method="post">
+                    {{ msg_form.csrf_token }}
+                    <div class="modal-header">
+                        <h4 class="modal-title">Send new message</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Type your message here</label><br>
+                        <input type="hidden" name="order_id_input" id="order_id_input">
+
+                        {{ msg_form.msg_body(class="form-control", rows="8", placeholder="Your Message") }}
+
+                        <span class="error">
+                            {% if msg_form.msg_body.errors %}
+                                {% for error in msg_form.msg_body.errors %}
+                                    *{{ error }}
+                                {% endfor %}
+                            {% endif %}
+                        </span>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="button send_msg_btn"><span>Send </span></button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+              
+            </div>
+            
+          </div>
+        </div>
+
+
+
+
+
+        <div style="display:none;" id="myDiv" class="animate-bottom">
+          
+            <div class="site-wrap">
+
+                <div class="site-mobile-menu">
+                    <div class="site-mobile-menu-header">
+                        <div class="site-mobile-menu-close mt-3">
+                            <span class="icon-close2 js-menu-toggle"></span>
+                        </div>
+                    </div>
+                    <div class="site-mobile-menu-body"></div>
+                </div> <!-- .site-mobile-menu -->
+              
+          
+                <div class="site-navbar-wrap" style="background-image: url(../static/images/profile_banner.jpg); color: white; opacity: 0.8;">
+                  
+                    <div class="container" >
+                        <div class="site-navbar" >
+                          <div class="py-1" style="background-image: url(../static/images/profile_banner.jpg); margin-left: -15px;">
+                            <div class="row align-items-center" style="background-color: transparent;">
+                              <div class="col-2">
+                                <h2 class="mb-0 site-logo" ><a style="color: white;" href="{{ url_for('home.home') }}">Masterly<strong class="font-weight-bold" style="color: white; opacity: 2.0;">Writers</strong> </a></h2>
+                              </div>
+                              <div class="col-10">
+                                <nav class="site-navigation text-right" role="navigation">
+                                  <div class="container" style="background-color: transparent;">
+                                      <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3">
+                                          <a href="#" class="site-menu-toggle js-menu-toggle text-black">
+                                              <span class="icon-menu h3"></span>
+                                          </a>
+                                      </div>
+
+                                      <ul class="site-menu js-clone-nav d-none d-lg-block" >
+                                          <li><a style="color: #fff !important;" href="{{ url_for('home.pricing') }}">Pricing</a></li>
+                                          <li class="has-children">
+                                              <a style="color: #fff !important;" href="{{ url_for('home.services') }}">Services</a>
+                                              <ul class="dropdown arrow-top">
+                                                  <li><a href="{{ url_for('home.services') }}">Writing Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Dissertation & Thesis</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Editing Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Assignments</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Admission Services</a></li>
+                                                  <li><a href="{{ url_for('home.services') }}">Resume Services</a></li>
+                                              </ul>
+                                          </li>
+                                          <li><a href="{{ url_for('home.contact') }}" style="color: #fff !important;">Contact Us</a></li>
+                                          <li><a style="color: #fff !important;" href="{{ url_for('home.how_it_works') }}">How it Works</a></li>
+
+                                          {% if current_user.is_authenticated %}
+                                                <li class="has-children" >
+                                                    <a href="{{ url_for('users.profile') }}" style="color: #fff !important;">
+                                                        <i class="fas fa-user-circle" style="font-size: 20px;"></i>
+                                                    </a>
+                                                  <ul class="dropdown arrow-top" style="font-size: 13px;">
+                                                      <li><a href="{{ url_for('users.profile') }}"><i class="far fa-user"></i> View Profile</a></li>
+                                                      <li><a href="{{ url_for('users.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li> 
+                                                  </ul>
+                                              </li>
+                                          {% endif %}
+
+                                            <li>
+                                                <a href="{{ url_for('users.place_order') }}">
+                                                  <button class="post_button button1"><span class="icon-plus mr-3"></span>
+                                                  <span>Order Now</span></button>                                    
+                                                </a>
+                                            </li>
+
+                                      </ul>
+                                  </div>
+                              </nav>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <hr>
+                <div style="height: 50px;"></div>
+
+
+    
+
+    
+
+            <div class="site-section bg-light">
+              <div class="container" style="text-align: center !important;">
+
+
+
+
+                  
+                     
+                  
+
+                    <div class="back_link">
+                        <a href="{{ url_for('users.profile') }}">Go back to my profile</a>
+                    </div>
+
+
+                    
+                  
+                  <div class="row" style="background: green !important;">
+
+                      
+
+
+
+                      <div class="details" >
+
+                          {% if posts_count == 0 %}
+                              <div class='parent flex-parent'>
+                                    <div class='child flex-child'>
+                                        <img src="{{ url_for('static', filename='images/0_orders.png') }}" /> <br /><br />
+                                        <a href="{{ url_for('users.place_order') }}">
+                                            <button class="post_button button1"><span class="icon-plus mr-3"></span>
+                                            <span >New Order  </span></button>                                    
+                                        </a>
+                                    </div>
+                                </div>
+                          {% else %}
+
+
+
+
+
+
+
+
+
+
+
+                                
+                                <div class="single_order">
+                                    <div class="details_container">
+                                        <div class="left">
+                                            <span class="o_header">{{ recent_orders.discipline }} / {{ recent_orders.topic }}</span>
+                                            <br />
+                                            <br />
+                                            <div class="left_middle_content" style="text-align: left;">
+                                                Order id: #{{ recent_orders.id }} / {{ recent_orders.total_pages }} pages / {{ recent_orders.ac_level }}
+                                                <br />
+                                                Deadline:
+                                                <strong style="margin-top: 10px !important;"> 
+                                                    {{ recent_orders.due_date.strftime("%b %d %Y %H:%M") }} (if you pay now)
+                                                </strong>
+                                                <br />
+                                                <br />
+
+
+                                                <div class="actions_flex">
+                                                
+                                                    {% if recent_orders.order_status == 'pending_payment' %}
+                                                        <div>
+                                                            <form method="GET" action="{{ url_for('users.update_order') }}">
+                                                                  
+                                                                <input type="hidden" name="order_id" value="{{ recent_orders.id }}" />
+                                                                <button type="submit" class="button button2">
+                                                                    <i class="far fa-edit"></i> | Edit
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                        
+                                                        <div>
+                                                            <!-- Paypal buy now button -->
+                                                            <form class="checkout" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+
+                                                                <input type="hidden" name="cmd" value="_xclick">
+                                                                <input type="hidden" name="custom" value="{{ current_user.id }}">
+                                                                <input type="hidden" name="business" value="masterlyprowriters@gmail.com">
+                                                                <input type="hidden" name="item_name" value="Assignment Order">
+                                                                <input type="hidden" name="item_number" value="SE-001">
+                                                                <input type="hidden" name="no_shipping" value="1">
+                                                                <input type="hidden" name="return" value="http://masterlywriters.com/paypal_success">
+                                                                <input type="hidden" name="cancel_return" value="http://masterlywriters.com/paypal_cancel">
+                                                                <input type="hidden" name="notify_url" value="http://masterlywriters.com/paypal_ipn">
+                                                                <input type="hidden" name="no_note" value="1">
+                                                                <input type="hidden" name="currency_code" value="USD">
+                                                                <input type="hidden" name="tax" value="0">
+                                                                <input type="hidden" name="lc" value="US">
+                                                                <input type="hidden" name="bn" value="PP-DonationsBF">
+                                                                <input type="hidden" name="amount" value="{{ recent_orders.grand_total }}">
+                                                                <input type="hidden" name="hosted_button_id" value="5DWA2CG7H3BUE">
+
+                                                                <span class="checkout_span">
+                                                                    <input type="submit" class="checkout_btn" value="&nbsp; | Pay Now" name="submit" title="PayPal - The safer, easier way to pay online!">
+                                                                </span>
+
+                                                                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+
+                                                            </form>
+                                                        </div>
+
+                                                    {% elif recent_orders.order_status == "Cancelled" %}
+                                                        <form method="GET" action="{{ url_for('users.update_order') }}">
+                                                              
+                                                            <input type="hidden" name="order_id" value="{{ recent_orders.id }}" />
+                                                            <button type="submit" class="button button2">
+                                                                <i class="far fa-edit"></i> | Reorder
+                                                            </button>
+                                                        </form>
+                                                    {% elif recent_orders.order_status == "Client Approval" %}
+
+                                                        <form method="GET" action="{{ url_for('users.update_order') }}">
+                                                              
+                                                            <input type="hidden" name="order_id" value="{{ recent_orders.id }}" />
+                                                            <button type="submit" class="button button2">
+                                                                <i class="far fa-thumbs-up"></i> | Approve Order
+                                                            </button>
+                                                        </form>
+
+
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="right_content">
+                                            <button type="button" class="btn btn-info btn-arrow-right" id="cancelled">Cancelled</button>
+                                            <button type="button" class="btn btn-info btn-arrow-right" id="payment">Waiting for payment</button>
+                                            <button type="button" class="btn btn-info btn-arrow-right">Writer pending</button>
+                                            <button type="button" class="btn btn-info btn-arrow-right">In progress</button>
+                                            
+                                            <button type="button" class="btn btn-info btn-arrow-right">Approval</button>
+
+                                            <br />
+                                            <br />
+                                            <div class="right_middle_content">
+                                                <span >Hello thanks for your interest in our platform. Your order is yet to be paid. Please check your email and follow the tips to complete the payment procedure.</span>
+                                            </div>
+
+                                            <br />
+                                            <div class="right_middle_content" style="margin-top: -5px;">
+                                                {% if recent_orders.order_status == 'pending_payment' %}
+                                                    <div class="for_cancel" style="float: right; margin-right: 10px;">
+                                                        <button type="button" class="cancel_btn" data-toggle="modal" data-target="#cancelOrderModal">
+                                                            <i class="fas fa-times" style="font-size: 17px;"></i>&nbsp;
+                                                            <span>Cancel order</span>
+                                                        </button> &nbsp; 
+                                                        <span class="g_total">${{ recent_orders.grand_total }} USD</span>
+                                                        
+                                                    </div>
+                                                {% elif recent_orders.order_status == 'Client Approval' %}
+                                                    <form method="GET" action="{{ url_for('users.update_order') }}">
+                                                              
+                                                            <input type="hidden" name="order_id" value="{{ recent_orders.id }}" />
+                                                            <button type="submit" class="button revision">
+                                                                <i class="fas fa-retweet"></i> | Request revision
+                                                            </button>
+                                                        </form>
+                                                {% endif %}
+                                            </div>
+
+
+
+
+                                            <div class="right_middle_content">
+                                                
+
+                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                        </div>
+
+
+
+
+
+
+
+
+                                    </div>
+
+                                    <div class="sub_tab-wrap">
+        
+                                                    <input type="radio" id="tab1" name="tabGroup1" class="sub_tab" checked>
+                                                    <label for="tab1">Order Details</label>
+
+                                                    <input type="radio" id="tab2" name="tabGroup1" class="sub_tab">
+                                                    <label for="tab2">Messages</label>
+
+                                                    <input type="radio" id="tab3" name="tabGroup1" class="sub_tab">
+                                                    <label for="tab3">Files</label>
+
+                                                    <div class="sub_tab__content">
+                                                        <div class="box">
+                                                          <div class="info_label">Paper Title</div>
+                                                          <div class="o_details">{{ recent_orders.topic }}</div>
+                                                      </div>
+                                                      <hr class="style1">
+
+                                                      <div class="box">
+                                                          <div class="info_label">Paper Type</div>
+                                                          <div>{{ recent_orders.paper_type }}</div>
+                                                      </div>
+                                                      <hr class="style1">
+
+                                                      <div class="box">
+                                                          <div class="info_label">Academic Level</div>
+                                                          <div>{{ recent_orders.ac_level }}</div>
+                                                      </div>
+                                                      <hr class="style1">
+
+                                                      <div class="box">
+                                                          <div class="info_label">Pages / Words</div>
+                                                          <div>{{ recent_orders.total_pages }} pages / {{ recent_orders.word_count }} words</div>
+                                                      </div>
+                                                      <hr class="style1">
+
+                                                      <div class="box">
+                                                          <div class="info_label">Spacing</div>
+                                                          <div>{{ recent_orders.spacing }}</div>
+                                                      </div>
+                                                      <hr class="style1">
+
+                                                      <div class="box">
+                                                          <div class="info_label">Sources</div>
+                                                          <div>{{ recent_orders.sources }}</div>
+                                                      </div>
+                                                      <hr class="style1">
+
+                                                      <div class="box">
+                                                          <div class="info_label">Paper Format</div>
+                                                          <div>{{ recent_orders.paper_format }}</div>
+                                                      </div>
+                                                      <hr class="style1">
+
+                                                      <div class="box">
+                                                          <div class="info_label">Instructions</div>
+                                                          <div class="order_desc">{{ recent_orders.instructions }}</div>
+                                                      </div>
+                                                      <hr class="style1">
+
+                                                      <div class="box">
+                                                          <div class="info_label">Grand Total</div>
+                                                          <div> USD ${{ recent_orders.grand_total }}</div>
+                                                      </div>
+                                                      <hr class="style1">
+            </div>
+
+            <div class="sub_tab__content">
+                <h3>Messages</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Morbi mattis ullamcorper velit. Pellentesque posuere. Etiam ut purus mattis mauris sodales aliquam. Praesent nec nisl a purus blandit viverra.</p>
+            </div>
+
+            <div class="sub_tab__content">
+                <h3>Section Three</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Morbi mattis ullamcorper velit. Pellentesque posuere. Etiam ut purus mattis mauris sodales aliquam. Praesent nec nisl a purus blandit viverra.</p>
+            </div>
+
+        </div>
+
+                                </div>
+                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  <div class='parent flex-parent'>
+                                      
+                                      <div class='child flex-child' style="font-size: 14px;">
+
+
+
+
+                                          <!-- Cancel Order Modal UI -->
+                                            <div class="modal fade" id="cancelOrderModal" tabindex="-1" role="dialog" aria-labelledby="cancelOrderModal" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <h6 class="modal-title">Cancel Order</h6>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                    </div>
+                                                    <div class="modal-body" style="font-size: 16px; text-align: center;">
+                                                        <span class="modal_body_span">Are you sure you want to cancel this order (#{{ recent_orders.id }})?</span>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary dismiss" data-dismiss="modal">Close</button>
+                                                      <form method="GET" action="{{ url_for('users.cancel_order') }}">
+                                                          <button type="submit" class="btn-danger">Yes</button>
+                                                          
+                                                          <input type="hidden" name="order_id" value="{{ recent_orders.id }}" />
+                                                      </form>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </div> 
+
+
+
+                                                
+                                      </div>
+
+                                  </div>
+
+            
+                                  
+                                
+                          {% endif %}      
+                                         
+                      </div>
+
+
+                      <div class="actions_panel" style="">
+                          manu
+                      </div>
+
+
+
+
+
+                     
+
+                </div>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+
+
+    
+
+
+            <footer class="page-footer font-small blue-grey lighten-5">
+
+                <div style="background: #ddd;">
+                    <div class="container">
+
+                      <!-- Grid row-->
+                      <div class="row py-4 d-flex align-items-center">
+
+                        <!-- Grid column -->
+                        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                          <h6 class="mb-0">Get connected with us on social networks!</h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                          <!-- Facebook -->
+                          <a class="fb-ic">
+                            <i class="fab fa-facebook-f white-text mr-4"> </i>
+                          </a>
+                          <!-- Twitter -->
+                          <a class="tw-ic">
+                            <i class="fab fa-twitter white-text mr-4"> </i>
+                          </a>
+                          <!-- Google +-->
+                          <a class="gplus-ic">
+                            <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                          </a>
+                          <!--Linkedin -->
+                          <a class="li-ic">
+                            <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                          </a>
+                          <!--Instagram-->
+                          <a class="ins-ic">
+                            <i class="fab fa-instagram white-text"> </i>
+                          </a>
+
+                        </div>
+                        <!-- Grid column -->
+
+                      </div>
+                      <!-- Grid row-->
+
+                    </div>
+                </div>
+
+                <!-- Footer Links -->
+                <div class="container text-center text-md-left mt-5" >
+
+                  <!-- Grid row -->
+                  <div class="row mt-3 dark-grey-text" >
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mb-4" style="box-shadow: none !important; ">
+
+                      <!-- Content -->
+                      <h6 class="text-uppercase font-weight-bold">About </h6>
+                      <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                      <p class="footer_text">MasterlyWriters was founded to offer high-quality and affordable essays to students of all levels including high school, college, university, and post graduate. </p>
+                      <p class="footer_text">We only select writers who are truly masters in writing to ensure our clients get the best value.</p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Quick Menu</h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Pricing</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">FAQ</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">How it works</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Contact Us</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Testimonials</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Privacy policy</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">Terms of use</a>
+                        </p>
+                        <p class="footer_text">
+                          <a class="dark-grey-text" href="#!">For writers</a>
+                        </p>
+
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Categories</h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Custom Writing</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Editing</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Proofreading</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                      <!-- Links -->
+                      <h6 class="text-uppercase font-weight-bold">Payment Methods</h6>
+                      <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Mastercard</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Payoneer</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">PayPal</a>
+                        </p>
+                        <p class="footer_text">
+                            <a class="dark-grey-text" href="#!">Visa</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                  </div>
+                  <!-- Grid row -->
+
+                </div>
+                <!-- Footer Links -->
+
+                <!-- Copyright -->
+                <div class="footer-copyright text-center text-black-50 py-3" style="background: green; color: #fff !important;">© 2020 Copyright:
+                  <a class="dark-grey-text" href="https://masterlywriters.com/" style="color: #fff !important;"> MasterlyWriters</a>
+                </div>
+                <!-- Copyright -->
+
+              </footer>
+              <!-- Footer -->
+
+
+        </div>
+
+
+  
+        
+
+        <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery-ui.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/popper.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/aos.js') }} "></script>
+
+        
+        <script src="{{ url_for('static', filename='js/mediaelement-and-player.min.js') }} "></script>
+
+        <script src="{{ url_for('static', filename='js/index_main.js') }} "></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  
+        <script>
+
+            $(document).ready(function() {
+                var myVar;
+                myVar = setTimeout(showPage, 2000);
+            });
+
+            function showPage() {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("myDiv").style.display = "block";
+
+                {% if recent_orders.order_status == "Cancelled" %}
+                    document.getElementById("cancelled").style.background = "#B8A915";
+                    document.getElementById("cancelled").style.color = "brown";
+                {% elif recent_orders.order_status == "pending_payment" %}
+                    document.getElementById("payment").style.background = "#B8A915";
+                    document.getElementById("payment").style.color = "brown";
+                {% endif %}
+            }
+
+            function getOrderId(id) {
+                document.getElementById("order_id_input").value = id;
+                //alert(id);
+            }
+
+            function uncheckTab() {
+                document.getElementById("tab").active = false;
+            }
+
+
+              function openContent(evt, actionName) {
+                  var i, tabcontent, tablinks;
+                  tabcontent = document.getElementsByClassName("tabcontent");
+                  for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                  }
+                  tablinks = document.getElementsByClassName("tablinks");
+                  for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                  }
+                  document.getElementById(actionName).style.display = "block";
+                  evt.currentTarget.className += " active";
+              }
+
+        </script>
+
+    </body>
+
+
+</html>

@@ -1,0 +1,191 @@
+body 
+{
+    font-family: Century Gothic;
+}
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+.txt_field {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    text-align: left;
+    border-radius: 5px;
+    font-family: Century Gothic;
+}
+
+.txt_field:focus {
+    background-color: white;
+    outline: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+h3
+{
+    padding: 30px;
+    color: #4CAF50;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-family: Century Gothic;
+}
+
+button:hover 
+{
+    opacity: 1;
+}
+
+#logo-1
+{
+    border: 1px solid #f8f8f8;
+    border-radius: 5px;
+    box-shadow: 1px 1px #888888;
+}
+
+#login_icon
+{
+    margin-top: 20px;
+    font-size: 50px; 
+    color: #aaa;
+}
+
+.login_txt {
+    margin-top: 10px;
+    padding: 20px;
+    font-size: 15px;
+    color: #aaa;
+}
+
+.remember_checkbox
+{
+    margin-top: 15px;
+}
+
+.terms
+{
+    margin-left: 5px;
+}
+
+.terms_link
+{
+    color: dodgerblue;
+}
+
+.forgot_pwd
+{
+    padding-right: 5px;
+    float: right; 
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+.forgot_pwd a
+{
+    color: dodgerblue;
+    text-decoration: none;
+    font-style: oblique;
+}
+
+#user_form
+{
+    margin: auto;
+    margin-top: 30px;
+    width: 38%;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 1px 0 1px 1px #888888;
+}
+
+
+#form_header
+{
+    text-align: center;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+    padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.rem
+{
+    font-size: 15px;
+}
+
+
+
+select {
+    color: #a1a1a1;
+}
+
+option {
+    margin-top: 10px;
+}
+
+
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 820px) {
+    #user_form 
+    {
+       width: 90%;
+    }
+    #signup_form 
+    {
+       width: 90%;
+    }
+}
+@media screen and (max-width: 620px) {
+    #user_form 
+    {
+       width: 90%;
+    }
+
+    #signup_form 
+    {
+       width: 90%;
+    }
+
+    .cancelbtn, .signupbtn {
+        width: 100%;
+    }
+}

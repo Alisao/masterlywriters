@@ -1,0 +1,93 @@
+#orders {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 2px auto;
+}
+
+#orders td, #orders th {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+#orders tr:nth-child(even){background-color: #f2f2f2;}
+
+#orders tr:hover {background-color: #ddd;}
+
+#orders th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+.contact_flex {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .contact_flex > div {
+            background-color: #fff;
+            margin: 10px;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 0 5px 20px -7px rgba(0, 0, 0, 0.9) !important;
+        }
+
+        .contact_form {
+            width: 60%;
+        }
+
+        .contact_form_btn {
+            display: inline-block;
+            border-radius: 3px;
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 10px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            float: right;
+            margin-right: 0;
+        }
+
+        .contact_form_btn span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .contact_form_btn span:after {
+            content: '\f1d8 ';
+            font-family: FontAwesome;
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .contact_form_btn:hover span {
+            padding-right: 25px;
+        }
+
+        .contact_form_btn:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+
+        .contact_summary {
+            width: 35%;
+            height: 100%;
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        }
+
+.separator {
+    height: 200px;
+}

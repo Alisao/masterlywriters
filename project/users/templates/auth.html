@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>MasterlyWriters | User Authentication</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<meta name="author" content="Emmanuel Sindani">
+
+	{% block styles %}
+		{{ bootstrap.load_css() }}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/css/intlTelInput.css">
+		{% endblock %}
+		<!-- CSS -->
+		<link href="{{ url_for('static', filename='css/tabs_style.css') }} " rel="stylesheet">
+		
+		<!-- Fonts  -->
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,600italic,600,700italic' rel='stylesheet' type='text/css'>
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/auth_vendor/bootstrap/css/bootstrap.min.css') }} ">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }} ">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }} ">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/auth_vendor/animate/animate.css') }} ">
+	<!--===============================================================================================-->	
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/auth_vendor/css-hamburgers/hamburgers.min.css') }} ">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/auth_vendor/animsition/css/animsition.min.css') }} ">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/auth_vendor/select2/select2.min.css') }} ">
+	<!--===============================================================================================-->	
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/auth_vendor/daterangepicker/daterangepicker.css') }} ">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/auth_css/util.css') }} ">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/auth_css/main.css') }} ">
+	<!--===============================================================================================-->
+
+		<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+		</style>
+		<style>
+			.button {
+			  display: inline-block;
+			  border-radius: 4px;
+			  background-color: #57b846;
+			  border: none;
+			  color: #fff;
+			  text-align: center;
+			  font-size: 20px;
+			  padding: 10px;
+			  min-width: 150px;
+			  transition: all 0.5s;
+			  cursor: pointer;
+			  margin: 5px;
+			}
+
+			.button span {
+			  cursor: pointer;
+			  display: inline-block;
+			  position: relative;
+			  transition: 0.5s;
+			}
+
+			.button span:after {
+			  content: '\00bb';
+			  position: absolute;
+			  opacity: 0;
+			  top: 0;
+			  right: -20px;
+			  transition: 0.5s;
+			}
+
+			.button:hover {
+				background-color: white;
+			  	color: #4CAF50;
+			  	border: 2px solid #4CAF50;
+			}
+
+			.button:hover span {
+			  padding-right: 25px;
+			}
+
+			.button:hover span:after {
+			  opacity: 1;
+			  right: 0;
+			}
+		</style>
+	
+	
+	
+</head>
+<body style="background-color: #eee; font-size: 13px;">
+
+
+	<div class="body_content">
+
+		<div class="m_logo" style="padding: 20px; text-align: center;">
+	        <h2 class="site-logo" ><a href="{{ url_for('home.home') }}" style="font-size: 30px;">Masterly<strong class="font-weight-bold">Writers</strong> </a></h2>
+	    </div>
+
+
+		<div class="tab-wrap">
+		
+			<input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
+			<label for="tab1">Returning Customer? Login</label>
+
+			<input type="radio" id="tab2" name="tabGroup1" class="tab">
+			<label for="tab2">New Customer? Register</label>
+
+			<div class="tab__content">
+				<div class="limiter">
+					<div class="container-login100">
+						<div class="wrap-login100">
+
+							{% if loginerror %}
+		                        <p class="error" style="background-color: red; color: white; padding: 20px; text-align: center; font-size: 15px;">
+		                        	<i class="fa fa-info-circle"></i> 
+		                        	Error: {{ loginerror  }} 
+		                        </p>
+		                    {% else %}
+		                    	<div class="login100-form-title" style="background-image: url(../static/images/auth_images/bg-01.jpg);">
+									<span class="login100-form-title-1">
+										Sign In
+									</span>
+								</div>
+		                    {% endif %}
+
+							
+
+							<form class="login100-form" name="loginform" role="form" method="post" action="{{ url_for('users.login') }}" >
+
+								{{ loginform.csrf_token }}
+
+								<div class="wrap-input100" data-validate="Username is required">
+									<span class="label-input100">Username</span>
+									{{ loginform.username(placeholder="username or email", class="input100") }}
+									<span class="focus-input100"></span>
+	                                <span class="error">
+	                                  {% if loginform.username.errors %}
+	                                    {% for error in loginform.username.errors %}
+	                                      {{ error }}
+	                                    {% endfor %}
+	                                  {% endif %}
+	                                </span>
+
+								</div>
+
+								<div class="wrap-input100" data-validate = "Password is required">
+									<span class="label-input100">Password</span>
+			                        {{ loginform.password(placeholder="Enter password", class="input100", id="login_pswd") }}
+			                        <span class="focus-input100"></span>
+		                            <span class="error">
+		                              {% if loginform.password.errors %}
+		                                {% for error in loginform.password.errors %}
+		                                  {{ error }}
+		                                {% endfor %}
+		                              {% endif %}
+		                            </span>
+									
+								</div>
+
+								<div class="flex-sb-m w-full p-b-30" style="margin-top: 20px;">
+									<div class="contact100-form-checkbox">
+										<input class="input-checkbox100" id="rem_login" type="checkbox" name="remember-me" checked>
+										<label class="label-checkbox100" for="rem_login">
+											Remember me
+										</label>
+									</div>
+
+									<div>
+										<a href="{{ url_for('users.request_reset') }}" class="txt1">
+											Forgot Password?
+										</a>
+									</div>
+								</div>
+
+								<div class="container-login100-form-btn">
+									{{ loginform.login_submit(class="login100-form-btn") }}
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab__content">
+				<div class="limiter">
+					<div class="container-login100">
+						<div class="wrap-login100">
+
+
+							{% if error %}
+								<script type="text/javascript">
+									radiobtn = document.getElementById("tab2");
+									radiobtn.checked = true;
+								</script>
+
+			                {% endif %}
+	                    	<div class="login100-form-title" style="background-image: url(../static/images/auth_images/bg-01.jpg);">
+								<span class="login100-form-title-1">
+									Sign Up
+								</span>
+							</div>
+		                    
+
+							<form class="login100-form" name="regform" role="form" method="POST" action="{{ url_for('users.register') }}">
+
+								{{ regform.csrf_token }}
+
+								<div class="wrap-input100">
+									<span class="label-input100" id="reg_name_label">Name</span>
+									{{ regform.name(placeholder="Full Name", id="fullname", class="input100") }}
+									<span class="focus-input100"></span>	                                
+								</div>
+								{% if regform.name.errors %}
+                                    {% for error in regform.name.errors %}
+                                        <span class="error">*{{ error }}</span>
+                                        <script type="text/javascript">
+	                        				document.getElementById("fullname").style.borderBottom = "1px solid red";
+	                        				document.getElementById("reg_name_label").style.fontStyle = "italic";
+	                        				document.getElementById("reg_name_label").style.color = "red";
+	                        				radiobtn = document.getElementById("tab2");
+											radiobtn.checked = true;
+	                        			</script>
+                                    {% endfor %}
+                                {% endif %}
+
+
+								<div class="wrap-input100">
+									<span class="label-input100" id="reg_username_label">Username</span>
+									{{ regform.username(placeholder="Username", id="reg_username", class="input100") }}
+									<span class="focus-input100"></span>                                    
+								</div>
+								{% if regform.username.errors %}
+                                    {% for error in regform.username.errors %}
+                                        <span class="error">*{{ error }}</span>
+                                        <script type="text/javascript">
+	                        				document.getElementById("reg_username").style.borderBottom = "1px solid red";
+	                        				document.getElementById("reg_username_label").style.fontStyle = "italic";
+	                        				document.getElementById("reg_username_label").style.color = "red";
+	                        				radiobtn = document.getElementById("tab2");
+											radiobtn.checked = true;
+	                        			</script>
+                                    {% endfor %}
+                                {% endif %}
+								{% if reg_uname_error %}
+                                	<script type="text/javascript">
+                        				document.getElementById("reg_username").style.borderBottom = "1px solid red";
+                        				document.getElementById("reg_username_label").style.fontStyle = "italic";
+                        				document.getElementById("reg_username_label").style.color = "red";
+                        			</script>
+                                  	<span class="error">{{ reg_uname_error }}</span>
+                                {% endif %}
+
+
+								<div class="wrap-input100">
+									<span class="label-input100" id="reg_email_label">Email</span>
+									{{ regform.email(id="reg_email", placeholder="Email Address", class="input100") }}
+									<span class="focus-input100"></span>
+								</div>								
+                                {% if regform.email.errors %}
+                                    {% for error in regform.email.errors %}
+                                        <span class="error">*{{ error }}</span>
+                                        <script type="text/javascript">
+	                        				document.getElementById("reg_email").style.borderBottom = "1px solid red";
+	                        				document.getElementById("reg_email_label").style.color = "red";
+	                        				document.getElementById("reg_email_label").style.fontStyle = "italic";
+	                        				radiobtn = document.getElementById("tab2");
+											radiobtn.checked = true;
+	                        			</script>
+                                    {% endfor %}
+                                {% endif %}
+                                {% if reg_email_duplicate_error %}
+                                	<script type="text/javascript">
+                        				document.getElementById("reg_email").style.borderBottom = "1px solid red";
+                        				document.getElementById("reg_email_label").style.color = "red";
+	                        			document.getElementById("reg_email_label").style.fontStyle = "italic";
+                        			</script>
+                                  	<span class="error">{{ reg_email_duplicate_error }}</span>
+                                {% endif %}
+                                
+
+
+								<div class="wrap-input100" >
+									<span class="label-input100" id="reg_phone_label">Phone</span>
+									{{ regform.phone(class="input100", id="phone") }}
+									<span class="focus-input100" style="padding: 20px;"></span>
+								</div>
+								{% if regform.phone.errors %}
+                                    {% for error in regform.phone.errors %}
+                                        <span class="error">*{{ error }}</span>
+                                        <script type="text/javascript">
+	                        				document.getElementById("phone").style.borderBottom = "1px solid red";
+	                        				document.getElementById("reg_phone_label").style.color = "red";
+	                        				document.getElementById("reg_phone_label").style.fontStyle = "italic";
+	                        				radiobtn = document.getElementById("tab2");
+											radiobtn.checked = true;
+	                        			</script>
+                                    {% endfor %}
+                                {% endif %}
+                                {% if reg_phone_duplicate_error %}
+                                	<script type="text/javascript">
+                        				document.getElementById("phone").style.borderBottom = "1px solid red"
+                        				document.getElementById("reg_phone_label").style.color = "red";
+	                        			document.getElementById("reg_phone_label").style.fontStyle = "italic";
+                        			</script>
+                                  	<span class="error">{{ reg_phone_duplicate_error }}</span>
+                                {% endif %}
+								<br>
+
+
+								<div class="wrap-input100">
+									<span class="label-input100" id="pswd_reg_label">Password</span>
+									{{ regform.password(placeholder="password", id="password", class="input100") }}
+									<span class="focus-input100"></span>
+								</div>
+								{% if regform.password.errors %}
+                                    {% for error in regform.password.errors %}
+                                        <span class="error">*{{ error }}</span>
+                                        <script type="text/javascript">
+	                        				document.getElementById("password").style.borderBottom = "1px solid red";
+	                        				document.getElementById("pswd_reg_label").style.color = "red";
+	                        				document.getElementById("pswd_reg_label").style.fontStyle = "italic";
+	                        				radiobtn = document.getElementById("tab2");
+											radiobtn.checked = true;
+	                        			</script>
+                                    {% endfor %}
+                                {% endif %}
+
+
+								<div class="wrap-input100">
+									<span class="label-input100" id="confirm_label">Confirm Password</span>
+									{{ regform.confirm(placeholder="Retype Password", id="confirm", class="input100") }}
+									<span class="focus-input100"></span>
+                                    
+								</div>
+								{% if regform.confirm.errors %}
+                                    {% for error in regform.confirm.errors %}
+                                        <span class="error">*{{ error }}</span>
+                                        <script type="text/javascript">
+	                        				document.getElementById("confirm").style.borderBottom = "1px solid red";
+	                        				document.getElementById("confirm_label").style.color = "red";
+	                        				document.getElementById("confirm_label").style.fontStyle = "italic";
+	                        				radiobtn = document.getElementById("tab2");
+											radiobtn.checked = true;
+	                        			</script>
+                                    {% endfor %}
+                                {% endif %}
+
+								<div class="flex-sb-m w-full p-b-30" style="margin-top: 20px;">
+									<div class="contact100-form-checkbox">
+										<input class="input-checkbox100" id="rem_signup" type="checkbox" name="remember-me1" checked>
+										<label class="label-checkbox100" for="rem_signup">
+											Remember me
+										</label>
+									</div>
+								</div>
+
+								<div class="container-login100-form-btn">
+									{{ regform.reg_submit(class="login100-form-btn") }}
+								</div>
+
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+				
+	</div>
+
+	</div>
+
+
+	{% block scripts %}
+
+		{{ bootstrap.load_js() }}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/intlTelInput.min.js"></script>
+	
+	
+	<!--===============================================================================================-->
+		<script src="{{ url_for('static', filename='vendor/auth_vendor/jquery/jquery-3.2.1.min.js') }} "></script>
+	<!--===============================================================================================-->
+		<script src="{{ url_for('static', filename='vendor/auth_vendor/animsition/js/animsition.min.js') }} "></script>
+	<!--===============================================================================================-->
+		<script src="{{ url_for('static', filename='vendor/auth_vendor/bootstrap/js/popper.js') }} "></script>
+		<script src="{{ url_for('static', filename='vendor/auth_vendor/bootstrap/js/bootstrap.min.js') }} "></script>
+	<!--===============================================================================================-->
+		<script src="{{ url_for('static', filename='vendor/auth_vendor/select2/select2.min.js') }} "></script>
+	<!--===============================================================================================-->
+		<script src="{{ url_for('static', filename='vendor/auth_vendor/daterangepicker/moment.min.js') }} "></script>
+		<script src="{{ url_for('static', filename='vendor/auth_vendor/daterangepicker/daterangepicker.js') }} "></script>
+	<!--===============================================================================================-->
+		<script src="{{ url_for('static', filename='vendor/auth_vendor/countdowntime/countdowntime.js') }} "></script>
+	<!--===============================================================================================-->
+
+		<script>
+		    var wtf_phone_field = document.getElementById('phone');
+		    wtf_phone_field.style.position = 'absolute';
+		    wtf_phone_field.style.lineHeight = "50px";
+		    wtf_phone_field.style.top = '-9999px';
+		    wtf_phone_field.style.left = '-9999px';
+		    wtf_phone_field.parentElement.insertAdjacentHTML('beforeend', '<div ><input type="tel" id="_phone"></div>');
+		    var fancy_phone_field = document.getElementById('_phone');
+		    fancy_phone_field.style.lineHeight = "45px";
+		    var fancy_phone_iti = window.intlTelInput(fancy_phone_field, {
+		        separateDialCode: true,
+		        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/utils.js",
+		    });
+		    fancy_phone_iti.setNumber(wtf_phone_field.value);
+
+		    fancy_phone_field.addEventListener('blur', function() {
+		        wtf_phone_field.value = fancy_phone_iti.getNumber();
+		    });
+		</script>
+
+	{% endblock %}
+
+</body>
+</html>
